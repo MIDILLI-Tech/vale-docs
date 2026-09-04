@@ -1,0 +1,34 @@
+{
+  "name": "vale-docs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Documentation for Vale CMS & E-Commerce",
+  "license": "MIT",
+  "scripts": {
+    "sync-latest": "node ./scripts/sync-latest.js",
+    "docs:sync": "node ./scripts/sync-latest.js",
+    "docs:sync-versions": "node ./scripts/sync-readme.js",
+    "docs:version": "node ./scripts/sync-latest.js",
+    "check:anchors": "node ./scripts/check-anchors.js",
+    "check:sidebar": "node ./scripts/check-sidebar.js",
+    "check:parens": "node ./scripts/check-parens.js",
+    "check:external": "node ./scripts/check-external-links.js",
+    "check:spelling": "cspell \"**/*.md\"",
+    "docs:dev": "node ./scripts/sync-latest.js && node ./scripts/sync-env-locales.js && node ./scripts/copy-env-generator.js && node ./scripts/check-anchors.js && node ./scripts/check-sidebar.js && node ./scripts/check-parens.js && (cspell \"**/*.md\" || true) && vitepress dev .",
+    "docs:build": "node ./scripts/sync-latest.js && node ./scripts/sync-readme.js && node ./scripts/sync-env-locales.js && node ./scripts/check-anchors.js && node ./scripts/check-sidebar.js && node ./scripts/check-parens.js && npm run check:spelling && vitepress build . --outDir build && node ./scripts/copy-env-generator.js",
+    "postdocs:build": "echo === DEPLOY === && echo Build output: vale-docs/build && echo Manually copy using: npm run docs:build-copy && echo URL: https://docs.getvale.org/",
+    "docs:build-copy": "node ./scripts/sync-latest.js && node ./scripts/sync-env-locales.js && node ./scripts/check-anchors.js && node ./scripts/check-sidebar.js && node ./scripts/check-parens.js && npm run check:spelling && vitepress build . --outDir build && node ./scripts/copy-env-generator.js && echo. && echo === DEPLOY === && echo Build output: vale-docs/build && echo Clearing old files: \\\\srv\\www\\html\\getvale.org\\vale-docs\\ && node -e \"const d='\\\\\\\\srv\\\\www\\\\html\\\\getvale.org\\\\vale-docs';require('fs').readdirSync(d).forEach(f=>require('fs').rmSync(require('path').join(d,f),{recursive:true,force:true}))\" && echo Copying to: \\\\srv\\www\\html\\getvale.org\\vale-docs\\ && node -e \"const s='build',d='\\\\\\\\srv\\\\www\\\\html\\\\getvale.org\\\\vale-docs';require('fs').readdirSync(s,{withFileTypes:true}).forEach(e=>require('fs').cpSync(require('path').join(s,e.name),require('path').join(d,e.name),{recursive:true,force:true}))\" && echo URL: https://docs.getvale.org/",
+    "docs:preview": "vitepress preview ."
+  },
+  "devDependencies": {
+    "cspell": "^10.4.0",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  },
+  "overrides": {
+    "esbuild": "^0.25.0"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
+  }
+}
