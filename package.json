@@ -1,0 +1,28 @@
+{
+  "name": "vale-docs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Documentation for Vale CMS & E-Commerce",
+  "license": "MIT",
+  "scripts": {
+    "sync-latest": "node ./sync-latest.js",
+    "docs:sync": "node ./sync-latest.js",
+    "docs:version": "node ./sync-latest.js",
+    "check:anchors": "node ./check-anchors.js",
+    "docs:dev": "node ./sync-latest.js && node ./check-anchors.js && vitepress dev .",
+    "docs:build": "node ./sync-latest.js && node ./check-anchors.js && vitepress build . --outDir build && node -e \"require('fs').copyFileSync('C:\\\\xampp2\\\\htdocs\\\\vale\\\\scripts\\\\environment-generator.html', 'environment-generator.html')\" && node -e \"require('fs').copyFileSync('C:\\\\xampp2\\\\htdocs\\\\vale\\\\scripts\\\\environment-generator.html', 'build\\\\environment-generator.html')\"",
+    "postdocs:build": "echo. && echo === DEPLOY === && echo Build output: vale-docs/build && echo Manuylly copy to: npm run docs:build-copy && echo URL: https://docs.getvale.org/",
+    "docs:build-copy": "node ./sync-latest.js && node ./check-anchors.js && vitepress build . --outDir build && node -e \"require('fs').copyFileSync('C:\\\\xampp2\\\\htdocs\\\\vale\\\\scripts\\\\environment-generator.html', 'environment-generator.html')\" && node -e \"require('fs').copyFileSync('C:\\\\xampp2\\\\htdocs\\\\vale\\\\scripts\\\\environment-generator.html', 'build\\\\environment-generator.html')\" && echo. && echo === DEPLOY === && echo Build output: vale-docs/build && echo Copying to: \\\\srv\\www\\html\\getvale.org\\vale-docs\\ && xcopy build\\* \"\\\\srv\\www\\html\\getvale.org\\vale-docs\\\" /E /I /Y && echo URL: https://docs.getvale.org/",
+    "docs:preview": "vitepress preview ."
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  },
+  "overrides": {
+    "esbuild": "^0.25.0"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
+  }
+}
