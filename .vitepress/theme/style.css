@@ -1,0 +1,17 @@
+.VPFooter.has-sidebar {
+  display: block !important;
+}
+
+.NavGetVale {
+  display: inline-flex;
+  align-items: center;
+  color: var(--vp-nav-color);
+  font-weight: 500;
+}
+
+.NavGetVale::after {
+  content: '›';
+  margin-left: 4px;
+  font-size: 16px;
+  color: var(--vp-nav-active-color, var(--vp-nav-color));
+}
