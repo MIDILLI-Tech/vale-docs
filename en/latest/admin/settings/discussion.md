@@ -30,7 +30,7 @@ Vale's built-in comment system stores everything in your own database. Configure
 
 ### Disqus
 
-Select **Disqus** and enter your **Disqus Shortname** (e.g., `mysite` for `mysite.disqus.com`). The Disqus embed script loads the comment thread using the page URL for mapping.
+Select **Disqus** and enter your **Disqus Shortname** (e.g., `mysite` for `mysite.disqus.com`). The Disqus embed script loads the comment thread using the page URL for mapping. You can access setup links directly from the settings panel.
 
 ### Giscus (GitHub)
 
@@ -39,17 +39,17 @@ Select **Giscus** and configure the following fields:
 | Field | Description |
 |---|---|
 | **Repository** | Your public GitHub repo (e.g., `owner/repo`) |
-| **Repo ID** | The repository's ID (get from [giscus.app](https://giscus.app)) |
+| **Repo ID** | The repository's ID |
 | **Category** | Discussion category name |
 | **Category ID** | Discussion category ID |
 | **Mapping** | How to associate pages with discussions: `pathname`, `url`, `title`, or `og:title` |
 | **Theme** | Widget appearance: `light`, `dark`, or `preferred_color_scheme` (follows system) |
 
-Visit [giscus.app](https://giscus.app) for a setup wizard and to find your repo and category IDs.
+You can use the quick access link directly in the admin settings panel to retrieve your repository and category IDs.
 
 ### Facebook Comments
 
-Select **Facebook** and enter your **Facebook App ID**. Create one at [developers.facebook.com](https://developers.facebook.com). The Facebook Comments SDK loads and associates threads with the page URL.
+Select **Facebook** and enter your **Facebook App ID**. You can generate one from the provider's developer console using the quick access link in the settings panel. The Facebook Comments SDK loads and associates threads with the page URL.
 
 ::: tip NOTE
 Star ratings and product reviews are configured under **E-Commerce → Product**, not here.

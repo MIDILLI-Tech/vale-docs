@@ -203,7 +203,7 @@ PayPal subscription webhooks are only processed when they can be verified agains
 
 To get the ID:
 
-1. Go to [developer.paypal.com/dashboard/applications](https://developer.paypal.com/dashboard/applications) and open your app under **Live** (or **Sandbox**, if sandbox mode is enabled in Vale).
+1. Open your provider's developer dashboard via the quick access link in the settings panel under **Live** (or **Sandbox**).
 2. In the **Webhooks** section, click **Add Webhook** and set the URL to `https://yoursite.com/webhooks/paypal`.
 3. Subscribe to these events: `CHECKOUT.ORDER.APPROVED`, `BILLING.SUBSCRIPTION.ACTIVATED`, `BILLING.SUBSCRIPTION.CANCELLED`, `BILLING.SUBSCRIPTION.SUSPENDED`, `BILLING.SUBSCRIPTION.EXPIRED`, `BILLING.SUBSCRIPTION.PAYMENT.SUCCEEDED`, `BILLING.SUBSCRIPTION.PAYMENT.FAILED`.
 4. Save and copy the displayed **Webhook ID** (~17 characters).
