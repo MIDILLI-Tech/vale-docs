@@ -131,7 +131,7 @@ export default defineConfig({
       }
     },
     footer: {
-      message: 'Documentation released under the <a href="/vale-docs/LICENSE">MIT License</a>.',
+      message: 'Documentation released under the <a href="/vale-docs/LICENSE.">MIT License</a>.',
       copyright: "Copyright © 2024-present Vale"
     }
   },
