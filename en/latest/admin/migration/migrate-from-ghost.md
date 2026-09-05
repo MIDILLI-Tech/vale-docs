@@ -68,6 +68,7 @@ php vale import:ghost --file=ghost-export.json --download-media --ghost-url=http
 ## Notes
 
 - Only Ghost authors (not subscribers or administrators) are imported. All imported users receive the `subscriber` role in Vale.
+- User passwords are **not migrated**. Imported authors receive a random password and must use the **Forgot password** link on the login page (or have an admin run `php vale user:reset-password`) to set a new one before they can sign in.
 - Without `--download-media`, image references stay as-is in the HTML — they keep pointing at the original Ghost site and break once it goes offline.
 - Ghost post slugs are preserved and sanitized through Vale's `Slug` value object.
 - HTML body content, excerpts, and SEO fields are imported as-is (apart from the image URL rewriting described above).

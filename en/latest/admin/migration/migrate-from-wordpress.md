@@ -227,7 +227,7 @@ Vale will prompt for confirmation before dropping tables from the live database.
 - Comments on posts, pages, and WooCommerce products are imported into `vl_comments`. Duplicate comments (same email + date) are skipped on re-import.
 - WooCommerce orders are imported into `vl_orders` with their line items (DB mode only). Both the modern `wp_wc_orders` table and legacy `shop_order` post types are supported. Duplicate orders (same order number) are skipped on re-import.
 - Term relationships (post-to-category, post-to-tag, product-to-category) are imported in both modes. Duplicate relationships are skipped on re-import.
-- Imported users receive a random password and the `subscriber` role. Reset passwords from the admin panel or via `user:reset-password`.
+- User passwords are **not migrated**. Each imported user is assigned a random password and the `subscriber` role. Users must reset their password via the **Forgot password** link on the login page (or an admin can do it via `php vale user:reset-password`) before they can sign in.
 - When using `--dry-run` with `--db-dump`, the SQL dump is loaded into Vale's database and all import operations run inside a transaction that is rolled back at the end — no permanent changes are made.
 - SQL dump files can be gzipped (`.sql.gz`) for faster transfers and smaller file sizes.
 - The `--cleanup` flag safely removes only the WordPress tables introduced by the import, preserving existing Vale tables.

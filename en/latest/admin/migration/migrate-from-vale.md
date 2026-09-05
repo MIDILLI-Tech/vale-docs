@@ -48,6 +48,10 @@ php vale import --file=my-site-export.zip
 
 Use `--dry-run` to preview the import without writing to the database.
 
+::: tip Passwords are preserved
+Unlike migrations from other platforms (WordPress, Ghost, etc.), Vale→Vale migration **carries over user password hashes**. Because both sites use the same bcrypt hashing, existing users can sign in with their current passwords — no reset needed. Note that the exported file contains these password hashes, so treat it like any other sensitive data.
+:::
+
 ## After Import: Fix Base-Path URLs
 
 Moving servers (or into a subdirectory) often changes your site's base path. If your old site lived at `https://old-host.com/vale` and the new one at `/`, or vice versa, embedded links and image paths still point at the old location.
