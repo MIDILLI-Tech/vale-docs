@@ -46,8 +46,8 @@ When **multi-language content** is enabled (see [Content Settings](./content#mul
 
 ## Maintenance
 
-- **Maintenance Mode**: Enable this to show a message to visitors while you work on your site. Logged-in administrators will still be able to see the full site. Leave it to automatically use the existing message. This message is also translateable, if **multi-language content** is enabled.
-- **Display Cookie Warning**: Enable a standard cookie consent banner for visitors, with customizable text. Similar to above, this message is also translateable.
+- **Maintenance Mode**: Enable this to show a message to visitors while you work on your site. Logged-in administrators will still be able to see the full site. Leave it to automatically use the existing message. This message is also translatable, if **multi-language content** is enabled.
+- **Display Cookie Warning**: Enable a standard cookie consent banner for visitors, with customizable text. Similar to above, this message is also translatable.
 
 ## Features
 
