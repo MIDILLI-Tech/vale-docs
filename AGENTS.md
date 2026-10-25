@@ -89,14 +89,15 @@ CI (`.github/workflows/docs.yml`) runs spelling → `docs:build` → external li
 |---|---|
 | `npm run check:anchors` | Internal `#anchor` links resolve — headings containing `:` slugify to `-` (`import:wordpress` → `#import-wordpress`) |
 | `npm run check:sidebar` | Every sidebar entry points at an existing page |
+| `npm run check:parens` | Parentheses/brackets balance check across all markdown files |
 | `npm run check:spelling` | cspell spellcheck over every `**/*.md` |
-| `npm run docs:build` | The three checks above + VitePress build (dead internal links fail it) |
+| `npm run docs:build` | The checks above + VitePress build (dead internal links fail it) |
 | `npm run check:external` | Real external links — run periodically, or in CI with `--strict` (example hosts are skipped via `SKIP_HOSTS` in `scripts/check-external-links.js`) |
 
 Before committing:
 
 1. `npm run docs:build` passes.
-2. Markdown relative links resolve — audit `](./...)` targets across changed files; expect 0 broken.
+2. Markdown relative links resolve — audit `[text](./...)` targets across changed files; expect 0 broken.
 3. If requirements changed on the vale side (README/BUILD/docker), those edits belong in the same change set.
 
 ## Commit Style
