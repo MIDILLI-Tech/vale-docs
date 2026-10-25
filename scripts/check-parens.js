@@ -36,7 +36,6 @@ function collectMdFiles(dir, fileList = []) {
 
 function checkFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
-  const lines = content.split('\n');
 
   const openP = (content.match(/\(/g) || []).length;
   const closeP = (content.match(/\)/g) || []).length;
@@ -85,7 +84,7 @@ function checkFile(filePath) {
     });
   }
 
-  return { errors, lines };
+  return { errors };
 }
 
 function main() {
