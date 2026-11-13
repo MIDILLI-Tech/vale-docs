@@ -19,6 +19,8 @@ Auto-apply will overwrite files and run migrations automatically. Ensure backups
 
 Vale can run scheduled campaigns, automation emails, post/product publishing, and exchange-rate refreshes automatically.
 
+A scheduled publish clears the same page cache as saving the item by hand: the home page, the blog or shop listing, the archives and the item's own page are dropped immediately, so visitors never keep seeing a stale listing until the cache expires.
+
 ### Cron Modes
 
 | Mode | Description |

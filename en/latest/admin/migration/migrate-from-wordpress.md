@@ -136,6 +136,8 @@ php vale import:wordpress \
 
 After the import finishes, thumbnails and WebP variants are generated automatically for all imported media records (WebP only when conversion is enabled under [Settings](../settings/) → [Content](../settings/content)). You can also regenerate them any time with `php vale media:scan`.
 
+Imported media records need an owner account. Vale assigns them to the first `super_admin` (or the first `admin` when no super admin exists), the same rule `media:scan` uses; see [CLI Commands](../system/cli#media) for the `--user` option.
+
 ::: tip Importing from a local WordPress (localhost or LAN)
 Media downloads are **refused for private/internal addresses** (`localhost`, `127.0.0.1`, `192.168.x.x`, …) unless you opt in, so imported URLs cannot be pointed at internal services. When the source WordPress itself runs on your machine or your local network, add `--allow-private-hosts`:
 

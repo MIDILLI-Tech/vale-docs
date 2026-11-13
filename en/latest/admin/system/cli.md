@@ -598,14 +598,16 @@ php vale role:list
 Scan the uploads directory and register any files that exist on disk but are not in the media library. Useful after bulk-uploading files via FTP or S3 sync. Missing thumbnail and WebP renditions are regenerated automatically; see [Media Management](../content/media) for how renditions work.
 
 ```bash
-php vale media:scan --user=<user_id>
+php vale media:scan
 ```
 
 | Option | Description |
 |---|---|
-| `--user` / `-u` | **(Required)** ID of the admin user to assign as the file owner |
+| `--user` / `-u` | ID of the user to assign as the owner of the scanned files. Optional — when omitted, the first `super_admin` is used, then the first `admin`, then the oldest user account |
 | `--dry-run` | Preview without changes: lists files that *would* be added and records that *would* be updated (missing variants detected) |
 | `--no-organize` | Do **not** move files into `YYYY/MM/` folders; register them at their current location (including the `uploads/` root) so existing paths are never changed |
+
+**Who owns a scanned file:** every media record stores an owner (`media.user_id`, a required foreign key to the user table), so Vale always needs an existing account to attach the file to. Without `--user` it resolves one automatically in the order above; pass `--user=<id>` to attribute a bulk upload to a specific person. When the site has no user account at all, the command stops with an error instead of inserting rows it cannot own. The importers follow the same rule for the media they create.
 
 **File organisation:**
 
@@ -624,6 +626,10 @@ The scanner only registers original images; thumbnails and WebP variants are gen
 
 ```bash
 php vale media:scan --user=1 --no-organize
+```
+
+```bash
+php vale media:scan --dry-run
 ```
 
 ### `media:webp-remove`

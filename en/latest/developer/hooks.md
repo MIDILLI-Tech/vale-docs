@@ -27,7 +27,7 @@ class MyPlugin
 }
 ```
 
-Register your listener in `bootstrap/app.php` after the container is built.
+Register your listener in `bootstrap/events.php` after the container is built. That file is loaded by both the web bootstrap and the `vale` CLI, so listeners fire for HTTP requests, pseudo-cron and `php vale cron:run` alike. Core listeners for outbound webhooks and page-cache invalidation live there too (`PageCacheInvalidator`), which is why a scheduled publish drops exactly the same cached pages as an admin save.
 
 ## Actions
 
