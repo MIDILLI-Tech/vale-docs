@@ -65,6 +65,8 @@ Cron only tells you jobs ran, it does not watch the site from the outside. Point
 
 Cached database queries, API responses, compiled Twig templates, and HTML pages served to visitors. The total file count and size are computed on demand, click **Count** next to the metric (they are not scanned when the page opens, so a large cache never slows down Settings).
 
+HTML pages are not dropped only by these buttons. Content changes invalidate the pages that display them (publishing a post drops its own page, the blog listing and the home page), so a page usually refreshes itself. Which change drops which entries, and what is deliberately left alone, is mapped under [Page Cache](../../developer/page-cache).
+
 | Action | Description |
 |--------|-------------|
 | **Clear Page Cache** | Removes all cached HTML files. Next request to each URL regenerates the cache. |

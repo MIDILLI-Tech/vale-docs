@@ -556,6 +556,10 @@ const vitepressConfig = defineConfig({
                   link: "/en/latest/developer/media"
                 },
                 {
+                  text: "Page Cache",
+                  link: "/en/latest/developer/page-cache"
+                },
+                {
                   text: "Webhooks",
                   link: "/en/latest/developer/webhooks"
                 },

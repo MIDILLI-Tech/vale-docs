@@ -37,6 +37,7 @@ Looking to manage content, configure store settings, run database migrations, or
 - **[Plugins](./plugins)**: Site-specific drop-in extensions.
 - **[REST API](./api)**: Authenticated API endpoints and schema.
 - **[Shortcodes](./shortcodes)**: Dynamic content embeds for posts and pages.
+- **[Page Cache](./page-cache)**: Guest HTML caching and the URLs a content change invalidates.
 - **[Webhooks](./webhooks)**: Outgoing HTTP payload notifications.
 - **[SSO Integration](./sso)**: OAuth 2.0 single sign-on providers.
 - **[Payment Gateways](./payment-gateways)**: Building custom payment provider drivers.

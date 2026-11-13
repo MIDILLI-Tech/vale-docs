@@ -311,6 +311,8 @@ php vale cache:clear [type]
 
 When clearing `pages` or `all`, the command also flushes the `PageCache` object in addition to deleting cached HTML files. This ensures the in-memory state is consistent with the filesystem.
 
+A manual clear is the fallback, not the normal path: content changes invalidate the affected pages on their own. The full list of invalidation surfaces is documented under [Page Cache](../../developer/page-cache).
+
 Options: `--dry-run`
 
 ### `cache:warm`
