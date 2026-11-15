@@ -61,6 +61,12 @@ Every check runs inside `npm run docs:build`: a green local build means a green 
 
 `npm run docs:dev` runs the same checks before starting the local server, but reports spelling as a warning instead of failing.
 
+### llms.txt
+
+`npm run docs:build` also writes `build/llms.txt` through `scripts/build-llms-txt.js`: an [llms.txt](https://llmstxt.org/) map of the documentation for AI agents, generated from the same sidebar `check:sidebar` validates. Section titles come from the sidebar base paths, versioned snapshot links are skipped, and links are de-duplicated.
+
+Never edit it by hand — change the sidebar and rebuild. Pages carry no `description` frontmatter, so entries are titles plus links only; add a new page to the sidebar and it appears automatically.
+
 ### Spell Checking
 
 The dictionary is `cspell.json` at the repository root: a `words` array, sorted case-insensitively, holding legitimate names the English dictionaries do not know.
