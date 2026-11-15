@@ -381,6 +381,20 @@ Vale generates real-time feeds for external marketplaces. These do not require a
 ### Health Check
 - `GET /api/v1/health`: Returns current system status and version. No authentication required.
 
+## OpenAPI specification
+
+A machine-readable OpenAPI 3.1 description of every endpoint is served at:
+
+```http
+GET /api/v1/openapi.json
+```
+
+It needs no token. Point client generators, Postman, an MCP server or an AI agent at it instead of re-implementing this page: every operation carries its `operationId` (the Slim route name, e.g. `api.products.index`), request and response schemas, and an `x-vale-abilities` array with the ability it enforces. An empty array means *any valid token*; the public endpoints (health, this document, the marketplace feeds) declare `security: []`.
+
+The served copy rewrites `servers` to the current site URL (including the base path of a subdirectory install), so tools resolve every path against the right host without extra configuration.
+
+The document is the file `resources/api/openapi.json` inside the installation, so it always describes the running build. `tests/Unit/Api/OpenApiSpecTest.php` fails when a route in `routes/api.php` has no operation there (or vice versa), which is what keeps it from going stale. The `vale-agents-*.zip` and `vale-integration-skills-*.zip` release assets also bundle the file for offline use.
+
 ## Response Format
 
 Success responses return JSON. Lists are typically paginated:
