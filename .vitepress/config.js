@@ -184,7 +184,7 @@ const vitepressConfig = defineConfig({
       label: "On this page"
     },
     footer: {
-      message: 'Documentation released under the <a href="https://github.com/MIDILLI-Tech/vale-docs/blob/main/LICENSE">MIT License</a>.',
+      message: 'Documentation released under the <a href="https://github.com/MIDILLI-Tech/vale-docs/blob/master/LICENSE">MIT License</a>.',
       copyright: "Copyright © 2024-present Vale"
     }
   },
