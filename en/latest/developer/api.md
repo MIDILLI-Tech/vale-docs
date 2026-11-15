@@ -22,12 +22,16 @@ Each token carries a comma-separated list of **abilities** (or `*` for everythin
 All API routes are prefixed with `/api/v1`.
 
 ### Posts & Pages
-- `GET /api/v1/posts`: List published posts. (`read:posts`)
-- `GET /api/v1/posts/{slug}`: Get a single post by slug. (`read:posts`)
+- `GET /api/v1/posts`: List posts. (`read:posts`)
+- `GET /api/v1/posts/{slug}`: Get a single post by slug. (`read:posts`; a draft or other unpublished status is returned only when the token also holds `write:posts`, trashed content always `404`)
 - `POST /api/v1/posts`: Create a post. (`write:posts`)
 - `PUT /api/v1/posts/{id}`: Update a post (partial payloads supported). (`write:posts`)
 - `DELETE /api/v1/posts/{id}`: Delete a post. (`delete:posts`)
+- `GET /api/v1/pages`: List pages. (`read:pages`)
+- `GET /api/v1/pages/{slug}`: Get a single page by slug. (`read:pages`; unpublished statuses follow the same `write:pages` rule)
 - `POST|PUT|DELETE /api/v1/pages[/{id}]`: Same operations for pages. (`write:pages` / `delete:pages`)
+
+**List filters** (`GET /api/v1/posts`, `GET /api/v1/pages`): `?status=` accepts a single status (`published`, `draft`, `scheduled`, `unlisted`, `expired`, `archived`, `trash`), a comma-separated combination (`?status=draft,scheduled`), or `all` (every status except `trash`). The default is `published`; an unknown value returns `422`. The applied filter is echoed as `meta.status`. Anything beyond `published` / `unlisted` (including `all`) requires the matching write ability (`write:posts` / `write:pages`); a read-only token gets `403`, so a `read:posts` integration only ever sees publicly readable content.
 
 **Write payload** (all fields optional unless noted):
 ```json
@@ -60,7 +64,7 @@ Creating or updating content fires the `post.created`, `post.updated` and (when 
 - `DELETE /api/v1/products/{id}`: Remove a product. (`delete:products`)
 - `POST /api/v1/products/categories`: Create a product category (`{name}`, optional `{slug, description, parent_id}`). Returns the existing category when the slug already exists. (`write:products`)
 
-**List filters** (`GET /api/v1/products`): `?status=` (default `published`), `?sku=` (exact match), `?search=` (name + SKU, case-insensitive), `?type=` (`simple | variable | digital`), `?on_sale=1` (active sale window), plus `?page=` / `?per_page=` (max 100).
+**List filters** (`GET /api/v1/products`): `?status=` (default `published`; one status, a comma-separated combination, or `all`), `?sku=` (exact match), `?search=` (name + SKU, case-insensitive), `?type=` (`simple | variable | digital`), `?on_sale=1` (active sale window), plus `?page=` / `?per_page=` (max 100). Statuses beyond `published` / `unlisted` (including `all`) require `write:products`; a read-only token gets `403`.
 
 **Write payload** (all fields optional unless noted, `name` is required on create):
 
