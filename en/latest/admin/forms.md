@@ -28,6 +28,7 @@ Each field has the following properties:
 - **Placeholder**: Optional hint text shown inside empty Text, Email, Phone, and Textarea inputs
 - **Options**: Available for Select, Checkbox, and Radio. Enter one option per line.
 - **Option Titles**: Available for Select, Checkbox, and Radio. Optional tooltip text shown when a visitor hovers over an option. Enter one line per option, matched by position with the options above.
+- **Conditions**: Available for every field type. Shows the field only when other answers match (see [Conditional Fields](#conditional-fields)).
 
 ### Reordering Fields
 
@@ -48,6 +49,40 @@ In the form builder, each field card has a **width selector** that controls how 
 | **25%** | One quarter: place four fields per row |
 
 The builder uses responsive flex wrapping: fields automatically wrap to the next line when there isn't enough space, and a minimum width is enforced so cards never become too narrow to edit. This layout is preserved on the front-end render as well.
+
+### Conditional Fields
+
+Any field can be shown only when the visitor has already picked a specific answer somewhere else in the form. This keeps long forms short: ask "Company" or "Individual" first, then show the company name field only for companies.
+
+Conditions are triggered by the fields that offer a fixed set of answers: **Select**, **Radio**, and **Checkbox**. Free-text fields (Text, Email, Phone, Textarea) and Static Text cannot be the trigger, but any field type can be the one that is shown or hidden.
+
+#### Setup
+
+1. Add the field that asks the question, with its options filled in (for example a Radio field "I am a…" with `Company` and `Individual`).
+2. On the field you want to hide, tick **Show only when…** inside its card.
+3. Pick the trigger field, the comparison, and the answer that reveals this field.
+4. To depend on more than one answer, click **+ Add rule** and choose whether the field appears when **all** rules match or when **any** of them matches.
+
+The available comparisons follow the trigger type:
+
+| Trigger field | Comparisons |
+|---------------|-------------|
+| **Select**, **Radio** | is / is not |
+| **Checkbox** with options | includes / does not include |
+| **Checkbox** without options | is checked / is not checked |
+
+#### How Conditional Fields Behave
+
+- The field appears and disappears as soon as the trigger answer changes: no page reload, and no effect on the rest of the form.
+- A hidden field is skipped entirely: if it is marked **Required**, it is not required while it is hidden, and its value is not stored with the submission or included in the notification email.
+- Removing or renaming an option that a rule depends on removes the rule the next time you save the form. Deleting a trigger field leaves the affected rules with a **Source field no longer exists** warning in the builder.
+- Conditions apply wherever the form is displayed: its standalone page, the shortcode embed, and the copy-paste embed code for external websites.
+- In every display mode (standalone page, shortcode, embed code) the fields are hidden with JavaScript. If a visitor's browser blocks it, the conditional fields stay visible and a required conditional field has to be filled in before the form submits, but its answer is still discarded because the field is hidden by its conditions.
+- The checkout form (**Settings → E-commerce → Checkout → Additional Form Fields**) always shows every field of the selected form; conditional rules are ignored there.
+
+::: tip NOTE
+Only the answers that are visible at the moment of submission are recorded, so submissions show exactly what the visitor provided.
+:::
 
 ## Form Options
 
