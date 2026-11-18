@@ -34,6 +34,7 @@
     "ciphertext",
     "clearpay",
     "clickjacking",
+    "collab",
     "cspell",
     "Diffbot",
     "Disqus",
@@ -68,6 +69,7 @@
     "HEALTHCHECK",
     "Heroicon",
     "HMAC",
+    "Hocuspocus",
     "HTTPONLY",
     "IBAN",
     "içerik",
@@ -113,6 +115,7 @@
     "Polylang",
     "popen",
     "Preis",
+    "prosemirror",
     "putenv",
     "rawurlencode",
     "Rescan",
@@ -174,6 +177,6 @@
     "Yoast",
     "yourcompany",
     "youtu",
-    "YYYYMMDDHHIISS",
+    "YYYYMMDDHHIISS"
   ]
 }

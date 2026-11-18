@@ -1,9 +1,9 @@
 # Content Settings
 
-Fine-tune how your content is created and optimized. The Content tab is organized into **Media**, **Blog**, **Multi-Language**, and **Advertisement** sub-tabs.
+Fine-tune how your content is created and optimized. The Content tab is organized into **Media**, **Blog**, **Multi-Language**, **Advertisement**, and **Collaboration** sub-tabs.
 
 ::: tip NOTE
-**Media** is always visible. The **Blog**, **Multi-Language**, and **Advertisement** sub-tabs are only visible when their feature is enabled in **[Settings](./) → [General](./general) → [Features](./general#features)** (blog, multi-language content, advertisement).
+**Media** and **Collaboration** are always visible. The **Blog**, **Multi-Language**, and **Advertisement** sub-tabs are only visible when their feature is enabled in **[Settings](./) → [General](./general) → [Features](./general#features)** (blog, multi-language content, advertisement).
 :::
 
 ## Blog
@@ -58,6 +58,26 @@ These settings are only visible when **Enable advertisement** is turned on in **
 ::: tip
 Regardless of this setting, you can always use the `[ad]` shortcode inside your content.
 :::
+
+## Collaboration
+
+Lets several admins edit the same page or post at the same time. It needs a small collaboration server (Hocuspocus); the Docker image and the full setup live in the [developer guide](../../developer/collaboration).
+
+- **Enable collaboration**: Turns real-time editing on for the block editor. Off by default; when off nothing about the editor changes.
+- **Server**: Which collaboration server to use. Only **Private server (self-hosted)** ships today; more options can be added later.
+- **Server URL**: WebSocket address of the collaboration server, for example `ws://localhost:1234`. A site served over HTTPS must use `wss://` — browsers block plain `ws://` on secure pages.
+- **Shared secret**: Optional, but it must match `COLLAB_SECRET` or one of the `COLLAB_SECRETS` entries on the server. Each installation can use its own token, bound to its room prefix. Leaving both sides empty accepts any client that can reach the port — only acceptable for a local trial.
+- **Room prefix**: Optional. Prepends a namespace to every room name (`site-a/admin/pages/5/edit`) so several Vale sites can share one collaboration server without opening each other's documents. When the server binds a token to a tenant, this value must match that tenant name.
+- **Test connection**: Checks the address currently typed in the form from the server (one second timeout) and reports whether it accepts connections. The shared secret is verified when an editor connects, not by the test.
+
+Behavior once enabled:
+
+- Collaboration applies to **saved** records (post, page, product edit screens). New content stays single-user until it is saved for the first time, because the shared room needs a record ID.
+- Remote editors appear as colored carets with their name.
+- **Draft recovery is paused while collaboration is active** — a browser-local draft cannot be merged into a shared document. Create screens still recover drafts normally.
+- Saving still uses the normal form button; two people saving at the same moment behave exactly as before (the last save wins for the whole content field).
+- The dashboard warns when collaboration is on but the URL is empty, or when the address does not accept a connection within one second (checked at most every five minutes).
+- If the server cannot be reached, the saved content still appears in the editor after a short delay and editing continues locally; nothing is saved until you press the save button.
 
 ## Media
 

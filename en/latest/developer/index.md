@@ -38,6 +38,7 @@ Looking to manage content, configure store settings, run database migrations, or
 - **[REST API](./api)**: Authenticated API endpoints and schema.
 - **[Shortcodes](./shortcodes)**: Dynamic content embeds for posts and pages.
 - **[Editor Draft Recovery](./editor-drafts)**: Browser-local autosave, the recovery banner and the draft diff modal.
+- **[Real-Time Collaboration](./collaboration)**: Hocuspocus server image, the Yjs client wiring and its limits.
 - **[Page Cache](./page-cache)**: Guest HTML caching and the URLs a content change invalidates.
 - **[Webhooks](./webhooks)**: Outgoing HTTP payload notifications.
 - **[SSO Integration](./sso)**: OAuth 2.0 single sign-on providers.

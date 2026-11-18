@@ -560,6 +560,10 @@ const vitepressConfig = defineConfig({
                   link: "/en/latest/developer/editor-drafts"
                 },
                 {
+                  text: "Collaboration",
+                  link: "/en/latest/developer/collaboration"
+                },
+                {
                   text: "Page Cache",
                   link: "/en/latest/developer/page-cache"
                 },
