@@ -233,6 +233,18 @@ The editor shows a live word and character count below the editing area, updated
 
 If you navigate away from a page with unsaved changes, the browser will warn you before leaving. This helps prevent accidental data loss.
 
+### Recovering Unsaved Drafts
+
+The editor keeps a copy of your work in the browser while you type, so a crash, a closed tab or a failed save does not lose it.
+
+- Reopen the same editing screen and the copy is loaded automatically when it still differs from the saved version. A warning above the editor names the field and shows when the copy was stored.
+- **Show differences** compares the saved version (rows marked **−**) with the recovered copy (rows marked **+**). Only the words that differ are highlighted, and the counters at the top right add those words up.
+- **Discard draft** restores the saved version and deletes the copy. You are asked to confirm first.
+- **×** hides the warning but keeps the copy, which returns the next time you open the screen.
+
+The copy stays in this browser. It is not shared with other browsers, devices or users, and two tabs editing the same item overwrite each other's copy.
+
+
 ### Color Picker
 
 The color picker is used throughout the editor for text color, highlight, table borders, and block backgrounds. It offers:

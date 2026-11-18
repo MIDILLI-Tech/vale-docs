@@ -67,9 +67,11 @@ The available comparisons follow the trigger type:
 
 | Trigger field | Comparisons |
 |---------------|-------------|
-| **Select**, **Radio** | is / is not |
-| **Checkbox** with options | includes / does not include |
+| **Select**, **Radio** | is / is not, is empty / is not empty |
+| **Checkbox** with options | includes / does not include, is empty / is not empty |
 | **Checkbox** without options | is checked / is not checked |
+
+`is empty` matches when the visitor has not answered the trigger at all, and `is not empty` matches any answer. Use them for optional follow-up questions that only make sense once a previous answer was (or was not) given.
 
 #### How Conditional Fields Behave
 
@@ -83,6 +85,23 @@ The available comparisons follow the trigger type:
 ::: tip NOTE
 Only the answers that are visible at the moment of submission are recorded, so submissions show exactly what the visitor provided.
 :::
+
+### Conditional Newsletter Tags
+
+The **Newsletter Subscribe** field can tag subscribers by their answers, so one form sorts people without a separate sign-up form for each audience.
+
+1. Add the **Newsletter Subscribe** field, and make sure the form has a **Required** Email field.
+2. In the field's **Auto Tag** box, add the tags that every subscriber of this form should get.
+3. Under **Assign tags when…**, click **+ Add rule**, then pick the trigger field, the comparison and the answer (for example: "I am a" is "Company").
+4. Add the tags that rule should apply, and repeat for any further rules.
+
+How it behaves:
+
+- A subscriber gets the **Auto Tag** tags plus the tags of every rule that matches their answers.
+- Rules use the same trigger fields and comparisons as [Conditional Fields](#conditional-fields).
+- An answer that belongs to a hidden field counts as not given, so its rule does not apply.
+- Visitors who are already subscribed keep their existing tags; the new ones are added to them and any tag automations that start on those tags are triggered.
+- A rule left without tags is discarded when you save the form.
 
 ## Form Options
 

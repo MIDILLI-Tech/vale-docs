@@ -556,6 +556,10 @@ const vitepressConfig = defineConfig({
                   link: "/en/latest/developer/media"
                 },
                 {
+                  text: "Draft Recovery",
+                  link: "/en/latest/developer/editor-drafts"
+                },
+                {
                   text: "Page Cache",
                   link: "/en/latest/developer/page-cache"
                 },
