@@ -39,7 +39,9 @@ Site A then sets **Shared secret** `tokenA` and **Room prefix** `site-a`; site B
 
 Use the shared secret rather than `APP_KEY` for this: `APP_KEY` also encrypts stored credentials, it must never be handed to a third-party server, and rotating it would silently move every room. A plain token and an explicit prefix keep both concerns separate.
 
-The settings screen also has a **Server** dropdown and a **Test connection** button. Providers come from the `collaboration_servers` catalog in `config/reference-data.php` — today only `private` (the image above) — with `name`, `url_placeholder`, `docs_url` and `requires_url`; adding an entry is enough for it to appear in the admin, no template change. The test posts the URL currently typed in the form to `/admin/settings/collaboration-test`, which runs the same one-second TCP probe as the dashboard notice: it verifies the PHP host can reach the address, not that the shared secret matches (that is only checked when an editor connects).
+The settings screen also has a **Server** dropdown and a **Test connection** button. Providers come from the `collaboration_servers` catalog in `config/reference-data.php` — today only `private` (the image above) — with `name`, `url_placeholder` and `requires_url`; adding an entry is enough for it to appear in the admin, no template change. The test posts the URL currently typed in the form to `/admin/settings/collaboration-test`, which runs the same one-second TCP probe as the dashboard notice: it verifies the PHP host can reach the address, not that the shared secret matches (that is only checked when an editor connects).
+
+Upstream server documentation: [Hocuspocus](https://tiptap.dev/docs/hocuspocus).
 
 | Variable | Default | Meaning |
 |----------|---------|---------|
@@ -128,6 +130,8 @@ if (session.document.getXmlFragment('default').length === 0) {
 ### Presence
 
 `initCollaborationPresence()` subscribes to the provider's awareness and renders a `N online` count plus one colored initial per connected editor directly above the canvas. Caret and selection colors must be **hex**: y-prosemirror rejects anything else (`unsupported color format` in the console) and paints the caret transparent, which is why `USER_COLORS` in `collaboration.js` is a fixed hex palette picked by a hash of the user name.
+
+The strip reports the socket state from the provider's `status` event, not only the awareness map: while disconnected the awareness map still contains our own state, so a naive count would claim “1 online”. Instead the count and chips are replaced by a **!** badge with a hover tooltip (tooltip “Collaboration not available — changes are saved when you save the form.”, or “Connecting…” while the first connection is still being made), and jump/follow state resets. When the socket returns, the badge disappears and the real presence count comes back.
 
 Each chip is a button: the first click scrolls the viewport to that editor's caret (tooltip “Click to jump to …”), a second click on the same chip starts **follow** mode, where the viewport keeps tracking their cursor as they type (tooltip “Following … — click to stop”), and a third click stops. Switching to another editor restarts at the jump step. The position comes from the awareness `cursor` relative position mapped through `relativePositionToAbsolutePosition` with the `ySyncPluginKey` binding, so following needs no DOM matching and survives remote edits. Your own chip is inert.
 

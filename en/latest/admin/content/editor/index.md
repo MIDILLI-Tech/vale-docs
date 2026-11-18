@@ -8,7 +8,7 @@ For content blocks and their settings, see [Editor Blocks](./blocks). For workin
 
 ## Real-Time Collaboration
 
-When collaboration is enabled in **[Settings](../../settings/content#collaboration)**, several admins can edit the same content at the same time. Each participant appears as a colored caret with their name, and text, blocks and image changes are merged live. A presence strip directly above the content shows how many admins are connected plus one colored initial per editor. Click an editor's initial to jump to their cursor; click it again to follow them as they type, and once more to stop.
+When collaboration is enabled in **[Settings](../../settings/content#collaboration)**, several admins can edit the same content at the same time. Each participant appears as a colored caret with their name, and text, blocks and image changes are merged live. A presence strip directly above the content shows how many admins are connected plus one colored initial per editor. If the collaboration server cannot be reached, the count is replaced by a small **!** badge — hover it to see why. Editing continues locally and the form still saves normally. Click an editor's initial to jump to their cursor; click it again to follow them as they type, and once more to stop.
 
 - It applies to **saved** content: the shared room is tied to the record, so brand-new posts and pages stay single-user until saved once.
 - Draft recovery is paused while collaboration is active; on create screens it keeps working.
