@@ -6,6 +6,8 @@ Using an AI coding agent? Load the [`vale-mail-driver`](../../developer/agent-sk
 
 Ensure your system emails (like order receipts and newsletters) are delivered reliably. The Mail tab has three sub-tabs: **Notifications**, **Mail Setup**, and **Templates**.
 
+Every outgoing email uses the same header: the **site logo** you uploaded in Settings → Appearance, on its theme-colored bar, linked to the homepage. Without a logo the header shows the site name instead, so the emails are never left with an empty bar.
+
 ## Notifications
 
 Choose which types of automated emails are sent. Each email type has its own table with up to two columns:
@@ -78,7 +80,7 @@ Vale emails work out of the box with Gmail's inbox extras, no setup needed:
 ## Templates
 
 Customize the look and feel of automated emails:
-- **Header & Footer**: Add your logo and brand colors.
+- **Header & Footer**: The header bar uses your site logo (Settings → Appearance) and your brand colors; the footer carries the site name and copyright line.
 - **Specific Templates**: Edit the text for "Order Confirmation", "Password Reset", and "Customer Welcome" emails.
 - **Color Settings**: Emails can dynamically inherit colors from your active theme, or use custom email-only colors. See [Email Color Settings](#email-color-settings) below.
 
@@ -94,7 +96,7 @@ The **Templates** sub-tab has an **Email Colors** panel at the top:
 
 #### Live Preview
 
-When a template is selected in the editor, a **Preview Template** button appears next to the Fullscreen button. Click it to open a modal showing the email rendered with the current color scheme and sample data. This lets you see exactly how the email will look, including primary button color, background, muted text, borders, and footer, before sending anything.
+When a template is selected in the editor, a **Preview Template** button appears next to the Fullscreen button. Click it to open a modal showing the email rendered with the current color scheme and sample data. This lets you see exactly how the email will look, including the header logo, primary button color, background, muted text, borders, and footer, before sending anything.
 
 #### Color Variables
 
