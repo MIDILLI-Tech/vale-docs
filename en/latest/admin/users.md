@@ -16,6 +16,16 @@ A few safety rules to know:
 - Only a Super Admin can modify or delete another Super Admin account.
 - Deleting a user preserves their orders and anonymizes their comments.
 
+## Public author profiles
+
+Settings → Registration → **Public Profiles** enables author pages site-wide (off by default).
+
+- With the toggle on, every user gets a **Public bio** box and a **Public display name** field on the account profile page. The display name is optional — when it is empty the account name is used. It replaces the account name in post bylines, comment author names and the author page. The bio supports a small markdown subset — **bold**, *italic* and `[label](https://…)` links — with a live preview, and the text is capped at 2,000 characters.
+- Author pages are listed in the XML sitemap (once per author with published posts, when the blog is enabled) and carry a schema.org `Person` block with the display name, page URL, avatar and bio. Article structured data links every post to its author page too.
+- Author names in post bylines, blog cards, the custom-type author box and the post footer link to the author page at `/blog/author/<user id>`. The blog segment follows your blog routing setting.
+- The author page shows the avatar, the bio and that author's published posts with pagination. When the toggle is off, or the user has no bio, the page shows the post list only — the author link never leads to an empty page.
+- Saving a bio flushes the page cache, because author pages are cached for guests.
+
 ## Profile Pictures
 
 Users can add a profile picture to their account. It appears in the site header and account menu, next to their name on posts and custom content type items (when author bylines are shown), and on their comments.
