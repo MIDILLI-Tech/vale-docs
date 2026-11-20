@@ -107,7 +107,7 @@ How it behaves:
 
 The form editor sidebar is laid out like the post/page editor. From top to bottom:
 
-### Publish
+### Publish Now
 
 | Option | Description |
 |--------|-------------|

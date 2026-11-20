@@ -5,7 +5,7 @@ Vale keeps a history of saved content versions so you can inspect earlier states
 ## Opening Revision History
 
 1. Open an existing post, page, or supported content item in the admin editor.
-2. In the **Publish** box, click **Revision History**.
+2. In the **Publish Now** box, click **Revision History**.
 3. The revision list opens in a modal and shows:
    - The revision number
    - The date and time it was created

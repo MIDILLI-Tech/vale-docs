@@ -20,7 +20,7 @@ When you go to **Posts → Add New**, you'll see a two-column interface designed
 
 The right sidebar contains all the metadata and publishing controls:
 
-- **Publish Box**:
+- **Publish Now** box:
   - **Status**: *Draft*, *Published*, *Unlisted* (hidden from listings), or *Archived* (offline, kept for bookkeeping). *Published* and *Unlisted* require publishing rights. Without them you can only save drafts, and those statuses are hidden from the list filter (see [Users & Roles](../users#publish-permissions)).
   - **Set schedule**: On a *Draft* or *Unlisted* post, tick **Set schedule** and pick a **Publish date & time** to take it live automatically. The list shows a *(Scheduled)* badge until go-live. There is no separate *Scheduled* status to pick. Scheduling counts as publishing, so it needs the same publishing rights.
   - **Expiry date & time**: Optional. A published or unlisted post whose expiry time passes moves to the *Expired* status automatically (offline, kept for re-publishing).

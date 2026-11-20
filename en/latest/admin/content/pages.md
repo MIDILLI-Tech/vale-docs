@@ -16,7 +16,7 @@ Go to **Pages → Add New** to create a new page. The interface is similar to th
 
 ### Sidebar Configuration
 
-- **Publish Box**:
+- **Publish Now** box:
   - **Status**: *Draft*, *Published*, *Unlisted*, or *Archived* (offline, kept for bookkeeping). *Published* and *Unlisted* require publishing rights. Without them you can only save drafts (see [Users & Roles](../users#publish-permissions)).
   - **Template**: Choose the layout for this page (see [Page Templates](#page-templates) below).
   - **Hide title**: Hide the page title heading on the site (the title is still used in menus, the browser tab, and SEO).
@@ -37,7 +37,7 @@ Pages can take themselves offline, or hand their URL over to a replacement page,
 
 ### Expiry date & time
 
-Set **Expiry date & time** in the Publish Box. When the time passes, a published page moves to the **Expired** status and disappears from the site (same as unpublishing it by hand). Leave it empty for pages that should stay online indefinitely.
+Set **Expiry date & time** in the **Publish Now** box. When the time passes, a published page moves to the **Expired** status and disappears from the site (same as unpublishing it by hand). Leave it empty for pages that should stay online indefinitely.
 
 Expired pages are kept with an orange *Expired* badge in the page list, so you can re-publish them at any time.
 

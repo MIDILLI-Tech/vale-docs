@@ -162,7 +162,7 @@ If multi-language content is enabled, the sidebar shows:
 - **Categories**: Check one or more hierarchical shop categories to assign the product.
 - **Slug**: URL-friendly identifier. Auto-generated from the title. When editing, changing the slug offers a redirect checkbox (only when redirects are enabled in settings).
 - **SEO**: Per-product meta title, description, Open Graph, and canonical URL. See [SEO Settings](../settings/seo).
-- **Publish Box**:
+- **Publish Now** box:
   - **Status**: *Draft*, *Published*, *Unlisted*, or *Archived* (offline, kept for bookkeeping).
   - **Set schedule**: On a *Draft* or *Unlisted* product, tick **Set schedule** and pick a future date and time for the product to automatically go live. The list shows a *(Scheduled)* badge until then.
   - **Preview Draft** (Ctrl+Shift+P): Opens a preview of the current draft in a new tab (edit mode only).
@@ -171,7 +171,7 @@ If multi-language content is enabled, the sidebar shows:
 
 ## Export Product
 
-When editing any saved product, an **Export CSV** link appears at the bottom of the **Publish** block in the sidebar. Clicking it downloads a single CSV file containing every field for that product, including pricing, inventory, variations (as JSON), GMC attributes, shipping, VAT, and digital download settings. Use this to back up a product or to create a template row for bulk import.
+When editing any saved product, an **Export CSV** link appears at the bottom of the **Publish Now** block in the sidebar. Clicking it downloads a single CSV file containing every field for that product, including pricing, inventory, variations (as JSON), GMC attributes, shipping, VAT, and digital download settings. Use this to back up a product or to create a template row for bulk import.
 
 ### Bulk Export from the Product List
 
