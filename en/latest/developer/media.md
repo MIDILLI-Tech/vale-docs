@@ -71,3 +71,32 @@ At render time, `ShortcodeProcessor::process()` (`src/Infrastructure/Content/Sho
 - **Reach:** the badge is added by `process()`, which the `|shortcodes` Twig filter runs for the visible body/teaser. It does **not** reach RSS/Atom feeds (those use `ShortcodeProcessor::stripForFeed()`), and on membership-locked posts only the teaser before `<!--more-->` is processed, so the locked body never leaks a badge.
 
 Uploaded `.srt` / `.sub` subtitle files are converted to WebVTT at ingest (`SubtitleConverter`) and stored under the `.vtt` name. See the [Media admin guide](../admin/content/media) for the user-facing note.
+
+## Profile pictures
+
+User avatars are deliberately **not** media-library entries. They live in their own namespace so they never show up in the media browser and are never touched by the unused-media cleanup.
+
+| Concern | Implementation |
+|---|---|
+| Storage | `storage/uploads/avatars/` with a random 32-character hex name; `users.avatar` stores the relative path (`avatars/….jpg` or `avatars/….png`) |
+| Validation | JPEG/PNG only (`getimagesize`), size from the `avatar_max_kb` setting (default 1024 KB), clamped by `AvatarStorage::maxKilobytes()` to 64–10240 KB and never above PHP's `upload_max_filesize` |
+| Processing | GD decode → centre crop to a square → resize to 256×256 → re-encode, which strips EXIF/GPS and neutralises polyglot payloads (`Infrastructure\Media\AvatarStorage`); the output is WebP while **Convert images to WebP** is on and the source format (`.jpg`/`.png`) otherwise |
+| Rendering | `AvatarStorage::versionedUrl()` (Twig `avatar_url()`) returns provider URLs unchanged and resolves local paths to `/uploads/…?v=<file mtime>`, so a replaced picture is not served from the browser cache; the header avatar comes from the `user` Twig global built in `FlashMiddleware` |
+| Entry points | `POST {account}/profile/avatar` and `POST {account}/profile/avatar/delete` (`AccountController`), plus the admin user edit form (`UserController::update()`) and the admin/CLI anonymize paths |
+| Rate limit | `RateLimiter` bucket `avatar-upload`, keyed per user, `avatar_upload_limit` attempts per hour (default 1, 0 = unlimited) |
+| Comments | `user_avatar_url(userId)` resolves the avatar once per request instead of per comment |
+| Lazy loading | Content avatars (posts, listings, custom types, comments) carry `loading="lazy"` while the media **Enable Lazy Loading** setting is on (`media_lazy_loading` Twig global); header and account-menu avatars are above the fold and never lazy |
+
+The settings form shows the effective server ceiling next to the size field (`avatar_server_max_kb` Twig global), and the front-end hints use the effective `avatar_max_kb` global, so the advertised size always matches what is accepted. A configured value above the server ceiling is stored clamped by `SettingsController::update()`.
+
+`php vale media:scan` skips `avatars/` (`MediaScanService::findFiles()`), so the files never become `vl_media` rows and the unused-media filter cannot delete a live avatar.
+
+### SSO precedence
+
+Provider logins (Steam, Facebook, Google, GitHub) go through `AuthController::applySsoAvatar()`. It writes the provider URL only when the user has no avatar or the stored value is already a remote `http(s)` URL — a locally uploaded picture is never overwritten by a later sign-in. Always render through `avatar_url()`; never assume `users.avatar` is a URL.
+
+### Cache
+
+Avatars are part of guest-visible HTML (author bylines, comment lists), which the [page cache](./page-cache) stores. Filenames are random, so every upload produces a new URL and the previous file is deleted immediately; every avatar write path therefore calls `PageCache::flush()` so no cached page keeps pointing at a removed file. The header avatar is per-session and is never served from the page cache.
+
+See the [Users admin guide](../admin/users#profile-pictures) for the user-facing workflow.

@@ -16,6 +16,21 @@ A few safety rules to know:
 - Only a Super Admin can modify or delete another Super Admin account.
 - Deleting a user preserves their orders and anonymizes their comments.
 
+## Profile Pictures
+
+Users can add a profile picture to their account. It appears in the site header and account menu, next to their name on posts and custom content type items (when author bylines are shown), and on their comments.
+
+**For the user:** open **My Account → Profile** and use the **Profile Picture** block. Choose a JPEG or PNG image, then click **Upload**. The image is cropped to a square automatically. **Remove** deletes the picture and falls back to the user's initials.
+
+- The default size limit is 1 MB per image and the default rate is one change per hour. Administrators can change both in **[Settings → Registration](./settings/registration) → Profile Pictures**.
+- The size limit can never exceed the server's own upload limit; the field shows that ceiling as a hint.
+- Images are re-encoded on the server, so camera metadata (including location) is stripped before the file is stored.
+- Profile pictures are not part of the media library: they cannot be picked in the editor and do not appear under **Media**.
+
+**For the administrator:** open the user for editing and use the **Profile Picture** block to upload a replacement or tick **Remove current picture**. This helps with support requests, for example when a user cannot sign in to change their own picture.
+
+When a user signs in through a social provider (Steam, Facebook, Google, GitHub), the provider picture is used only while the user has no picture of their own. A picture uploaded by the user or by an administrator is never overwritten by a later sign-in.
+
 ## Managing Users via CLI
 
 For bulk operations, scripting, or remote server access, you can also manage users through the CLI. See [CLI Commands: Users](./system/cli#users) for `user:create`, `user:activate`, `user:set-role`, `user:reset-password`, and `user:delete`.

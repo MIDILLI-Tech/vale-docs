@@ -31,6 +31,7 @@ Invalidating a path removes **every** query and role variant of it, plus the tra
 | Product created, updated, published, expired or deleted | `product.created` / `product.updated` / `product.deleted` → `forProduct()` / `forDeletedProduct()` | Home, shop listing (all filters), the product page, the Google Merchant feed |
 | Stock change on `order.paid` and `order.reversed` | Listener invalidates directly through `PageCache` | Shop listing and the affected product pages |
 | Comment or review created, moderated, updated or deleted | `forComment()` resolves the entity, then reuses `forPost()` / `forProduct()` | The commented page or product |
+| Profile picture uploaded, replaced or removed | `AccountController` (self-service) and `UserController` (admin edit, anonymize), plus `user:delete` via CLI | Full flush |
 | Menus | `MenuController` (create, update, delete, clone) | Full flush |
 | Post categories, tags, product categories | `CategoryController`, `TagController`, `ProductCategoryController` | Full flush |
 | Content types | `ContentTypeController` (create, update, delete, activate/deactivate) | Full flush |

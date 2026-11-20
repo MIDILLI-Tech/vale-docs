@@ -61,6 +61,7 @@
     "Geolocation",
     "getenv",
     "gethostbyname",
+    "getimagesize",
     "getvale",
     "giropay",
     "Giscus",
