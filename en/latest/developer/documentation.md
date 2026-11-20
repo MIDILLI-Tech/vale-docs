@@ -90,7 +90,7 @@ Run `npm run` without additional arguments to see which commands are available.
 :::
 
 ::: tip Deploy via npm
-Run `npm run docs:build-copy` to build and copy generated files to the server (useful on CI/CD runs).
+Run `npm run docs:build-copy` to build and copy generated files to the server (useful on CI/CD runs). The build is staged inside the web root (`<target>/.deploy-staging`) and each top-level entry is then renamed over the old one, so the site keeps serving the previous build for the whole copy and the swap itself takes milliseconds. This also works when the web root is a server mount point, because the web root directory itself is never renamed. `--overwrite` copies over the files instead, and `--swap` renames the whole directory, which only works on hosts that re-resolve the document root per request: Apache and IIS keep the docroot open and serve an empty site after a directory rename until they are restarted.
 :::
 
 ### Creating a New Version Archive

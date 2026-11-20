@@ -81,7 +81,9 @@ The script:
 The documentation is built to `build/` and served from `/vale-docs/` (set via `--base=/vale-docs/` in the `docs:build` script).
 
 - `npm run docs:build`: builds the site and prints the deploy instructions.
-- `npm run docs:build-copy`: builds the site and copies `build/` to the web server.
+- `npm run docs:build-copy`: builds the site and stages `build/` in `<target>/.deploy-staging`, then renames each top-level entry over the old one. The site keeps serving the previous build for the whole copy, the swap itself takes milliseconds, and the web root directory is never renamed — which is what makes it safe when the web root is a server mount point.
+- `node scripts/deploy-docs.js --overwrite`: copies over the existing files instead, nothing staged or cleared.
+- `node scripts/deploy-docs.js --swap`: renames the whole directory instead of its entries. Only for hosts that re-resolve the document root per request — Apache and IIS keep a handle on the docroot and serve an empty directory after a directory rename until restarted.
 
 ## Checks & Spell Checking
 
