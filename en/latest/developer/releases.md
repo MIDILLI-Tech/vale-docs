@@ -32,7 +32,8 @@ php scripts/orchestrate-release.php \
 | Flag | Description |
 |------|-------------|
 | `--version=x.y.z` | Release version (required unless `version.php` exists) |
-| `--tag` | Create annotated git tag `vX.Y.Z` and push it |
+| `--tag` | Commit `version.php`, `README.md` and `CHANGELOG.md`, push `master`, then create the annotated tag `vX.Y.Z` on that commit and push it |
+| `--no-push` | With `--tag`: keep the release commit and tag local, without pushing `master` or the tag |
 | `--changelog` | Generate changelog from conventional commits since the last tag |
 | `--build` | Run `prepare-release.php` to build the release ZIP |
 | `--description="text"` | Custom release notes inserted at the top of the changelog entry |
@@ -63,7 +64,7 @@ The script reads all commits since the last git tag, parses them as [Conventiona
 
 Commits with `style:`, `ci:`, or `build:` prefixes are excluded from the changelog.
 
-If you provide `--description`, it is inserted as a paragraph at the top of the new version section, before the grouped commits.
+If you provide `--description`, it is inserted as a paragraph at the top of the new version section, before the grouped commits. Generated entries are merged into that section, so notes you already wrote under `[Unreleased]` are kept.
 
 **Example output in `CHANGELOG.md`:**
 ```markdown
@@ -79,9 +80,16 @@ Major order system refactor with tax calculation fixes.
 - fix: resolve order total calculation with discounts
 ```
 
-### 2. Git Tag (`--tag`)
+### 2. Release Commit and Git Tag (`--tag`)
 
-Creates an annotated git tag `vX.Y.Z` with the version and description in the tag message. If `--changelog` was also used, the `CHANGELOG.md` is committed first with a `chore: release x.y.z` message.
+The tag has to describe the version it ships, so the release metadata is committed before anything is tagged:
+
+1. `scripts/bump-version.php --version=X.Y.Z --changelog` writes the new version into `version.php`, updates the README version badge (URL and `alt` text) and promotes `## [Unreleased]` to `## [X.Y.Z] - <date>`, leaving a fresh empty `[Unreleased]` section above it. Older release sections are never rewritten.
+2. `version.php`, `README.md` and `CHANGELOG.md` are staged together and committed as `chore(release): vX.Y.Z`.
+3. `master` is pushed, so the commit exists on the branch before the tag points at it.
+4. The annotated tag is created on that commit, checked to resolve to it, and pushed last.
+
+Pre-flight guards abort the run instead of tagging the wrong commit: the working tree must be clean, the current branch must be `master`, and local `master` must not be behind `origin/master`. With `--no-push` the commit and tag stay local, which is useful for a rehearsal.
 
 ### 3. Build (`--build`)
 
@@ -115,11 +123,12 @@ Detection uses `git tag` (highest tag below the released version) and compares t
 
 ### Local Release (Recommended)
 
+Commit or stash everything first and push `master` — the orchestrator refuses to start from a dirty tree, from a branch other than `master`, or when local `master` is behind `origin/master`.
+
 ```bash
-# 1. Make sure all commits are pushed
+git status
 git push origin master
 
-# 2. Run the orchestrator
 php scripts/orchestrate-release.php \
   --version=0.10.4 \
   --tag \
@@ -129,10 +138,13 @@ php scripts/orchestrate-release.php \
 ```
 
 This will:
-1. Generate the changelog from your conventional commits
-2. Commit `CHANGELOG.md` with `chore: release 0.10.4`
-3. Create and push the `v0.10.4` tag
-4. Build the release ZIP and manifest
+1. Write `version.php`, the README badge and the `CHANGELOG.md` section
+2. Generate the changelog from your conventional commits and merge it into that section
+3. Commit `version.php`, `README.md` and `CHANGELOG.md` as `chore(release): v0.10.4`
+4. Push `master`, then create and push the `v0.10.4` tag on that commit
+5. Build the release ZIP and manifest
+
+Because the tag points at the commit that contains the new `version.php`, the tag-triggered pipeline builds exactly the version the tag is named after, and `/api/v1/health` reports the same version.
 
 ### Dry Run
 
@@ -165,6 +177,8 @@ git push origin v0.10.4
 
 The `.github/workflows/release.yml` workflow builds the package and creates the GitHub Release.
 
+A hand-made tag is only as good as the commit under it: tag a commit whose `version.php` still says `0.74.0` and the package reports `0.74.0`, whatever the tag is called. Bumping the version and committing it before tagging, as the orchestrator does, keeps the two in step.
+
 ---
 
 ## First-Time Setup
@@ -190,6 +204,20 @@ git config core.hooksPath .githooks
 ```
 
 This enforces conventional commit messages and secret scanning before every commit.
+
+---
+
+## The Version Bump Script (`bump-version.php`)
+
+The orchestrator calls `scripts/bump-version.php` in its first step, and it also works on its own when you only want the working tree updated:
+
+```bash
+php scripts/bump-version.php --patch               # 0.78.1 to 0.78.2
+php scripts/bump-version.php --minor --changelog   # 0.78.2 to 0.79.0
+php scripts/bump-version.php --version=1.0.0 --dry-run
+```
+
+It updates `version.php`, the README version badge (URL and `alt` text) and, with `--changelog`, promotes `[Unreleased]` to `## [X.Y.Z] - <date>` with a fresh empty `[Unreleased]` section above it. It never commits, tags or pushes.
 
 ---
 
@@ -234,6 +262,6 @@ Excluded by default: `.git/`, `node_modules/`, `tests/`, `storage/`, `.env*` (on
 
 During the build, `prepare-release.php` updates:
 - `version.php` (root)
-- `README.md` version badge
+- `README.md` version badge, both the badge URL and its `alt` text
 
 These are baked into the release ZIP and used by the auto-update system.
