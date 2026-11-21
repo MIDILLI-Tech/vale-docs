@@ -14,6 +14,7 @@ Build forms with a variety of field types:
 - **Textarea**: Multi-line text input
 - **Email**: Email address input with validation.
 - **Phone**: Telephone number input
+- **Date**: Date picker input (stores the date the visitor picks)
 - **Select**: Dropdown menu (one option from a list)
 - **Checkbox**: Checkboxes (one or more options)
 - **Radio**: Radio buttons (one option from a list)
@@ -173,7 +174,7 @@ The selected form's fields will appear under an **Additional Information** secti
 ### How It Works
 
 - Only active forms appear in the dropdown
-- All field types are supported: text, textarea, email, phone, select, checkbox, radio, static text, and newsletter subscribe
+- All field types are supported: text, textarea, email, phone, date, select, checkbox, radio, static text, and newsletter subscribe
 - The form is rendered inline, with no page reload or separate step
 - Submissions are saved to **Forms → Submissions** so you can view them alongside other form data
 - Field answers also appear on the order detail page in the admin panel

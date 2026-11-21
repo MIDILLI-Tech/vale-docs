@@ -16,6 +16,8 @@ Go to **Content Types → Add New** and fill in:
 | **Supports** | Feature toggles for each entry of this type (see below) |
 | **Custom Fields** | Extra metadata fields (text, number, select, image, etc.) |
 
+The **Slug** is filled in from the name while you create the type. If you leave it empty, Vale generates it from the name when you save, so `Custom Content` becomes `custom-content`. Slugs only use lowercase letters, numbers and hyphens; names with accented or non-Latin characters can produce a shortened address, so type the slug yourself when you want a specific one.
+
 ## Supports
 
 When creating or editing a custom content type, **Supports** controls which post-like features are available for entries of that type:
@@ -98,26 +100,79 @@ Changing the prefix or slug can create automatic redirects from the old addresse
 
 RSS feeds use `feed.xml`. See [RSS feeds](#rss-feeds) above.
 
-## Custom Fields Layout
+## Custom Fields
 
-Custom fields in the CPT builder support the same multi-column layout as the form builder. Each field card has a **width selector**:
+Custom fields add extra pieces of information to the entries of a type. Use them for anything the main editor is not meant to hold: a portfolio's client and year, a book's cover and page count, a listing's address and status.
 
-| Width | Columns |
-|-------|---------|
-| **100%** | Full width (default) |
-| **50%** | Half width: two fields side by side |
-| **33%** | One third: three fields per row |
-| **25%** | One quarter: four fields per row |
+Custom fields are available for **custom content types** only. The built-in Posts and Pages screens do not show the Custom Fields card.
 
-The builder uses responsive flex wrapping with minimum width enforcement, so cards never squeeze below a usable size. The column layout is reflected both in the admin editor and in the front-end entry form when the CPT uses forms.
+### Adding a field
 
-## Custom Field Placeholders
+Open **Content Types**, then edit (or create) a type. In the **Custom Fields** card click **+ Add Field** and fill in:
 
-When editing an entry, the editor lists your custom fields as clickable chips. Clicking a chip inserts the placeholder into the content body at the cursor position. It is replaced with the field's value when the page is displayed. Unknown field names are left as-is.
+| Setting | What it does |
+|---|---|
+| **Type** | What the author fills in — see [Field types](#field-types) below |
+| **Label** | The text shown above the field in the entry form, e.g. `Website` |
+| **Name (key)** | Short identifier used in placeholders. It is generated from the label (`Website` → `website`); keep it lowercase, with letters, numbers and underscores, and make it unique within the type |
+| **Width** | How much of the form row the field takes: **100%** (full width, default), **50%** (two per row), **33%** (three per row) or **25%** (four per row). Cards wrap on narrow screens instead of shrinking |
+| **Options** | Shows up only for **Select** — one choice per line |
+| **Required** | Tick it to make the field mandatory: the entry cannot be saved without a value. For a **Checkbox**, mandatory means it must be ticked |
+
+Click **Update** to save the type. The new field appears on the entry form right away, and required fields are marked with a red asterisk next to their label. Values already saved under an existing key stay stored; renaming the key after entries exist hides the old value, so enter it again under the new key.
+
+### Field types
+
+| Type | The author sees | Notes | Handy for |
+|---|---|---|---|
+| **Text** | Single-line box | Any short text | Website, Client, Reference code |
+| **Phone** | Phone box | Opens the phone keyboard on mobile; the number is stored as typed | Contact number, Support line |
+| **Number** | Number box | Digits only | Year, Page count, Price |
+| **Date** | Date picker | Stored as a date | Release date, Event date |
+| **Textarea** | Multi-line box | Line breaks are kept and shortcodes inside the value are processed | Address, Description, Notes |
+| **Select** | Dropdown | Choices come from **Options**, one per line | Condition, Format, Genre |
+| **Checkbox** | Tick box | Shown as Yes/No on the front end | In stock, Featured |
+| **Image** | Media library picker | Stores the chosen media item and displays the image | Cover image, Portrait, Logo |
+
+### Filling in values
+
+Create or edit an entry of that type. The **Additional Information** panel below the content editor lists every custom field with its label. Fill in what you need, then save as usual — the values are loaded back automatically the next time you edit the entry. Values belong to the entry itself: a translation is a separate entry, so fill in its fields there as well.
+
+### Showing the values on the site
+
+There are three places a value can appear. Pick one or combine them.
+
+#### Automatic "Details" box (default theme)
+
+With the default theme, entries of a type that has custom fields get a box under the content that lists every field with its label and value. Images are displayed, checkboxes read Yes/No, text areas keep their line breaks, and selects show their chosen option. The **Dark** theme inherits this box. The **Nova** and **Vivid** themes do not include it — use one of the options below there.
+
+#### Custom Field Placeholders
+
+When editing an entry, expand **Custom Field Shortcodes** just above the content editor. It lists your fields as clickable chips. Click a chip to insert the placeholder at the cursor position, for example `{{ website }}`. When the page is displayed, the placeholder is replaced with that entry's value. Unknown field names are left exactly as written.
+
+The preview button replaces the placeholders with the values currently in the form, so you can check them before saving. The bracket form `[field name="website"]` works too. A value that contains only a number is treated as a media item and rendered as an image — that is how **Image** fields display in body text, so for plain numbers (years, prices) use the Details box or a template instead.
 
 ::: warning NOTE
 Theme files use a longer placeholder format. Do not paste that into the content body, as it will be shown literally. In the editor body, always use the short chip format.
 :::
+
+#### In a custom content template
+
+When you create or edit a **Custom Content Template**, the placeholder chips list your fields in short form, e.g. `{{ website }}`. On save the short form is expanded to the longer form Twig needs, so both the chip and the expanded version work in template files. See [Custom Content Templates](../appearance/themes#custom-content-templates).
+
+### Example: a Portfolio type
+
+| Label | Name (key) | Type | Options |
+|---|---|---|---|
+| Client | `client` | Text | |
+| Website | `website` | Text | |
+| Year | `year` | Number | |
+| Delivered | `delivered` | Date | |
+| Services | `services` | Select | `Design` / `Development` / `Both` |
+| Featured | `featured` | Checkbox | |
+| Cover | `cover` | Image | |
+
+With the default theme, every portfolio entry then shows a Details box with these values. To place the website link inside the text, type it where you want it and click the `{{ website }}` chip there.
 
 ::: tip SEE ALSO
 - [Posts](./posts): built-in post management.
