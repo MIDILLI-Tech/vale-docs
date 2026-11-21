@@ -205,6 +205,15 @@ Access control applies to both the standalone form URL and the shortcode embed. 
 
 All form data is saved in the database. You can view, export, or delete submissions from the **Forms → Submissions** panel.
 
+### Exporting Submissions
+
+Use **Export CSV** or **Export JSON** at the top of the submissions screen. Both downloads follow the language tab you are viewing: **All Languages** exports every translation, while a single-language tab exports only that form.
+
+- **CSV** contains one row per submission with the ID, form name and language, one column per form field, the submission date, IP address, user agent, and read state. The file is UTF-8 with a BOM, so spreadsheet apps open it with the correct encoding. Cells that begin with `=`, `+`, `-`, or `@` are prefixed with an apostrophe to prevent spreadsheet formula injection.
+- **JSON** contains the form metadata, the field list, and an array of submissions. Each submission keeps its answers under `data`, keyed by field name, so the export can be consumed by scripts.
+- Only fields that still exist in the form are exported; answers for deleted or renamed fields are left out. Static Text fields are not data and have no column.
+- Exports include personal data such as IP addresses and user agents. Store and share the files according to your privacy policy.
+
 ## Spam Protection
 
 Vale includes several captcha options that can be enabled per form:
