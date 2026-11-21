@@ -16,7 +16,7 @@ Insert a **Form** via slash `/form` or toolbar `Element > 📋 Insert form`. A d
 
 ### Table of Contents
 
-Insert **Table of Contents** via slash `/toc` or toolbar. Use the dropdown to set heading depth (H1 only, H1 and H2, or H1 through H3). The TOC auto-generates from your headings.
+Insert **Table of Contents** via slash `/toc` or toolbar. Use the dropdown to set heading depth: **H1 only**, **H1 and H2**, **H1 through H3**, **H2 only**, or **H3 only**. The TOC auto-generates from your headings.
 
 ### Child Pages
 

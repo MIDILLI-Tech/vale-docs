@@ -34,7 +34,9 @@ Embeds a newsletter sign-up form.
 Generates a Table of Contents from the page's `h1` to `h3` headings. If no headings exist, the shortcode is removed.
 
 - **Usage**: `[toc]`
-- **Attributes**: `max_level="N"` includes headings up to level `N` (1 to 3, default 3)
+- **Attributes**:
+  - `max_level="N"`: includes headings up to level `N` (1 to 3, default 3)
+  - `level="N"`: includes only headings at exactly level `N` (1 to 3) — e.g. `[toc level="2"]` lists H2s only. Takes precedence over `max_level`
 
 ## [pages]
 
