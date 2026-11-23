@@ -79,10 +79,10 @@ Imported authors come **deactivated** and with a **random password**; they canno
 
 ```bash
 # Activate the imported user
-php vale user:activate user@example.com
+php vale user:activate --email=user@example.com
 
 # Set a new password
-php vale user:reset-password user@example.com
+php vale user:reset-password --email=user@example.com
 ```
 
 See [CLI reference](../system/cli/users#user-activate) or run `php vale user:activate --help` for all options.
