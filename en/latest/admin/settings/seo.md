@@ -71,7 +71,6 @@ Vale automatically adds structured data (schema.org) to your pages to help searc
 | Blog posts | `Article` with headline, author, datePublished, dateModified, image |
 | Products | `Product` with name, description, offers (price, currency, availability), brand, GTIN, MPN, aggregateRating |
 | Web pages | `WebPage` with name, description, url |
-| Site | `WebSite` with name, url, and `SearchAction` (enabling sitelinks search box) |
 
 No configuration is required. Structured data is generated automatically from your content and site settings.
 
@@ -132,7 +131,13 @@ Each field has a sign-up link for the respective platform. Vale inserts the corr
 
 ## XML Sitemap
 
-A sitemap is automatically generated at `/sitemap.xml` and kept up to date as you publish content. It includes your homepage, blog posts, pages, and products that are published and indexable. No configuration is required.
+A sitemap is automatically generated at `/sitemap.xml` and kept up to date as you publish content. It includes:
+
+- Your homepage.
+- Blog posts, pages and products that are published and indexable. Content excluded with **Show this page in the sitemap**, or marked `noindex`, stays out.
+- Author pages for every active author with at least one published post, while the blog is enabled.
+
+Category and tag archive pages are not part of the sitemap. To keep them out of search results too, enable **Add noindex to archive / tag pages** under [Search Engines](#search-engines).
 
 ::: tip SEE ALSO
 - Set per-content SEO in the [Editor](../content/editor/).

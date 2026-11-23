@@ -16,6 +16,7 @@ Whether you are managing content via the graphical admin dashboard or performing
 - **[Manage Content](./content/)**: Create and edit blog posts, pages, custom content types, revisions, and media.
 - **[Run Your Shop](./ecommerce/)**: Manage products, orders, coupons, product feeds, checkout, memberships, and abandoned carts.
 - **[Marketing](./marketing/)**: Handle newsletter campaigns, visual automations, analytics, and advertising.
+- **[SEO Guide](./seo)**: Improve search visibility with per-page SEO fields, structured data, sitemaps, and redirects.
 - **[Forms](./forms)**: Build custom forms, embed them via shortcode, and manage submissions.
 - **[Users & Roles](./users)**: Manage administrators, editors, customers, and custom roles.
 - **[Appearance](./appearance/)**: Customize themes, navigation menus, and typography fonts.

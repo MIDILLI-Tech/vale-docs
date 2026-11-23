@@ -348,6 +348,10 @@ const vitepressConfig = defineConfig({
                   ]
                 },
                 {
+                  text: "SEO Guide",
+                  link: "/en/latest/admin/seo"
+                },
+                {
                   text: "Forms",
                   link: "/en/latest/admin/forms"
                 },
