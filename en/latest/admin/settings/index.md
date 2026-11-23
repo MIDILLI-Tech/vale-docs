@@ -47,7 +47,7 @@ Explore the detailed documentation for each settings category:
 - **[Privacy & Security](./privacy)**: IP collection mode, captcha API keys, and GDPR settings, organized in sub-tabs.
 - **[Analytics](./analytics)**: Pageview tracking, geolocation, exclusions, and data retention.
 - **[Maintenance](./maintenance)**: Software updates, data export/import, cron, cache, media, and database optimization.
-- **[Advanced](./advanced)**: API tokens, webhooks, navigation order, and custom scripts.
+- **[Advanced](./advanced)**: API tokens, webhooks, and custom scripts.
 
 ::: tip PRO TIP
 Each settings sub-tab has its own form. Use the floating **Save** button (bottom-right) to save the active tab. If you forget to save a setting, you will be asked to confirm before leaving the page. Moreover, some sections, like Mail drivers, include a "Test" button to verify your configuration before going live.

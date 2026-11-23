@@ -59,16 +59,7 @@ Each webhook supports a custom **secret** for payload signing, custom HTTP heade
 
 Cache management, database optimization, media rescan, and revision pruning are available in the **[Maintenance tab](./maintenance)**. System-level operations like software updates and cron scheduling are also located there.
 
-## Navigation Order
-
-Customise the order of items in the admin sidebar:
-
-1. Go to **[Settings](./) → Advanced → [Navigation Order](./advanced#navigation-order)**.
-2. Drag and drop sidebar sections and individual menu items into your preferred order.
-3. Changes are saved per-user, not site-wide.
-4. Quick action buttons are reordered separately, from the **Manage** button on the dashboard (see [Quick Actions](#quick-actions) below).
-
-### Quick Actions
+## Quick Actions
 
 The dashboard **Quick Actions** grid shows shortcuts such as New Post, New Page, New Product, New Order, New Campaign, New User, New Subscriber, New Coupon, Optimize, Warm Cache, and one entry per active [custom content type](../content/content-types) (e.g. `New Event`).
 

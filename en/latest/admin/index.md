@@ -39,7 +39,8 @@ The Dashboard gives you a quick overview of your site at a glance:
 - **Quick Actions** shortcuts for frequent tasks (New Post/Page/Product/Order/Campaign/User/Subscriber/Coupon, Optimize, Warm Cache, plus one shortcut per active custom content type).
 - Clicking a shortcut jumps straight to its create form. **New User**, **New Subscriber**, and **New Coupon** open the related page with the create dialog already expanded, with no extra clicks.
 - Use **Manage** to drag actions into your preferred order (**Save Order**) or hide actions you rarely use with the eye toggle. Hidden actions disappear from the top-right user menu but stay on the dashboard (dimmed while managing) so you can restore them anytime.
-- The same actions appear in the **Quick Actions** section of the top-right user menu, below **Settings**. Your order is saved per user; the hidden list is remembered in your browser.
+- The same actions appear in the **Quick Actions** section of the top-right user menu, below **Settings**. The saved order applies to every administrator; the hidden list is remembered in your browser.
+- **Sidebar order**: scroll to the bottom of the admin sidebar and click **Reorder**, drag entries into your preferred order, then click **Save Order**. **Reset Order** restores the default. Inside a group, items can be reordered within that group only. The order is stored site-wide and applies to every administrator; [plugin entries](./system/plugins#sidebar-visibility-and-order) follow the same rules.
 
 ![Admin Dashboard Placeholder](https://via.placeholder.com/800x400?text=Admin+Dashboard)
 
