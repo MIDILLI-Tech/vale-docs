@@ -37,7 +37,7 @@ You can use Ctrl+S (or Cmd+S on macOS) to save the settings easily.
 
 Explore the detailed documentation for each settings category:
 
-- **[General](./general)**: Site identity, homepage, communications, localization, and feature toggles.
+- **[General](./general)**: Site identity, homepage, communications, localization, feature toggles, and Progressive Web App settings.
 - **[Content](./content)**: Media, Blog, Multi-Language, and Advertisement, organized in sub-tabs.
 - **[Discussion](./discussion)**: Comments, comment system choice, and comment captcha.
 - **[E-Commerce](./ecommerce)**: Shop identity, payments, products, shipping, taxes, currencies, checkout, and legal.

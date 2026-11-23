@@ -67,6 +67,7 @@ Use these toggles to enable or disable built-in modules. When a feature is turne
 | **Enable user registration** | Global toggle. When disabled, registration is completely turned off. | Registration tab |
 | **Enable SEO system** | Global toggle for meta tags, social previews, and search engine optimization features. | SEO tab |
 | **Enable analytics** | Track pageviews, referrers, browser, and device information. No cookies required. | Analytics tab |
+| **Enable progressive web app** | Makes the site installable as an app on phones and desktops and adds an offline page. Requires a [site logo](#site-identity). | PWA settings in **General → Site** |
 
 ::: tip NOTE
 The individual settings for each feature can be found on their respective tabs (for example, Blog settings are under **Content › Blog**, Shop settings under **E-Commerce**). Use the **Content** tab's sub-tabs to configure Blog, Multi-Language, Advertisement, and Media.
@@ -76,3 +77,35 @@ The individual settings for each feature can be found on their respective tabs (
 - Configure [SEO Defaults](./seo) for better search ranking.
 - Set up your [Shop Identity](./ecommerce) if you are running an online store.
 :::
+
+## Progressive Web App
+
+Progressive Web App (PWA) lets visitors install your site as an app. The option is in **Features**; the app settings appear under **General → Site**, between **Localization** and **Maintenance**, only after the option is enabled. The toggle stays disabled until a **Site Logo** is set under [Site Identity](#site-identity), because the logo becomes the app icon.
+
+When enabled, Vale adds the app manifest and service worker to every front-end page. The installed app opens in its own window without browser chrome and shows an offline page when a page cannot be reached.
+
+### App identity
+
+- **App name**: Shown on the install prompt and home screen. Defaults to the site name.
+- **Short name**: Used where space is tight, such as under the home screen icon. 12 characters or fewer works best.
+- **Use theme colors**: Uses the active theme primary and background colors. Turn this off to pick custom app colors.
+- **Theme color**: Browser toolbar and splash screen color.
+- **Background color**: Splash screen background while the app starts.
+
+::: tip ICON
+Use a square logo of at least `512×512` px. Vale crops the logo to a square, pads it, and generates the sizes browsers require.
+:::
+
+### Install the app
+
+The site must be served over HTTPS (localhost is allowed for development).
+
+- **Android (Chrome)**: Open the browser menu and choose **Install app** or **Add to Home screen**.
+- **iPhone and iPad (Safari)**: Tap **Share**, then **Add to Home Screen**.
+- **Desktop (Chrome or Edge)**: Click the install icon in the address bar, or choose **Install** from the browser menu.
+
+Installed apps open in a standalone window and appear with the site logo on the home screen, desktop, or app launcher.
+
+### Offline behavior
+
+The service worker keeps a small offline fallback page and caches static files such as styles, scripts, fonts, and uploaded images. Admin pages, API requests, checkout, and payment endpoints are never cached. Normal page visits always try the network first, so published changes appear as soon as the site is reachable.
