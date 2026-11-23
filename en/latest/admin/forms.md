@@ -205,14 +205,15 @@ Access control applies to both the standalone form URL and the shortcode embed. 
 
 All form data is saved in the database. You can view, export, or delete submissions from the **Forms → Submissions** panel.
 
-### Exporting Submissions
+## Exporting Submissions
 
-Use **Export CSV** or **Export JSON** at the top of the submissions screen. Both downloads follow the language tab you are viewing: **All Languages** exports every translation, while a single-language tab exports only that form.
+Open **Forms → Submissions** and use **Export CSV** or **Export JSON** at the top of the screen. The download covers the form you are viewing together with its translations, and follows the language tab you are on: **All Languages** puts the whole translation group in one file, while a single-language tab keeps the file to that form. Files are named after the form slug and the export date, for example `form-contact-us-submissions-2026-11-23.csv`.
 
-- **CSV** contains one row per submission with the ID, form name and language, one column per form field, the submission date, IP address, user agent, and read state. The file is UTF-8 with a BOM, so spreadsheet apps open it with the correct encoding. Cells that begin with `=`, `+`, `-`, or `@` are prefixed with an apostrophe to prevent spreadsheet formula injection.
-- **JSON** contains the form metadata, the field list, and an array of submissions. Each submission keeps its answers under `data`, keyed by field name, so the export can be consumed by scripts.
-- Only fields that still exist in the form are exported; answers for deleted or renamed fields are left out. Static Text fields are not data and have no column.
-- Exports include personal data such as IP addresses and user agents. Store and share the files according to your privacy policy.
+Every export is built from the current form definition rather than from the stored answers. A column exists only for a field that is still in the form, so answers recorded under a field that was later deleted or renamed are dropped, and Static Text blocks never become a column. Each row also carries the form name and language, which keeps submissions from different translations apart in the same file.
+
+- **CSV** — one row per submission with the `ID`, `Form`, `Language` and then one column per field, headed by the field label, followed by `Submitted At`, `IP Address`, `User Agent` and `Read` (`1` or `0`). Multi-value answers such as checkboxes are joined with `, `. The file is UTF-8 with a BOM so spreadsheet apps detect the encoding, and cells that start with `=`, `+`, `-`, `@`, a tab or a carriage return are prefixed with an apostrophe to prevent formula injection.
+- **JSON** — one object with `form` (`id`, `name`, `slug`, `language`), `exported_at` in ISO 8601, `fields` (each field's `name` and `label` in display order) and `submissions`. Each submission carries `id`, `form`, `created_at`, `is_read`, `ip_address`, `user_agent`, and its answers under `data`, keyed by field name, so a script can read values without matching labels.
+- Exports contain personal data such as IP addresses and user agents. Store and share the files according to your privacy policy.
 
 ## Spam Protection
 
