@@ -4,7 +4,11 @@ Recover lost sales by automatically following up with customers who added produc
 
 ## How It Works
 
-When a logged-in customer or a guest who has entered their email address leaves the checkout without completing payment, Vale records the cart state. After a configurable delay, an automated recovery email is sent with a direct link back to their cart.
+Vale records the cart when a signed-in customer opens the checkout page or a guest enters their email address there. The cart is stored against that email address, along with its items and subtotal.
+
+At the next cron run, every recorded cart that has been idle longer than the configured delay receives a reminder email. Further reminders follow at the configured interval until the customer places an order or the maximum number of reminders is reached. Placing an order with the same email address stops the reminders.
+
+If a customer abandons a new cart after ordering, it starts a fresh reminder cycle.
 
 ## Configuration
 
@@ -12,23 +16,24 @@ Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Ab
 
 | Setting | Description |
 |---|---|
-| **Enabled** | Toggle abandoned cart tracking on or off |
-| **Recovery Delay** | Time to wait before sending the first recovery email (e.g., 1 hour) |
-| **Recovery Email Template** | Choose or customise the email sent to the customer |
-| **Coupon** | Optionally attach a discount coupon to the recovery email to incentivise completion |
-| **Second Follow-up** | Enable a second email sent after a longer delay (e.g., 24 hours) if the cart is still unpurchased |
+| **Enable abandoned cart emails** | Master toggle for cart tracking and reminders |
+| **Delay (hours)** | Hours a cart stays idle before the first reminder (default: 2) |
+| **Max reminders** | Total reminders sent for one cart (default: 3) |
+| **Reminder interval (hours)** | Hours between reminders (default: 24) |
 
 ## Recovery Email
 
-The recovery email is sent from your configured mail driver and includes:
-- A personalised greeting (if the customer name is known)
-- A summary of the items left in the cart with images and prices
-- A **Recover My Cart** button that restores the exact cart contents and sends the customer directly to checkout
-- An optional coupon code if one is configured
+The reminder is sent through your configured mail driver, in the language the cart was recorded in, and contains:
 
-## Tracking & Reporting
+- The number of items left in the cart
+- The cart subtotal
+- A **Complete your order** button that opens the checkout page
 
-Recovered carts are tracked in **Orders** with an abandoned-cart source label. Use the order filters to measure recovery revenue over a date range.
+The email does not list individual products, include product images, or attach a coupon.
+
+## Tracking
+
+Vale marks a cart as recovered when an order is placed with its email address, and stops its reminders. Recovery is kept per cart only: the **Orders** screen has no abandoned-cart label, source filter or recovery report, so recovery revenue cannot be measured from that page.
 
 ## Cron Requirement
 
@@ -39,7 +44,7 @@ Setup details live under [CLI Commands](../system/cli).
 :::
 
 ::: tip SEE ALSO
-- [Orders](./orders): view and filter recovered orders.
-- [Coupons](./coupons): create a recovery-specific discount code.
+- [Checkout](./checkout): checkout configuration.
+- [Orders](./orders): review incoming orders.
 - [Automations](../marketing/automations): build multi-step post-purchase email sequences.
 :::

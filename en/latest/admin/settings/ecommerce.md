@@ -277,7 +277,7 @@ If the Form Builder is enabled, select an additional form to be appended at chec
 
 ### Abandoned Cart Recovery
 
-Send reminder emails to logged-in users who left items in their cart:
+Send reminder emails to customers who left items in their cart:
 
 | Setting | Description |
 |---------|-------------|

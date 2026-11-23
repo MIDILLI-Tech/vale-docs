@@ -216,7 +216,7 @@ Target inactive subscribers by combining a low engagement filter (e.g., max open
 If the shop is enabled, use order-count and engagement filters to send exclusive offers to repeat buyers.
 
 ### Abandoned Cart Recovery
-If the shop is enabled, automate emails to customers who leave checkout without completing payment. Configure the recovery delay and optional coupon under [Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Abandoned Cart](../settings/ecommerce#abandoned-cart-recovery).
+If the shop is enabled, automate emails to customers who leave checkout without completing payment. Configure the recovery delay and reminder schedule under [Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Abandoned Cart](../settings/ecommerce#abandoned-cart-recovery).
 
 ::: tip SEE ALSO
 - [Automations](./automations): build multi-step workflows triggered by subscriber behaviour.
