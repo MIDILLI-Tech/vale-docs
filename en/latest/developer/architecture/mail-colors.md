@@ -23,6 +23,7 @@ Transforms the `--theme-*` keys into `email_*` flat variables for use in Twig te
 |---|---|
 | `--theme-primary`         | `email_primary`         |
 | `--theme-primary-hover`   | `email_primary_hover`   |
+| `--theme-primary-text`    | `email_primary_text`    |
 | `--theme-accent`          | `email_accent`          |
 | `--theme-bg`              | `email_bg`              |
 | `--theme-surface`         | `email_surface`         |
@@ -31,14 +32,21 @@ Transforms the `--theme-*` keys into `email_*` flat variables for use in Twig te
 | `--theme-border`          | `email_border`          |
 | *(any theme.json var)*    | `email_{var_name}`      |
 
+`email_primary_text` is the text color for anything painted with `email_primary`: the mail header (site name or logo fallback) and every button. The four bundled themes declare it as `--theme-primary-text` with a default of `#ffffff`, so a light primary background can be paired with dark text by changing that one value in **Settings → Mail → Email Colors** (or **Themes → Colors**) instead of editing templates.
+
 ### Template Usage
 
 Email templates reference flat variables directly:
 
 ```twig
-<button style="background: {{ email_primary }};">Click me</button>
+<a href="{{ action_url }}"
+   style="display:inline-block; padding:12px 28px; border-radius:6px;
+          background-color:{{ email_primary }}; color:{{ email_primary_text }} !important;
+          text-decoration:none; font-weight:600;">Click me</a>
 <p style="color: {{ email_text_muted }};">Fine print</p>
 ```
+
+Keep the styles inline on the element. Many clients keep a background applied through a stylesheet class but replace the anchor color with their own link blue, which leaves dark text on a dark button; the inline `!important` on the color is what keeps `email_primary_text` winning. Every bundled transactional template follows this pattern.
 
 `MailService::sendTemplate()` merges `getEmailFlatColors()` into the Twig context alongside `site_name`, `vl_email_colors`, and caller-provided data.
 

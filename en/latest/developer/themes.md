@@ -65,6 +65,7 @@ Each entry maps a CSS variable name to a display label and a default value:
   "color_variables": {
     "--theme-primary":       { "label": "Primary Color",                "default": "#111827" },
     "--theme-primary-hover": { "label": "Primary Hover",                "default": "#374151" },
+    "--theme-primary-text":  { "label": "Text on Primary Color",        "default": "#ffffff" },
     "--theme-secondary":     { "label": "Secondary Color",              "default": "#f3f4f6" },
     "--theme-secondary-hover": { "label": "Secondary Hover",            "default": "#e5e7eb" },
     "--theme-bg":            { "label": "Background Color",             "default": "#f9fafb" },
@@ -81,7 +82,7 @@ Each entry maps a CSS variable name to a display label and a default value:
 }
 ```
 
-If a theme declares no `color_variables`, Vale falls back to this exact ten-variable schema.
+If a theme declares no `color_variables`, Vale falls back to the default schema shown above.
 
 ### How Overrides Are Applied
 

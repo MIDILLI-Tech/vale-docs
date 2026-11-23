@@ -20,6 +20,7 @@ Each theme exposes a set of CSS color variables that you can override without to
 |---|---|---|
 | `--theme-primary` | Primary Color | Buttons, links, key accents |
 | `--theme-primary-hover` | Primary Hover | Hover state of primary elements |
+| `--theme-primary-text` | Text on Primary Color | Text drawn on primary backgrounds: primary buttons, the mail header and mail buttons |
 | `--theme-secondary` | Secondary Color | Secondary buttons / surfaces |
 | `--theme-secondary-hover` | Secondary Hover | Hover state of secondary elements |
 | `--theme-bg` | Background Color | Page background |
