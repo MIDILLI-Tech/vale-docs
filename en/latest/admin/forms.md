@@ -215,6 +215,56 @@ Every export is built from the current form definition rather than from the stor
 - **JSON** — one object with `form` (`id`, `name`, `slug`, `language`), `exported_at` in ISO 8601, `fields` (each field's `name` and `label` in display order) and `submissions`. Each submission carries `id`, `form`, `created_at`, `is_read`, `ip_address`, `user_agent`, and its answers under `data`, keyed by field name, so a script can read values without matching labels.
 - Exports contain personal data such as IP addresses and user agents. Store and share the files according to your privacy policy.
 
+### CSV example
+
+A contact form with **Name**, **Email** and **Message** fields exports like this (the BOM is not shown):
+
+```csv
+ID,Form,Language,Name,Email,Message,Submitted At,IP Address,User Agent,Read
+42,Contact us,en,Jane Doe,jane@example.com,Hello!,2026-11-23 10:14:02,203.0.113.24,Mozilla/5.0 (Windows NT 10.0; Win64; x64),1
+```
+
+### JSON example
+
+The same submission as JSON, including the form metadata and the field list a script needs to interpret `data`:
+
+```json
+{
+  "form": {
+    "id": 7,
+    "name": "Contact us",
+    "slug": "contact-us",
+    "language": "en"
+  },
+  "exported_at": "2026-11-23T10:20:31+00:00",
+  "fields": [
+    { "name": "name", "label": "Name" },
+    { "name": "email", "label": "Email" },
+    { "name": "message", "label": "Message" }
+  ],
+  "submissions": [
+    {
+      "id": 42,
+      "form": {
+        "id": 7,
+        "name": "Contact us",
+        "slug": "contact-us",
+        "language": "en"
+      },
+      "created_at": "2026-11-23T10:14:02+00:00",
+      "is_read": true,
+      "ip_address": "203.0.113.24",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "data": {
+        "name": "Jane Doe",
+        "email": "jane@example.com",
+        "message": "Hello!"
+      }
+    }
+  ]
+}
+```
+
 ## Spam Protection
 
 Vale includes several captcha options that can be enabled per form:
