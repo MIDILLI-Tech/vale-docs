@@ -110,7 +110,7 @@ Under **[Settings](../settings/) → [Maintenance](../settings/maintenance) → 
 - **Export**: Click **Export** to generate a complete JSON snapshot of Posts, Pages, Products, Orders, Users, Categories, Tags, SEO metadata, Settings, Media, Content Types, Menus, Comments, Forms, Coupons, Redirects, Tax Rates, and Membership Plans. The file downloads automatically.
 - **Import**: Upload a previously exported JSON or ZIP file to import content. An **ID remapping engine** preserves all relational links (authors, categories, featured images, etc.) between the source and target site. Secret settings (API keys, payment secrets) are skipped unless explicitly included, and media files are not part of the export; copy the uploads directory and rescan media after import.
 
-For large datasets, use the [CLI commands](./cli#export-import) instead of the browser upload.
+For large datasets, use the [CLI commands](./cli/import-export#export) instead of the browser upload.
 
 ## Cron-Based Update Checks
 
@@ -128,7 +128,7 @@ Under **[Settings](../settings/) → [Maintenance](../settings/maintenance) → 
 | **Automatic update checks** | On | Check for new releases during each daily cron run |
 | **Automatically apply updates** | Off | Install available releases automatically during cron (a backup is created first) |
 
-When the master switch is off, cron never checks for or applies updates, even when running with `--force-update`. This is useful for managed environments where updates are handled outside Vale (e.g., by a package manager or deployment pipeline). Manual checks remain available at any time via **Check Now** on the Updates page or `php vale update:check`.
+When the master switch is off, cron never checks for or applies updates, even when running with `--force-update`. This is useful for managed environments where updates are handled outside Vale (e.g., by a package manager or deployment pipeline). Manual checks remain available at any time via **Check Now** on the Updates page or [`php vale update:check`](./cli/maintenance#update-check).
 
 See [CLI Commands](./cli) for the full cron setup guide.
 

@@ -113,7 +113,7 @@ Most variables have built-in defaults (see the [Environment Variables](../env) p
 
 | Variable | Why |
 |----------|-----|
-| `APP_KEY` | Encryption key with no default. Generates with `php vale key:generate`. Must stay stable across restarts (it encrypts sessions, cookies, and credentials). |
+| `APP_KEY` | Encryption key with no default. Generates with [`php vale key:generate`](../../admin/system/cli/maintenance#key-generate). Must stay stable across restarts (it encrypts sessions, cookies, and credentials). |
 | `APP_URL` | Canonical base URL with no usable default for a real domain. |
 
 For **SQLite** add `DB_DRIVER=sqlite` (default is `mysql`); `DB_NAME` then defaults to `storage/database.sqlite`.
@@ -159,7 +159,7 @@ DB_USER=postgres
 DB_PASS=postgres
 ```
 
-Generate `APP_KEY` with `php vale key:generate` and paste the output.
+Generate `APP_KEY` with [`php vale key:generate`](../../admin/system/cli/maintenance#key-generate) and paste the output.
 
 ::: tip Override Priority
 Vale's bootstrap uses `Dotenv::createImmutable()`, which means **environment variables passed to Docker always win** over values inside a bind-mounted `.env` file. This is the standard 12-factor approach: keep secrets in the orchestrator (Docker, Kubernetes, ECS), not in the image.
@@ -213,7 +213,7 @@ docker compose exec vale-app vale db:seed --demo --force
 :::
 
 ::: tip Vale CLI shortcut
-Inside any Vale container, `vale <command>` is a shortcut for `php vale <command>`. The images ship a `vale` wrapper binary at `/usr/local/bin/vale`. The shortcut is **only available inside the Docker containers**; on a plain VPS or shared host, use `php vale <command>`.
+Inside any Vale container, [`vale <command>`](../../admin/system/cli) is a shortcut for `php vale <command>`. The images ship a `vale` wrapper binary at `/usr/local/bin/vale`. The shortcut is **only available inside the Docker containers**; on a plain VPS or shared host, use `php vale <command>`.
 :::
 
 For the production compose file, the commands stay the same. Just add `-f docker-compose.prod.yml`, plus the profile flag that matches your database.

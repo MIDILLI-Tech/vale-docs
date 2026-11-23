@@ -335,6 +335,36 @@ The full-page HTML cache automatically bypasses for:
 
 This ensures performance optimisations never serve stale or personalised content to the wrong visitor.
 
+## Emergency Plugin Shutdown
+
+Plugins run inside the application, so a compromised or badly broken plugin is
+an incident, not a routine deactivation. Two brakes stop **all** plugin code —
+regular plugins and always-on mu-plugins — before any plugin file is included:
+
+| Brake | How | Scope |
+|---|---|---|
+| Marker file | `touch content/plugins/.disabled` | Survives requests and restarts; remove the file to re-enable |
+| Environment variable | `DISABLE_PLUGINS=1` | Applies to the process; unset it to re-enable |
+
+```bash
+touch content/plugins/.disabled          # every plugin off
+rm content/plugins/.disabled             # back to normal
+DISABLE_PLUGINS=1 php vale plugin:list   # one command with plugins off
+```
+
+Activation state and settings are kept, so removing the brake restores exactly
+the previous set — nothing is deleted. The marker is checked before any plugin
+is loaded, which is what makes it usable when a plugin is the thing breaking
+the admin panel.
+
+Use it when a plugin is suspected of being exploited, when an attack is coming
+through plugin code, or when the panel cannot be opened at all. Once the site
+is stable, review that plugin's declared capabilities (`env`, `network`,
+`filesystem_write`, `code_execution`) and rotate any secret it could read.
+See [Admin: Plugins](../../admin/system/plugins#all-plugins-switched-off) and
+[CLI: Plugins](../../admin/system/cli/plugins#plugin-disable) for the panel and command
+equivalents.
+
 ## Secret Scanning
 
 Vale uses [gitleaks](https://github.com/gitleaks/gitleaks) to prevent secrets and sensitive data from being committed to the repository. The scan runs automatically as a **git pre-commit hook** on every commit.

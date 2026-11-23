@@ -45,7 +45,7 @@ Themes only offer the variables they declare in their `theme.json` (see [Theme D
 - The **Live Preview** panel on the right renders a mock header, hero, buttons and card with your current values. Hover the buttons to test hover colors.
 - Click **Save Colors** to apply. Saved values are injected site-wide as CSS variables and override the theme defaults on every frontend page.
 - While custom colors are active, a **Custom Colors Active** badge is shown and **Reset to Default Colors** (next to the save button) removes all overrides after confirmation.
-- Changes take effect immediately; if you don't see them, clear the page cache (**CLI:** `php vale cache:clear`).
+- Changes take effect immediately; if you don't see them, clear the page cache (**CLI:** [`php vale cache:clear`](../system/cli/maintenance#cache-clear)).
 - **Theme colors also apply to transactional emails**: the same variables are used for email buttons, backgrounds, borders, and text (see [Mail → Templates → Email Colors](../settings/mail#email-color-settings)). Enable "Use theme colors for emails" in the mail Templates sub-tab and your emails will automatically match your website's color scheme.
 
 ## Editing Templates

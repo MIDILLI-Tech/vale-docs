@@ -47,7 +47,7 @@ shows an **Off** badge) or by its URL, and the warning banner there explains the
 state with the switch to turn plugins back on.
 
 This is a convenience switch, not the emergency brake. The operator kill switch
-(`content/plugins/.disabled` or `VL_DISABLE_PLUGINS`) still overrides it and is
+(`content/plugins/.disabled` or `DISABLE_PLUGINS`) still overrides it and is
 what you use when the admin panel itself is broken.
 
 ## Reading the list
@@ -137,13 +137,12 @@ This uploader installs **regular plugins only**: the ZIP must contain
 are single files placed in `content/mu-plugins/` by the operator (see
 **Must-use drop-ins** below).
 
-From the command line, `php vale plugin:install path/to/plugin.zip` runs the same
-validation and install; add `--dry-run` to validate a package without writing
-anything. Both the web card and the CLI install the plugin **disabled**, so a
-package cannot start running code just because it was uploaded. Review its row
-and use **Enable** when you are ready. An existing plugin folder is never
-overwritten: update installed plugins through their own **Update** action
-instead.
+The same validation and install are available from the command line — see
+[CLI Commands → Plugins](./cli/plugins#plugin-install). Both the web card and the CLI install
+the plugin **disabled**, so a package cannot start running code just because it
+was uploaded. Review its row and use **Enable** when you are ready. An existing
+plugin folder is never overwritten: update installed plugins through their own
+**Update** action instead.
 
 Vale also scans the package's code before it is written: if it uses sensitive
 access the manifest did not declare, the install is refused. Again, this only
@@ -174,17 +173,10 @@ checks those feeds automatically during cron, at most once every 24 hours, when
 **Enable software updates** and **Automatic update checks** are on in
 **Settings → Maintenance → Software Updates**.
 
-The same checks and updates are available from the command line:
-
-```bash
-php vale plugin:check-updates              # every plugin with an update source
-php vale plugin:check-updates acme-tax     # one plugin
-php vale plugin:update acme-tax            # download, verify and install
-```
-
-`plugin:check-updates` only refreshes the cached result, exactly like **Check
-for updates**. `plugin:update` applies the release and runs any pending plugin
-migrations, and flushes the full-page cache.
+The same checks and updates are available from the command line — see
+[CLI Commands → Plugins](./cli/plugins#plugin-check-updates). Checking only refreshes the cached
+result, exactly like **Check for updates**; updating applies the release, runs
+any pending plugin migrations and flushes the full-page cache.
 
 When a newer release is available and the plugin is compatible, the row shows
 an **Update available** note and an **Update** button. The update is refused
@@ -237,7 +229,7 @@ The **Status** column of the plugin list shows how many migrations are still pen
 A plugin can ship its own database changes. Turning it on applies them right
 away; if a plugin's files were updated with new migrations, the next cron run
 applies those too. A failed migration is shown as an error (with the file name)
-and the plugin stays enabled — fix the file and run `php vale plugin:migrate`. If a migration ships a `down` step, `php vale plugin:migrate --rollback <slug>` reverts the newest one (deactivating a plugin never touches its tables).
+and the plugin stays enabled — fix the file and re-run the migration from the terminal (see [CLI Commands → Plugins](./cli/plugins#plugin-migrate)). A migration that ships a `down` step can be rolled back there too (deactivating a plugin never touches its tables).
 
 ## Must-use drop-ins (mu-plugins)
 
@@ -261,15 +253,10 @@ stay empty. A website address must start with `http://` or `https://`.
 If the whole plugin set must be turned off — for example because one of them
 keeps the admin panel from opening — the banner at the top explains that the
 operator kill switch is active. Remove `content/plugins/.disabled` (or the
-`VL_DISABLE_PLUGINS` environment variable) to load them again. Activation state
-is kept either way.
-
-::: tip CLI EQUIVALENTS
-`php vale plugin:install <zip>`, `php vale plugin:list`,
-`php vale plugin:check-updates`, `php vale plugin:update <slug>`,
-`php vale plugin:enable <slug>` and `php vale plugin:disable <slug>` do the same
-from the terminal — see [CLI Commands](./cli#plugins).
-:::
+`DISABLE_PLUGINS` environment variable) to load them again. Activation state
+is kept either way. For the incident checklist — including what to review after
+the site is stable — see [Developer: Security → Emergency Plugin
+Shutdown](../../developer/security/#emergency-plugin-shutdown).
 
 Writing a plugin is a developer task: see
 [Developer: Plugins](../../developer/plugins) for the manifest format, hooks,

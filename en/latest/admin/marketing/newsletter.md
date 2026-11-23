@@ -142,7 +142,7 @@ When you hit **Send**, the campaign is queued and each cron run dispatches the n
 
 ::: tip SEE ALSO
 - [Mail Settings](../settings/mail#batch-sending-queue): configure batch size and API keys.
-- [CLI → cron:run](../system/cli#cron-run): how scheduled sending runs.
+- [CLI → cron:run](../system/cli/cron#cron-run): how scheduled sending runs.
 :::
 
 ## A/B Testing

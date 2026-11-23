@@ -445,7 +445,17 @@ const vitepressConfig = defineConfig({
                     },
                     {
                       text: "CLI Commands",
-                      link: "/en/latest/admin/system/cli"
+                      link: "/en/latest/admin/system/cli",
+                      items: [
+                        { text: "Health, Cache & Updates", link: "/en/latest/admin/system/cli/maintenance" },
+                        { text: "Database", link: "/en/latest/admin/system/cli/database" },
+                        { text: "Plugins", link: "/en/latest/admin/system/cli/plugins" },
+                        { text: "Backups", link: "/en/latest/admin/system/cli/backups" },
+                        { text: "Users & Roles", link: "/en/latest/admin/system/cli/users" },
+                        { text: "Media", link: "/en/latest/admin/system/cli/content" },
+                        { text: "Import & Export", link: "/en/latest/admin/system/cli/import-export" },
+                        { text: "Cron", link: "/en/latest/admin/system/cli/cron" }
+                      ]
                     },
                     {
                       text: "Troubleshooting",

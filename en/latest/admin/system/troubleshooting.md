@@ -2,6 +2,12 @@
 
 Find solutions to common issues encountered while setting up or running Vale.
 
+::: tip CLI REFERENCE
+Every command shown on this page is documented in the [CLI reference](./cli):
+`doctor` under [Health](./cli/maintenance#doctor), `key:generate` under
+[Security](./cli/maintenance#key-generate).
+:::
+
 ## Installation Issues
 
 ### 404 Not Found on all pages

@@ -72,7 +72,7 @@ This opens a separate view listing all unused files with their type, size, and p
 Unused media can also be cleaned up in bulk from **[Settings](../settings/) → [Maintenance](../settings/maintenance) → [Database Optimization](../settings/maintenance#database-optimization)** using the "Delete unused media" checkbox.
 
 ::: tip FOR SYSADMINS
-The same cleanup is available from the terminal. See [CLI Commands](../system/cli#database) for `db:optimize`. Technical reference: thumbnail and WebP renditions are stored as derived files of the original record, and `media:scan` only registers originals while regenerating missing renditions.
+The same cleanup is available from the terminal. See [CLI Commands](../system/cli/database#db-optimize) for `db:optimize`. Technical reference: thumbnail and WebP renditions are stored as derived files of the original record, and `media:scan` only registers originals while regenerating missing renditions.
 :::
 
 ## Image Optimization

@@ -103,7 +103,7 @@ Admins can select multiple users and apply **Activate**, **Deactivate**, or **An
 
 Vale can export user data as JSON for GDPR data portability requests. This covers profile details, orders, subscriptions, comments, and newsletter subscriptions.
 
-For full site migration (all content, users, products, orders, settings, etc.) between Vale instances, use the **Export/Import** tools in **[Settings](../settings/) → [Maintenance](../settings/maintenance) → [Data Export / Import](../settings/maintenance#data)** or the [CLI commands](./cli#export-import) (`php vale export` / `php vale import`).
+For full site migration (all content, users, products, orders, settings, etc.) between Vale instances, use the **Export/Import** tools in **[Settings](../settings/) → [Maintenance](../settings/maintenance) → [Data Export / Import](../settings/maintenance#data)** or the [CLI commands](./cli/import-export#export) (`php vale export` / `php vale import`).
 
 ### Enabling Exports
 

@@ -85,7 +85,7 @@ php vale user:activate user@example.com
 php vale user:reset-password user@example.com
 ```
 
-See [CLI reference](../system/cli.md#user-activate) or run `php vale user:activate --help` for all options.
+See [CLI reference](../system/cli/users#user-activate) or run `php vale user:activate --help` for all options.
 :::
 
 ## Notes

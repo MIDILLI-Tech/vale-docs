@@ -33,7 +33,7 @@ Go to **[Settings](../settings/) → [Maintenance](../settings/maintenance) → 
 php vale export -o my-site-export.zip
 ```
 
-See [CLI Export/Import](../system/cli#export-import) for all options (`--type`, `--output`, `--include-secrets`).
+See [CLI Export/Import](../system/cli/import-export#export) for all options (`--type`, `--output`, `--include-secrets`).
 
 ::: warning Secret settings are stripped by default
 Export files omit secret settings (API keys, payment secrets, SSO credentials) unless you pass `--include-secrets` (CLI) or tick **Include secrets in export file** (admin panel). The same opt-in applies on import (`--include-secrets`), so secrets only transfer when both sides explicitly allow it. Note the file still contains user password hashes; treat it as sensitive data.
@@ -89,9 +89,9 @@ php vale migrate:urls --from= --to=/vale
 
 The command rewrites `src` and `href` references across post bodies, product descriptions, menu URLs, SEO canonical URLs, redirects, and newsletter/automation HTML, then clears the cache so the change takes effect immediately. Run it with `--dry-run` first to preview, and use `--yes` to skip the confirmation prompt in scripts.
 
-See [CLI Commands → `migrate:urls`](../system/cli#migrate-urls) for all options.
+See [CLI Commands → `migrate:urls`](../system/cli/database#migrate-urls) for all options.
 
 ## See Also
 
 - [Updates & Backups → Data Portability](../system/updates#data-portability)
-- [CLI Commands → Export/Import](../system/cli#export-import)
+- [CLI Commands → Export/Import](../system/cli/import-export#import)

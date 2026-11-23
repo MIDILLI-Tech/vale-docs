@@ -25,7 +25,7 @@ The folder name must match the skill `name` declared in `SKILL.md` frontmatter. 
 | `vale-theme` | Theme scaffold under `themes/<slug>/`: `theme.json`, layout/content templates, menus, `--theme-*` color variables, dark-mode handling |
 | `vale-api-endpoint` | New `/api/v1` resource: API controller with the standard JSON envelope, routes with ability middleware, test skeleton |
 | `vale-editor-block` | New TipTap editor block: node extension, settings schema, converter, styles, toolbar/slash registration |
-| `vale-cli-command` | New `php vale <cmd>` Symfony Console command: `app/Commands/` skeleton, `vale` loader registration, optional DI, `--dry-run`, dummy-data test with rollback, cli.md docs |
+| `vale-cli-command` | New `php vale <cmd>` Symfony Console command: `app/Commands/` skeleton, `vale` loader registration, optional DI, `--dry-run`, dummy-data test with rollback, CLI reference pages |
 | `vale-webhook` | Signature-verified webhook receiver (consumer) or a new outbound event wired into `OutboundWebhookService` (producer) |
 | `vale-integrate` | External integration through the REST API or webhooks without modifying core PHP code |
 | `vale-shortcode` | New `[tag]` shortcode in `ShortcodeProcessor` with attribute parsing and safe HTML output |

@@ -21,7 +21,7 @@ This reference must be kept in sync with `.env.example` and `config/*.php` defau
 | `APP_URL` | Canonical base URL: must match your actual domain. **Required:** Vale refuses to boot when it is missing or is not an absolute `http(s)://` URL (there is no fallback to the request host). | none (required) |
 | `APP_ENV` | `production` for live sites or `dev` during development. Controls caching and compilation behavior (see below). | `production` |
 | `APP_DEBUG` | Show detailed error messages, stack traces, and enable file-based exception logging. All exceptions are always sent to the server error log (stderr on Docker, PHP error log locally). 500 and 403 error pages display a unique Reference ID for log correlation. Never `true` in production. | `false` |
-| `APP_KEY` | 64-char hex encryption key. **Never change after install**: encrypted settings become unreadable. If lost, use `php vale key:generate` to create a new key, then re-enter affected settings. See [Security](./security/#encryption). | none |
+| `APP_KEY` | 64-char hex encryption key. **Never change after install**: encrypted settings become unreadable. If lost, use [`php vale key:generate`](../admin/system/cli/maintenance#key-generate) to create a new key, then re-enter affected settings. See [Security](./security/#encryption). | none |
 | `APP_LOCALE` | Default UI locale: `en`, `tr`, `de`, `fr`, `es`, `it`, `pt`, `nl`. | `en` |
 
 ### `APP_ENV` vs `APP_DEBUG`
@@ -65,7 +65,7 @@ For SQLite, set `DB_DRIVER=sqlite` and `DB_NAME=storage/database.sqlite`. The fi
 :::
 
 ::: tip PostgreSQL Setup
-For PostgreSQL, set `DB_DRIVER=pgsql` (alternatively `postgres` or `postgresql` are also accepted). Vale requires PostgreSQL @pgsqlVersion@+. The installer and `php vale doctor` will verify the version automatically.
+For PostgreSQL, set `DB_DRIVER=pgsql` (alternatively `postgres` or `postgresql` are also accepted). Vale requires PostgreSQL @pgsqlVersion@+. The installer and [`php vale doctor`](../admin/system/cli/maintenance#doctor) will verify the version automatically.
 :::
 
 ## Assets
@@ -164,13 +164,14 @@ When a list exceeds `CLIENT_SIDE_SEARCH_FETCH_LIMIT`, Vale switches that page to
 
 | Variable | Description |
 |---|---|
+| `DISABLE_PLUGINS` | Loads no plugin or mu-plugin code at all, even plugins marked enabled. Same effect as creating `content/plugins/.disabled`; use it only while diagnosing a broken plugin, then remove it. |
 | `EMERGENCY_RESET_TOKEN` | Enables the emergency password reset endpoint at `/emergency-reset/<token>`. Generate with `php -r "echo bin2hex(random_bytes(32));"`. Keep secret and disable after use. |
 
 ## Privacy
 
 | Variable | Description | Default |
 |---|---|---|
-| `ENCRYPT_PII` | Encrypts customer/order address PII at rest (billing, shipping, addresses, phone, company). Enabling it means a lost or changed `APP_KEY` makes those addresses permanently unreadable. Treat the key as critical. While it is off, `php vale doctor` reports encrypted rows still present in the database. See [Encrypted PII](./security/#encrypted-pii-addresses-phone-opt-in) for details. | `false` |
+| `ENCRYPT_PII` | Encrypts customer/order address PII at rest (billing, shipping, addresses, phone, company). Enabling it means a lost or changed `APP_KEY` makes those addresses permanently unreadable. Treat the key as critical. While it is off, [`php vale doctor`](../admin/system/cli/maintenance#doctor) reports encrypted rows still present in the database. See [Encrypted PII](./security/#encrypted-pii-addresses-phone-opt-in) for details. | `false` |
 
 ## Mail
 

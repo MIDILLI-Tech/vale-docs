@@ -14,7 +14,7 @@ Whatever you import, Vale keeps everything connected out of the box:
 
 - **SEO & redirects**: your meta data travels with your content, and automatic 301s handle any slug changes.
 - **Media that just works**: images are downloaded (WordPress/Ghost) and served from Vale's own optimized media pipeline.
-- **Your URL structure**: after a server move or a switch to a subdirectory, `migrate:urls` rewrites every old base-path reference in one command (see [CLI Commands → `migrate:urls`](../system/cli#migrate-urls)).
+- **Your URL structure**: after a server move or a switch to a subdirectory, `migrate:urls` rewrites every old base-path reference in one command (see [CLI Commands → `migrate:urls`](../system/cli/database#migrate-urls)).
 
 ## What You Can Do
 

@@ -43,7 +43,7 @@ When a user signs in through a social provider (Steam, Facebook, Google, GitHub)
 
 ## Managing Users via CLI
 
-For bulk operations, scripting, or remote server access, you can also manage users through the CLI. See [CLI Commands: Users](./system/cli#users) for `user:create`, `user:activate`, `user:set-role`, `user:reset-password`, and `user:delete`.
+For bulk operations, scripting, or remote server access, you can also manage users through the CLI. See [CLI Commands: Users](./system/cli/users#user-create) for `user:create`, `user:activate`, `user:set-role`, `user:reset-password`, and `user:delete`.
 
 ## Roles & Permissions
 

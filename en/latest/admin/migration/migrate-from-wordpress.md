@@ -38,7 +38,7 @@ See the detailed tables below for what gets imported from each plugin.
 - **WXR mode** (`--file=export.xml`): users, categories, tags, posts, pages, products + variations, media references, SEO metadata, comments, menus, and store settings. Limitations: no newsletter subscribers, no WooCommerce orders, media files by reference only (use `--download-media` to fetch).
 - **DB mode** (`--wp-db=...` or `--db-dump=...`): everything above plus WooCommerce orders, newsletter subscribers (MailPoet), full media import, and complete store settings.
 
-The full column-level mapping reference lives in [CLI Commands](../system/cli#import-wordpress). Vale's ID remapping preserves relational integrity, and automatic redirects keep old URLs working.
+The full column-level mapping reference lives in [CLI Commands](../system/cli/import-export#import-wordpress). Vale's ID remapping preserves relational integrity, and automatic redirects keep old URLs working.
 
 ### Navigation Menus
 
@@ -136,7 +136,7 @@ php vale import:wordpress \
 
 After the import finishes, thumbnails and WebP variants are generated automatically for all imported media records (WebP only when conversion is enabled under [Settings](../settings/) → [Content](../settings/content)). You can also regenerate them any time with `php vale media:scan`.
 
-Imported media records need an owner account. Vale assigns them to the first `super_admin` (or the first `admin` when no super admin exists), the same rule `media:scan` uses; see [CLI Commands](../system/cli#media) for the `--user` option.
+Imported media records need an owner account. Vale assigns them to the first `super_admin` (or the first `admin` when no super admin exists), the same rule `media:scan` uses; see [CLI Commands](../system/cli/content#media-scan) for the `--user` option.
 
 ::: tip Importing from a local WordPress (localhost or LAN)
 Media downloads are **refused for private/internal addresses** (`localhost`, `127.0.0.1`, `192.168.x.x`, …) unless you opt in, so imported URLs cannot be pointed at internal services. When the source WordPress itself runs on your machine or your local network, add `--allow-private-hosts`:
@@ -295,7 +295,7 @@ php vale user:activate user@example.com
 php vale user:reset-password user@example.com
 ```
 
-See [CLI reference](../system/cli.md#user-activate) or run `php vale user:activate --help` for all options.
+See [CLI reference](../system/cli/users#user-activate) or run `php vale user:activate --help` for all options.
 :::
 
 - Always run with `--dry-run` first to verify what will be imported.

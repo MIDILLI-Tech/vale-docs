@@ -93,7 +93,7 @@ Always review third-party snippets before adding them. Remove unused scripts and
 ::: tip FOR SYSADMINS
 Vale reads its core configuration from the `.env` file in the project root. Two variables control caching and debugging behaviour: `APP_ENV` (`dev` disables caches) and `APP_DEBUG` (`true` shows detailed error pages and logs to `storage/logs/errors.log`).
 
-For the full reference, default values, all affected features, and production guidelines, see the [Environment Variables](../../developer/env) developer docs. After changing them, run `php vale cache:clear` to flush any existing cache.
+For the full reference, default values, all affected features, and production guidelines, see the [Environment Variables](../../developer/env) developer docs. After changing them, run [`php vale cache:clear`](../system/cli/maintenance#cache-clear) to flush any existing cache.
 :::
 
 ::: tip SEE ALSO

@@ -180,7 +180,7 @@ Tick one or more products in the list to open the bulk action bar, then click **
 - **Selected products**: the ticked rows are exported.
 - **Select all matching**: when the list is filtered and you tick the header checkbox to select all matching products, **Export** downloads every product matching the current filters (across all pages), not just the visible rows.
 
-For a full-catalog export, use the CLI instead: `php vale export:products --output=products.csv`.
+For a full-catalog export, use the CLI instead: [`php vale export:products`](../system/cli/import-export#export-products) `--output=products.csv`.
 
 ## Product Categories
 

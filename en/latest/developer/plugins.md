@@ -297,7 +297,7 @@ covers viewing, toggling and installing. Fresh installs grant it to `super_admin
 only reads manifests and mu-plugin headers and never calls a plugin's `register()` hook, so a plugin
 whose `register()` crashes still shows up here and can be switched off. A banner
 appears when the operator kill switch (`content/plugins/.disabled` or
-`VL_DISABLE_PLUGINS`) is active.
+`DISABLE_PLUGINS`) is active.
 
 ### Assets
 
@@ -554,7 +554,7 @@ rm content/plugins/.disabled      # re-enable
 ```
 
 ```bash
-VL_DISABLE_PLUGINS=1 php vale plugin:list
+DISABLE_PLUGINS=1 php vale plugin:list
 ```
 
 `php vale plugin:disable <slug>` keeps working too as long as the database and
