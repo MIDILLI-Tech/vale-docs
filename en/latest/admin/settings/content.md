@@ -74,7 +74,7 @@ Behavior once enabled:
 
 - Collaboration applies to **saved** records (post, page, product edit screens). New content stays single-user until it is saved for the first time, because the shared room needs a record ID.
 - Remote editors appear as colored carets with their name.
-- **Draft recovery is paused while collaboration is active** — a browser-local draft cannot be merged into a shared document. Create screens still recover drafts normally.
+- **Draft recovery is paused while collaboration is active** — a browser-local draft cannot be merged into a shared document. The editor instead keeps a local copy of the room: after a reload, a closed tab or a server outage, a banner offers to restore or discard it. The copy is dropped when the record was saved elsewhere. Create screens still recover drafts normally.
 - Saving still uses the normal form button; two people saving at the same moment behave exactly as before (the last save wins for the whole content field).
 - The dashboard warns when collaboration is on but the URL is empty, or when the address does not accept a connection within one second (checked at most every five minutes).
 - If the server cannot be reached, the saved content still appears in the editor after a short delay and editing continues locally; nothing is saved until you press the save button.

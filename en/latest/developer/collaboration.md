@@ -12,6 +12,7 @@ Site managers only need the switches; see [Content Settings](../admin/settings/c
 | `docker/collaboration/server.mjs` | `new Server({ port, onAuthenticate })`, token check, `await server.listen()` |
 | `docker/collaboration/package.json` | Single dependency: `@hocuspocus/server` |
 | `resources/js/editor/collaboration.js` | Session creation, document name, initial content seeding |
+| `resources/js/editor/collab-snapshot.js` | IndexedDB snapshot of the room, applied only when the server is unreachable |
 | `resources/js/editor/index.js` | Adds `Collaboration` + `CollaborationCaret`, disables local undo history and draft recovery |
 | `resources/views/admin/layout.twig` | Emits `window.VL_COLLAB` (enabled, URL, secret, user) |
 | `config/services.php` | Exposes the three settings as Twig globals |
@@ -39,7 +40,7 @@ Site A then sets **Shared secret** `tokenA` and **Room prefix** `site-a`; site B
 
 Use the shared secret rather than `APP_KEY` for this: `APP_KEY` also encrypts stored credentials, it must never be handed to a third-party server, and rotating it would silently move every room. A plain token and an explicit prefix keep both concerns separate.
 
-The settings screen also has a **Server** dropdown and a **Test connection** button. Providers come from the `collaboration_servers` catalog in `config/reference-data.php` — today only `private` (the image above) — with `name`, `url_placeholder` and `requires_url`; adding an entry is enough for it to appear in the admin, no template change. The test posts the URL currently typed in the form to `/admin/settings/collaboration-test`, which runs the same one-second TCP probe as the dashboard notice: it verifies the PHP host can reach the address, not that the shared secret matches (that is only checked when an editor connects).
+The **Server** dropdown and the **Test connection** button are described in [Content Settings](../admin/settings/content#collaboration). The provider list behind the dropdown comes from the `collaboration_servers` catalog in `config/reference-data.php` — today only `private` (the image above) — with `name`, `url_placeholder` and `requires_url`; adding an entry is enough for it to appear in the admin, no template change. The button posts to `/admin/settings/collaboration-test`, which runs the same one-second TCP probe as the dashboard notice; the shared secret is only checked when an editor connects.
 
 Upstream server documentation: [Hocuspocus](https://tiptap.dev/docs/hocuspocus).
 
@@ -49,13 +50,9 @@ Upstream server documentation: [Hocuspocus](https://tiptap.dev/docs/hocuspocus).
 | `COLLAB_SECRET` | empty | Single accepted token. Empty (and no `COLLAB_SECRETS`) accepts anyone who can reach the port |
 | `COLLAB_SECRETS` | empty | Comma-separated tokens, optionally tenant-bound (`site-a:tokenA,site-b:tokenB`). Merged with `COLLAB_SECRET` |
 
-Then set **Settings → Content → Collaboration**:
+Then configure the switches in [Content Settings → Collaboration](../admin/settings/content#collaboration). When the feature is off, `window.VL_COLLAB.enabled` is `false` and the editor behaves exactly as before. While it is enabled, the server URL's origin is added to the Content-Security-Policy `connect-src` automatically (`https:` does not cover `wss:`); changing the URL keeps the policy in sync.
 
-- **Enable collaboration** — turns the client on. When off, `window.VL_COLLAB.enabled` is `false` and the editor behaves exactly as before.
-- **Server URL** — the WebSocket address, e.g. `ws://localhost:1234`. On an HTTPS site the browser refuses plain `ws://`, so use `wss://collab.example.com` behind a TLS-terminating proxy. While the feature is enabled, this origin is added to the Content-Security-Policy `connect-src` automatically (`https:` does not cover `wss:`); changing the URL keeps the policy in sync.
-- **Shared secret** — must equal `COLLAB_SECRET`. Leave both empty for a throwaway local trial.
-
-The dashboard shows a notice when collaboration is enabled but the URL is missing, or when the host/port does not accept a TCP connection within one second. That probe result is cached for five minutes; Hocuspocus has no HTTP health endpoint, so the check is a plain socket connect.
+On an HTTPS site the browser refuses a plain `ws://` URL, so the admin setting needs `wss://` behind a TLS-terminating proxy. The dashboard notice checks TCP reachability only — Hocuspocus has no HTTP health endpoint — and caches the result for five minutes.
 
 ### Server logs
 
@@ -137,16 +134,18 @@ Each chip is a button: the first click scrolls the viewport to that editor's car
 
 ### Saving and drafts
 
-`onUpdate` still serializes `editor.getHTML()` through the existing converter chain into the hidden textarea, so the form's normal submit persists the merged document. Remote changes also flow through `onUpdate`, which marks the form dirty — a collaborator should save after others edit.
+`onUpdate` still serializes `editor.getHTML()` through the existing converter chain into the hidden textarea, so the form's normal submit persists the merged document. Remote changes also flow through `onUpdate`, which marks the form dirty.
 
 Draft recovery is skipped while a session exists (`initEditorDraftRecovery({ disabled })`): a browser-local draft cannot be merged with a shared Yjs document, and restoring one would silently overwrite remote work. On create screens the session is absent, so drafts keep working there.
 
-If the server is unreachable the provider retries in the background, the saved content appears after the three-second fallback and editing continues locally. Opening a room that already holds someone else's work while offline can duplicate paragraphs once the connection returns — Yjs merges both histories instead of choosing one.
+While a session exists the editor keeps the latest Yjs update in IndexedDB (`collab-snapshot.js`). When the provider does not sync within the three-second window — a reload while the server is stopped — the snapshot is applied right away, so the canvas is not empty. After a normal sync it is still kept (that is what makes unsaved work survive a closed tab) and offered through a banner with **Restore changes** / **Discard changes**; the prompt is skipped when the room already shows the same content. A record expires after a week and is dropped when the record's saved HTML changed elsewhere, because a fingerprint of it is stored with the snapshot. `y-indexeddb` is deliberately not used: it restores local state on every page load, which would merge a stale browser copy into a fresh room and could resurrect content deleted in the meantime.
+
+If the server is unreachable the provider retries in the background, the saved content appears after the three-second fallback and editing continues locally. Reloading the page while it is still unreachable restores that local snapshot instead of resetting the canvas to the saved content. Opening a room that already holds someone else's work while offline can duplicate paragraphs once the connection returns — Yjs merges both histories instead of choosing one.
 
 ## Trying it locally
 
 1. Start the container above.
-2. Enable collaboration, set `ws://localhost:1234` and the same secret, save the settings.
+2. Enable collaboration and enter `ws://localhost:1234` plus the same secret, as described in [Content Settings](../admin/settings/content#collaboration).
 3. Open the edit screen of the same saved page or post in two windows (two tabs of the same session already form two clients; two profiles additionally show distinct names).
 4. Type in one window: text, carets and block changes appear in the other.
 5. Save in either window; both forms then hold the same HTML.
@@ -160,7 +159,7 @@ If the server is unreachable the provider retries in the background, the saved c
 | Schema | Every client must run the same editor bundle. A stale tab (older custom node/attribute definitions) can mangle blocks it does not know: reload after a deploy. |
 | Access control | The room name comes from the URL and the token is shared. Anyone who can open an admin edit screen can join its room; there is no per-user or per-document server policy. |
 | Concurrent saves | Two people saving at once still go through the normal form submit — last write wins for the whole HTML body, exactly as without collaboration. |
-| Offline | No offline/IndexedDB persistence is configured. The editor seeds the saved content locally after three seconds without a connection and reconnects when the network returns; offline edits then merge with whatever the room holds. |
+| Offline | Edits live in the tab until the form is saved, with an IndexedDB snapshot as a safety net. Without a connection the editor seeds the saved content locally after three seconds, and a reload in that state applies the snapshot directly. Reconnecting merges offline edits with whatever the room holds; the snapshot stays for a week and is offered for restore on the next load instead of being merged silently. |
 | Mixed content | `ws://` from an HTTPS admin page is blocked by the browser. Use `wss://` in production. |
 | Probe | The dashboard notice checks TCP reachability only; a port that accepts connections but speaks no Hocuspocus protocol still reports as reachable. |
 
