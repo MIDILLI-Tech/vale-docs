@@ -244,6 +244,10 @@ The editor shows a live word and character count below the editing area, updated
 
 If you navigate away from a page with unsaved changes, the browser will warn you before leaving. This helps prevent accidental data loss.
 
+### Last Save Information
+
+The header of a saved post or page shows who saved it last and when — for example **Last saved by Jane Doe · Mar 4, 2026 14:05**. The name is the author of the newest revision, recorded just before each save; the time comes from the record itself. With revision history turned off in [Content Settings](../../settings/content#blog), only **Last saved · …** appears. Create screens do not show the line.
+
 ### Recovering Unsaved Drafts
 
 The editor keeps a copy of your work in the browser while you type, so a crash, a closed tab or a failed save does not lose it.
