@@ -44,6 +44,16 @@ When **multi-language content** is enabled (see [Content Settings](./content#mul
 - **Timezone**: Set your local timezone to ensure scheduled posts and orders are timestamped correctly.
 - **Display dates in visitor's own timezone**: When enabled (default), frontend dates are shown in each visitor's own timezone. Scheduling (publish dates, expiries, sale periods) always runs on the site timezone above.
 
+## Admin Appearance
+
+**Admin Density** controls how tightly the admin panel is spaced. The choice covers the whole admin area for everyone who signs in, and applies from the next page load.
+
+- **Normal**: The default sizes.
+- **Compact**: Slightly smaller spacing, text and form fields, so more fits on one screen.
+- **Minimal**: The tightest layout, useful on smaller screens or when working through long lists.
+
+Only the admin panel is affected — the storefront and the block editor's toolbar keep their own sizes.
+
 ## Maintenance
 
 - **Maintenance Mode**: Enable this to show a message to visitors while you work on your site. Logged-in administrators will still be able to see the full site. Leave it to automatically use the existing message. This message is also translatable, if **multi-language content** is enabled.
