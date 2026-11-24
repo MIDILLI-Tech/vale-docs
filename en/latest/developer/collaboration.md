@@ -8,7 +8,7 @@ Site managers only need the switches; see [Content Settings](../admin/settings/c
 
 | File | Responsibility |
 |------|----------------|
-| `docker/collaboration/Dockerfile` | Node 22 image for the Hocuspocus server |
+| `docker/collaboration/Dockerfile` | Node 26 image for the Hocuspocus server |
 | `docker/collaboration/server.mjs` | `new Server({ port, onAuthenticate })`, token check, `await server.listen()` |
 | `docker/collaboration/package.json` | Single dependency: `@hocuspocus/server` |
 | `resources/js/editor/collaboration.js` | Session creation, document name, initial content seeding |
