@@ -33,7 +33,7 @@ The folder name must match the skill `name` declared in `SKILL.md` frontmatter. 
 | `vale-migration` | Phinx migration with prefix-aware table names and MySQL/PostgreSQL/SQLite compatibility rules |
 | `vale-plugin` | Site-specific drop-in extension in `content/plugins/` or `content/mu-plugins/`: manifest, `register()`, routes, DI, hooks, Twig namespace, CLI activation |
 | `vale-settings-add` | New admin setting field or section following the tab/sub-tab/form and feature-gating patterns |
-| `vale-translations` | Translation extraction/sync/prune workflow plus correct `__()` / `tjs()` usage |
+| `vale-translations` | Translation extraction/sync/prune workflow, correct `__()` / `tjs()` usage, and the `window.VL_I18N` sync check (`scripts/check-editor-i18n.php`) |
 | `vale-docs` | Route docs content to Admin vs Developer guide: audience-first questions, sibling-code verification, tone conventions |
 
 ## How to Use
