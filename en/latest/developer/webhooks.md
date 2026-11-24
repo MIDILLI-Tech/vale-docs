@@ -4,7 +4,7 @@
 Using an AI coding agent? The [`vale-webhook`](./agent-skills) skill covers signature-verified receivers and new outbound events; [`vale-integrate`](./agent-skills) covers the broader external-integration workflow.
 :::
 
-Vale fires outgoing HTTP POST requests to your endpoints when internal events occur. Configure webhooks in **Settings → Advanced → Webhooks**.
+Vale fires outgoing HTTP requests to your endpoints when internal events occur. `POST` is the default; a webhook can use `GET`, `PUT`, `PATCH` or `DELETE` instead. Configure webhooks in **Settings → Advanced → Webhooks**.
 
 ## Available Events
 
@@ -24,7 +24,7 @@ Vale fires outgoing HTTP POST requests to your endpoints when internal events oc
 
 ## Request Format
 
-Every webhook is a `POST` request with a JSON body and the following headers:
+Every webhook sends a JSON body with the following headers (`POST` unless another method is configured):
 
 ```
 Content-Type: application/json

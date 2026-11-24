@@ -98,7 +98,7 @@ All actions pass a typed entity as their first argument.
 | `user.registered` | `User $user` | New user account created |
 
 ::: tip Webhooks vs. Actions
-Webhook delivery (outgoing HTTP calls) is already wired to `order.paid`, `order.status_changed`, `post.*`, and `user.registered` internally. Use actions when you need server-side PHP logic instead of (or in addition to) webhooks.
+Webhook delivery (outgoing HTTP calls) is already wired to `order.paid`, `order.status_changed`, `post.*`, `product.*`, `user.registered`, `form.submitted` and `subscriber.created` internally. Use actions when you need server-side PHP logic instead of (or in addition to) webhooks.
 :::
 
 ::: tip SEE ALSO

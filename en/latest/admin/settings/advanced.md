@@ -41,7 +41,7 @@ The full endpoint→ability reference is available in the admin **Settings → A
 
 ## Webhooks
 
-Set up outgoing HTTP POST requests to notify your external apps about site events:
+Set up outgoing HTTP hooks to notify your external apps about site events. Requests use `POST` unless you choose another method on the webhook:
 
 | Event | Description |
 |---|---|
@@ -50,6 +50,9 @@ Set up outgoing HTTP POST requests to notify your external apps about site event
 | `post.created` | Post/page/CPT created (any status) |
 | `post.published` | Post first goes live |
 | `post.updated` | Existing published post saved |
+| `product.created` | Product created |
+| `product.updated` | Product updated |
+| `product.deleted` | Product deleted |
 | `user.registered` | New user registered or created |
 | `form.submitted` | An external or internal form has been submitted |
 | `subscriber.created` | New newsletter subscriber added |
