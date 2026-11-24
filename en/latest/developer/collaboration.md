@@ -134,7 +134,7 @@ Each chip is a button: the first click scrolls the viewport to that editor's car
 
 Following needs no DOM matching: `state.cursor` is a Yjs relative position mapped through `relativePositionToAbsolutePosition` with the `ySyncPluginKey` binding and survives remote edits, while `state.editingBlock` carries the index of the top-level block when the editor is typing inside a block whose text is a nested `contentEditable`. **Media + Text** stores its column HTML in a node attribute rather than in the ProseMirror document, so no cursor position exists inside it and the awareness cursor would stay on the last paragraph; the block view publishes `editingBlock` when the column gains focus and clears it on blur or destroy, which makes jump and follow land on the block itself. Block targets are resolved through the node view DOM, text positions through `domAtPos`.
 
-Presses are handled on the strip rather than on each chip: every remote caret update re-renders the strip, and a chip replaced between press and release would never receive its click. That is also why a second press was sometimes needed to stop following. Your own chip is inert.
+Presses are handled on the strip rather than on each chip: every remote caret update re-renders the strip, and a chip replaced between press and release would never receive its click. That is also why a second press was sometimes needed to stop following. Your own chip behaves the same for your other tab — the one case where following yourself is useful — and stays inert while that is your only connection.
 
 ### Saving and drafts
 
