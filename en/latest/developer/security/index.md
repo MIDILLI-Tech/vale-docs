@@ -205,6 +205,50 @@ All database interactions use **prepared statements via Doctrine DBAL**. Raw SQL
 - **Twig auto-escaping**: All template variables are HTML-escaped by default. Raw output requires explicit `|raw` filter.
 - **Content Security Policy**: Automatically sent by `SecurityHeadersMiddleware` on every response. Configured for Alpine.js compatibility (`unsafe-eval` + `unsafe-inline`). When building custom themes or plugins that load external scripts/styles, extend the CSP rules accordingly.
 
+## CSV Export Escaping
+
+Admin and CLI exports write comma-separated files that operators open in
+Excel, LibreOffice or Numbers. A cell whose value starts with `=`, `+`, `-`, `@`,
+a tab or a carriage return is treated as a formula by those programs, so a
+customer name, product title or form answer could run `=HYPERLINK(...)` or a DDE
+payload on the operator's machine. The payload never executes in the browser; it
+travels through the database and fires when the file is opened, which makes this a
+second-order risk rather than a request-time one.
+
+Every CSV writer passes its cells through `vl_csv_escape()` (`app/helpers.php`):
+
+```php
+fputcsv($stream, array_map(vl_csv_escape(...), $row), ',', '"', '\');
+```
+
+The helper prefixes a single quote when the first non-whitespace character is
+`=`, `+`, `@`, tab, CR or LF, or a `-` that is not part of a number. Real numbers
+keep their sign (`-12.50` stays `-12.50`), so prices and totals are not mangled.
+Stored values are untouched; only the exported cell is neutralised, and the
+receiving spreadsheet shows the value as text.
+
+Covered today:
+
+| Export | Entry point |
+|---|---|
+| Products (single, bulk, template) | `ProductController::writeCsvRow()` |
+| Form submissions | `FormController` submissions export |
+| Newsletter subscribers | `NewsletterController` subscribers export |
+| Products (CLI) | `php vale export:products` |
+| Idealo feed | `IdealoFeedService` |
+
+When adding an export, wrap **every** cell — including values that look trusted,
+such as a product name or an order field — and JSON-encode arrays and objects
+before escaping:
+
+```php
+$line[] = vl_csv_escape((string) json_encode($value, JSON_UNESCAPED_UNICODE));
+```
+
+Do not hand-roll the prefix check in a new controller. A list that misses LF or
+that treats `-12.50` as a formula is exactly the drift the shared helper
+prevents.
+
 ## File Upload Security
 
 - **MIME Validation**: Files are validated against a strict allowlist of MIME types. File extension alone is never trusted.

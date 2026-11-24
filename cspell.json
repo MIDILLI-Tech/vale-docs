@@ -54,6 +54,7 @@
     "foopay",
     "fopen",
     "foto",
+    "fputcsv",
     "fputs",
     "fread",
     "frontmatter",
