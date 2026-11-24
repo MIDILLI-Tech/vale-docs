@@ -37,6 +37,7 @@ The full endpoint→ability reference is available in the admin **Settings → A
 - **Revoke access**: Delete a token at any time to disable it immediately.
 - **Last used**: Check when a token last made an API request.
 - **Expiration**: Expired tokens stop working automatically.
+- **Deactivating the owner**: A token stops working as soon as the account that created it is deactivated, even if the token row still exists. Changing the user's role or password does not revoke tokens; delete them explicitly.
 
 ## Webhooks
 

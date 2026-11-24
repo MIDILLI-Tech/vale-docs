@@ -17,6 +17,16 @@ Authorization: Bearer YOUR_API_TOKEN
 
 Each token carries a comma-separated list of **abilities** (or `*` for everything). Abilities follow the `verb:resource` convention (e.g. `read:posts`, `write:products`, `delete:subscribers`). Endpoints below list the required ability.
 
+Abilities live on the **token**, not on the owner's role: a token holding `*` can write even when its owner is a subscriber. Scope tokens deliberately.
+
+A token is valid only while the account that created it is **active**. Deactivating a user disables every token they own on the next request, so you do not have to delete them one by one. The response is identical to an unknown or expired token:
+
+```json
+{ "error": "Unauthorized", "message": "Invalid or expired token." }
+```
+
+Changing a user's role or password does **not** revoke existing tokens. Delete the token (or deactivate the account) when access has to end.
+
 ## Endpoints
 
 All API routes are prefixed with `/api/v1`.
