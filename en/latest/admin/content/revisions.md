@@ -37,10 +37,16 @@ Click **Compare changes with latest version** to compare the selected revision w
 
 If an earlier revision exists, click **Compare changes with Revision #N** to compare the selected revision with the immediately preceding revision.
 
+### Compare with Another Revision
+
+Use the **Compare with** dropdown next to the comparison buttons to pick any other point in the item's history. This is useful when you want to see what changed between two specific saves rather than against the latest content or the immediately preceding revision.
+
+The selected revision and the revision you choose are compared directly. Vale shows the older of the two first and the newer one second, and the legend above the diff names both revisions, so the direction of the change is always clear.
+
 The comparison is loaded on demand and can be switched between the available comparison modes. The result includes a legend identifying each side of the comparison:
 
-- **Red** marks content from the comparison baseline or content that was removed.
-- **Green** marks content present in the selected revision or content that was added.
+- **Red** marks content from the version on the left — text that was removed or replaced.
+- **Green** marks content from the version on the right — text that was added or changed.
 
 The diff is available for the title and body content. If there are no differences, Vale displays a **No changes** message. If a revision has no earlier revision, the previous-revision comparison is not available.
 
