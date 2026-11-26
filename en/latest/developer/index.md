@@ -41,6 +41,7 @@ Looking to manage content, configure store settings, run database migrations, or
 - **[Tooltips](./tooltips)**: The shared styled `title` bubble, which `title` attributes are skipped, the placement attribute and dark theming.
 - **[Real-Time Collaboration](./collaboration)**: Hocuspocus server image, the Yjs client wiring and its limits.
 - **[Page Cache](./page-cache)**: Guest HTML caching and the URLs a content change invalidates.
+- **[Cookie Consent](./consent)**: Consent state, script gating, the cache variant and click-to-load embeds.
 - **[Webhooks](./webhooks)**: Outgoing HTTP payload notifications.
 - **[SSO Integration](./sso)**: OAuth 2.0 single sign-on providers.
 - **[Payment Gateways](./payment-gateways)**: Building custom payment provider drivers.

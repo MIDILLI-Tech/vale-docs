@@ -1,6 +1,10 @@
 # Privacy & Security Settings
 
-Manage IP address handling, CAPTCHA service credentials, and GDPR data portability options. The tab is organized into three sub-tabs, **IP Privacy**, **Captcha**, and **GDPR & Portability**: each with its own save form.
+Manage IP address handling, CAPTCHA service credentials, cookie consent and GDPR data portability options. The tab is organized into four sub-tabs — **IP Privacy**, **Captcha**, **Cookie Consent**, and **GDPR & Portability** — each with its own save form.
+
+## Cookie Consent
+
+The consent banner asks every visitor to accept or reject optional categories, records the decision and gates your scripts accordingly. The full workflow — categories, banner text, log retention and what is protected automatically — is on its own page: [Cookie Consent](./consent).
 
 ## IP Address Privacy
 

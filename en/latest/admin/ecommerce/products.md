@@ -193,6 +193,8 @@ Manage your shop categories under **Products → Categories**. Categories can be
 
 Each row has a **View** button that opens the shop filtered by that category in a new tab, so you can check how it looks to customers.
 
+When [multi-language content](../content/translations) is enabled, the list shows categories in **every** language by default and adds a **Language** column plus a language filter above the table. Pick a language to narrow the list, or leave **All Languages** selected to see the originals and their translations together. New categories default to the site's default language unless you are filtering by a specific language, in which case that language is preselected.
+
 ## Searching the Product List
 
 The search box above the list matches the product **name** and **SKU**. Tick **Also search in content** next to it to also scan the **short description** and **description**. Full-content search scans every record, so it is noticeably slower on large catalogs.

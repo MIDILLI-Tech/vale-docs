@@ -103,7 +103,7 @@ The fallback notice applies to:
 - Posts and custom post types
 - Pages
 - Products
-- Categories
+- Categories (blog and product)
 - Tags
 - Forms
 
@@ -132,6 +132,18 @@ Core templates include a sticky banner automatically. Themes can provide their o
 ### Products
 
 Product translations follow the same flow as posts. Open the product and use the **Translations** panel to add a language variant.
+
+### Product Categories
+
+Shop categories are translated like blog categories, from **Products → Categories**:
+
+1. Click **Add Category** (or edit an existing one).
+2. Fill in the translated name and slug.
+3. Set the **Language** dropdown to the target language.
+4. Set **Translation Of** to link the entry to the original-language category.
+5. Save.
+
+The list shows categories from every language by default; use the **Language** filter above the table to work on one language at a time. On the storefront, Vale shows the visitor's translated category when one exists and otherwise falls back to the original **in the site's default language** (when the fallback option is enabled). Originals written in a non-default language stay out of the translated catalogue, so a Turkish-only category does not appear on the English shop.
 
 ## Language Detection
 

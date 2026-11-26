@@ -414,6 +414,10 @@ const vitepressConfig = defineConfig({
                       link: "/en/latest/admin/settings/privacy"
                     },
                     {
+                      text: "Cookie Consent",
+                      link: "/en/latest/admin/settings/consent"
+                    },
+                    {
                       text: "Analytics",
                       link: "/en/latest/admin/settings/analytics"
                     },
@@ -584,6 +588,10 @@ const vitepressConfig = defineConfig({
                 {
                   text: "Page Cache",
                   link: "/en/latest/developer/page-cache"
+                },
+                {
+                  text: "Cookie Consent",
+                  link: "/en/latest/developer/consent"
                 },
                 {
                   text: "Webhooks",

@@ -44,7 +44,8 @@ Explore the detailed documentation for each settings category:
 - **[Registration](./registration)**: User registration methods, SSO, captcha, and two-factor authentication.
 - **[SEO](./seo)**: Search engine visibility, redirects, AI crawler control, and verification.
 - **[Mail](./mail)**: Mail setup, email templates, email notifications, and mail logs.
-- **[Privacy & Security](./privacy)**: IP collection mode, captcha API keys, and GDPR settings, organized in sub-tabs.
+- **[Privacy & Security](./privacy)**: IP collection mode, captcha API keys, GDPR settings and the consent banner, organized in sub-tabs.
+- **[Cookie Consent](./consent)**: What the accept / reject banner does, which code is gated, banner text and the consent log.
 - **[Analytics](./analytics)**: Pageview tracking, geolocation, exclusions, and data retention.
 - **[Maintenance](./maintenance)**: Software updates, data export/import, cron, cache, media, and database optimization.
 - **[Advanced](./advanced)**: API tokens, webhooks, and custom scripts.
