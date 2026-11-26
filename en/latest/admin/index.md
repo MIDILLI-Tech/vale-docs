@@ -20,7 +20,7 @@ Whether you are managing content via the graphical admin dashboard or performing
 - **[Forms](./forms)**: Build custom forms, embed them via shortcode, and manage submissions.
 - **[Users & Roles](./users)**: Manage administrators, editors, customers, and custom roles.
 - **[Appearance](./appearance/)**: Customize themes, navigation menus, and typography fonts.
-- **[Settings](./settings)**: Configure payment gateways, shipping, taxes, mail setup, and general site behavior.
+- **[Settings](./settings)**: Configure payment gateways, shipping, taxes, mail setup, general site behavior, and installable app (PWA) settings.
 - **[Migration](./migration/)**: Import content from WordPress, Ghost, or other Vale installations.
 
 ### For System Administrators (Sysadmins)

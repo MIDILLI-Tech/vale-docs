@@ -17,6 +17,19 @@ These variables are derived from your **General Settings**:
 - `{{ cookie_warning_text }}`: The text for the consent banner.
 :::
 
+## PWA Globals
+
+Set on every front-end page. When the feature is off, or no site logo is set, `pwa_enabled` is `false` and the rest are empty strings.
+
+::: v-pre
+- `{{ pwa_enabled }}`: Boolean — the installable app is active.
+- `{{ pwa_app_name }}`: App name shown on the install prompt and home screen.
+- `{{ pwa_short_name }}`: Short name shown under the icon.
+- `{{ pwa_theme_color }}`: Toolbar and splash screen color.
+- `{{ pwa_background_color }}`: Splash screen background color.
+- `{{ pwa_has_raster_icon }}`: Boolean — a raster logo is set, so the generated `/pwa/icon-*.png` files are available.
+:::
+
 ## SEO Globals
 
 ::: v-pre

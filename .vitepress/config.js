@@ -570,6 +570,10 @@ const vitepressConfig = defineConfig({
                   link: "/en/latest/developer/media"
                 },
                 {
+                  text: "Tooltips",
+                  link: "/en/latest/developer/tooltips"
+                },
+                {
                   text: "Draft Recovery",
                   link: "/en/latest/developer/editor-drafts"
                 },

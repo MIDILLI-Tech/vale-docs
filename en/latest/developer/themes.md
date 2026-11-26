@@ -174,6 +174,16 @@ Vale uses Twig for templating. Themes can override any core view by mimicking it
 - `shop/index.twig`: Product listing page.
 - `shop/product.twig`: Single product detail page.
 
+## Progressive Web App
+
+The installable app is opt-in per site (Settings → General → Features) and needs one line in your layout. `theme_hook('head')` does not emit it, so a custom `layout.twig` must include the shared partial inside `<head>`:
+
+```twig
+{% include 'partials/_pwa_head.twig' %}
+```
+
+The partial outputs the manifest link, theme color, Apple meta tags and the service worker registration, and renders nothing while the feature is off. It reads the `pwa_*` globals listed in [Twig Globals](./themes/twig-globals#pwa-globals). The bundled themes already include it.
+
 ## Dynamic Menus
 
 When you define menu locations in your `theme.json`, Vale automatically registers two Twig globals for each location:
