@@ -10,7 +10,7 @@ Configure which languages are available under **Content Languages**. Only select
 
 A language file existing on the server is not enough: a language becomes part of the site only once you add it here. The locale-prefixed URLs (e.g. `/tr/...`), the language switcher, the `hreflang` links, the per-language RSS feeds and the per-language settings tabs all follow this list. Remove a language and those URLs stop being served.
 
-Optional: enable **Display originals if a translation is not found** to fall back to the default-language version when a translation is missing (applies to content listings, settings, media metadata, and embedded images). When this and **Display language notice for untranslated content** are both enabled, visitors see a notice when content is shown in its original language.
+Optional: enable **Display originals if a translation is not found** to fall back to the original entry when a translation is missing (applies to content listings, settings, media metadata, and embedded images). When this and **Display language notice for untranslated content** are both enabled, visitors see a notice when content is shown in its original language.
 
 ## How It Works
 
@@ -143,7 +143,7 @@ Shop categories are translated like blog categories, from **Products → Categor
 4. Set **Translation Of** to link the entry to the original-language category.
 5. Save.
 
-The list shows categories from every language by default; use the **Language** filter above the table to work on one language at a time. On the storefront, Vale shows the visitor's translated category when one exists and otherwise falls back to the original **in the site's default language** (when the fallback option is enabled). Originals written in a non-default language stay out of the translated catalogue, so a Turkish-only category does not appear on the English shop.
+The list shows categories from every language by default; use the **Language** filter above the table to work on one language at a time. New categories start in the site's default language unless you pick another one in the **Language** dropdown. On the storefront, Vale shows the visitor's translated category when one exists and otherwise falls back to the original in its own language (when the fallback option is enabled), so an untranslated category stays reachable.
 
 ## Language Detection
 
@@ -155,7 +155,12 @@ If your theme supports multiple languages, a picker will be seen for the users t
 
 ## Admin Locale
 
-The admin panel language is controlled by the **Default Site and Admin Language** setting in **[Settings](../settings/) → [General](../settings/general)**. During installation the language you pick is saved both as `APP_LOCALE` in `.env` and as the site's default locale, so the admin starts in your language. Changing the setting later also updates the default content language. Either way, this is independent of front-end visitor language detection.
+The site language and the admin panel language are two separate settings under **[Settings](../settings/) → [General](../settings/general)**:
+
+- **Default Site Language** — the language of the site and of new content (posts, pages, products, categories, tags, menus).
+- **Admin Interface Language** — the language of the admin panel only. An English admin panel on a Turkish site still creates Turkish content.
+
+During installation the language you pick is saved as `APP_LOCALE` in `.env` and as the site's default language, so both start in your language. Changing one setting later never changes the other, and neither overrides the visitor's front-end language detection.
 
 ::: tip SEE ALSO
 - [Environment Variables](../../developer/env): `APP_LOCALE`.

@@ -40,7 +40,8 @@ When **multi-language content** is enabled (see [Content Settings](./content#mul
 
 ## Localization
 
-- **Default Language**: Choose the primary language for the **Admin interface**.
+- **Default Site Language**: The language of the site and of new content. New posts, pages, products, categories, tags, and menus start in this language, and the unprefixed URLs (e.g. `/my-page`) serve it. It is independent of the admin panel language.
+- **Admin Interface Language**: The language of the admin panel only. Changing it does not affect content or the storefront, so you can run an English admin panel on a Turkish site.
 - **Timezone**: Set your local timezone to ensure scheduled posts and orders are timestamped correctly.
 - **Display dates in visitor's own timezone**: When enabled (default), frontend dates are shown in each visitor's own timezone. Scheduling (publish dates, expiries, sale periods) always runs on the site timezone above.
 

@@ -35,7 +35,7 @@ See the detailed [Revisions guide](../content/revisions) for viewing snapshots, 
 
 These settings are only visible when **Enable multi-language content** is turned on in **[Settings](../settings/) → [General](../settings/general) → [Features](../settings/general#features)**.
 
-- **Display originals if a translation is not found**: When enabled, missing translations fall back to the default-language version instead of hiding content. Useful e.g., when some part of your website is still not completely translated.
+- **Display originals if a translation is not found**: When enabled, missing translations fall back to the original entry instead of hiding content. Useful e.g., when some part of your website is still not completely translated.
 - **Display language notice for untranslated content**: When enabled (requires the above setting), a sticky notice is shown to visitors when content is displayed in its original language.
 - **Content Languages**: Choose which languages are available for content and admin language tabs. Only selected languages appear in translation dropdowns. Only the languages supported by the Vale are visible.
 
