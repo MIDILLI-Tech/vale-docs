@@ -50,7 +50,7 @@ Scripts without a category still load before consent — the Custom Scripts scre
 ::: warning STILL YOUR CALL
 - Spam protection providers (reCAPTCHA, hCaptcha, Turnstile) load their challenge script before consent unless you enable **Fallback Spam Protection to Honeypot or Math if the visitor does not consent**. With it on, provider captchas wait for the Functional category and everyone else gets a math question plus a hidden honeypot.
 - Scripts injected by a plugin or your own theme code must be gated by that code; Vale can only gate what it renders.
-- This screen records decisions. It does not create your privacy policy, terms or processing agreements — link them from **E-Commerce → Legal**.
+- This screen records decisions. It does not create your privacy policy, terms or processing agreements — link them from **E-Commerce → Legal & Compliance**, where the country profile also lists the documents your region expects.
 :::
 
 ## Banner title and text
@@ -80,7 +80,7 @@ The log stores the anonymous consent id from the visitor's cookie, the action (g
 - [ ] The Cookie settings button reopens the banner and a withdrawal removes the scripts again.
 - [ ] A comment page shows the "Load comments" card first and loads the provider only after a click.
 - [ ] If you sell or share data with US visitors: **US Privacy Opt-Out** is on and the banner shows the Do Not Sell link.
-- [ ] Your privacy policy explains what is stored and why. The page selected under **E-Commerce → Legal → Privacy Policy Page** is linked from the banner.
+- [ ] Your privacy policy explains what is stored and why. The page selected under **E-Commerce → Legal & Compliance → Privacy Policy Page** is linked from the banner.
 
 ::: tip SEE ALSO
 - [Privacy & Security](./privacy) — IP handling, captcha keys and GDPR exports.
