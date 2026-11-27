@@ -21,6 +21,12 @@ Vale uses a standardized workflow for order management:
 
 Click **Issue Invoice** on the order detail page to freeze the current items, totals and tax into an invoice snapshot. The invoice page, the PDF download and the customer email all render from that snapshot. Clicking **Reissue Invoice** later stores a new version with the latest totals. Earlier versions stay preserved in the order's Activity Log, each with its own **View**, **PDF** and **Send** buttons.
 
+The invoice sheet shows your site logo in the top-right corner when one is set under **[Settings](../settings/) → General → Site**, scaled down to a small mark so it never competes with the totals. The screen, the PDF download and the attached PDF use the same layout.
+
+### Language of Invoices and Emails
+
+The invoice screen and the PDF you download from the admin panel follow your panel language. Customer emails — including the invoice email and its PDF attachment — are rendered in the order's language, so a customer who checked out in German receives a German email and invoice.
+
 ### GoBD Notes (Germany)
 
 If you bill German customers, keep the GoBD bookkeeping principles in mind. Vale supports them as follows. The rest is your responsibility as the operator:
@@ -28,6 +34,14 @@ If you bill German customers, keep the GoBD bookkeeping principles in mind. Vale
 - **Immutability**: Finalized invoices cannot be silently changed or deleted. To correct an invoice, reissue it so the original stays on record.
 - **Audit Trails**: Every issue and reissue is logged with a timestamp and the admin name, including the full snapshot at issue time.
 - **Retention**: Vale never deletes invoices on its own, but backups and long-term archiving are your responsibility. Include the database in your backup strategy.
+
+## Business (B2B) Orders
+
+Orders that carry a company name or a tax number are business orders. They are marked with a **B2B** badge next to the order number in the list and next to **Order Info** on the order detail page; hovering the badge shows the localized label.
+
+Under **Order Info** you see the customer's company name and tax number. The tax number is labelled **VAT ID** for EU billing countries and **Tax ID** elsewhere. The same label is used on the invoice, the PDF and the order confirmation email, so a US customer never sees an EU VAT term.
+
+The **All / Business order / Private order** dropdown above the order list filters by customer type. It is only shown while B2B sales are enabled under **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → Shop → [B2B Sales & Reverse Charge](../settings/ecommerce/shop#b2b-sales-reverse-charge)** and the shop already has at least one business order.
 
 ## Refunds
 

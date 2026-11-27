@@ -18,7 +18,14 @@ Guest checkout can be enabled or disabled in **[Settings](../settings/) → [E-C
 
 ## Business Orders (B2B)
 
-Business customers can add a company name and VAT number at checkout. A valid EU VAT number from another member state removes VAT under the reverse-charge rule. Enable the business option under **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → Shop → [B2B Sales & Reverse Charge](../settings/ecommerce/shop#b2b-sales-reverse-charge)**, where the validation and invoicing behaviour are explained.
+Business customers can add a company name and tax number at checkout. Once **Business** is selected, both fields are required and the **Check** button stays disabled until they are filled.
+
+The field adapts to the billing country:
+
+- **Inside the EU**: labelled **VAT Number**, with a country-prefixed example as placeholder. Click **Check** to validate it against VIES; a valid number from another member state removes VAT under the reverse-charge rule.
+- **Outside the EU**: labelled **Tax ID**, with no placeholder and no online validation. The number is stored with the order as extra information, and VAT follows your shop's tax rules for that country.
+
+Enable the business option under **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → Shop → [B2B Sales & Reverse Charge](../settings/ecommerce/shop#b2b-sales-reverse-charge)**, where the validation and invoicing behaviour are explained.
 
 ## Coupon Codes
 
