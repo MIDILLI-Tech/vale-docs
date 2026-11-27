@@ -28,7 +28,7 @@ The invoice sheet shows your site logo in the top-right corner when one is set u
 Besides the items and totals, an invoice carries the fields a compliant commercial invoice needs:
 
 - **Order Number** — the order's reference, printed next to the invoice number.
-- **Delivery Date** — the date the goods were handed over. When no delivery date is recorded yet, the invoice falls back to the payment date (or the order date) and marks the value as estimated.
+- **Delivery Date** — the date the goods were handed over. When no confirmed delivery date is recorded yet, the invoice falls back to the payment date (or the automatic date from the status change) and marks the value as estimated.
 - **Tax Number** — your own tax number from **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → Shop → Shop Tax Number**. Leave it empty and the line is omitted.
 - **VAT Breakdown** — when an order mixes VAT rates, the totals block lists net, VAT and gross per rate (including the VAT share of shipping). Single-rate orders keep the usual one-line summary.
 
@@ -96,10 +96,12 @@ After entering a tracking number, the **Tracking URL (auto-generated)** field ap
 
 The **Delivery Date** field in the **Shipping & Tracking** panel records when the customer received the order. It is the starting point of the statutory withdrawal period, so fill it in on delivery rather than at shipment:
 
-- Marking the order **Completed** fills the field with today's date when it is still empty, so the withdrawal period starts without an extra step. Change it afterwards if the handover happened earlier.
-- Saving a delivery date adds a **Delivery recorded on …** entry to the order timeline.
-- Withdrawal requests linked to the order get a **Withdrawal period** deadline of 14 days from that date. Until a delivery date exists, the deadline is estimated from the payment date and marked as an estimate.
-- On the withdrawal request screens the deadline is shown next to the request; requests submitted after it are marked **Late**.
+- Marking the order **Completed** fills the field with today's date when it is still empty and notes that the date is estimated. Treat it as a reminder to confirm the handover, not as proof that the parcel arrived: the panel says **Estimated from the order status** until you save the real date.
+- Moving the order back out of **Completed** clears that automatic date again, so a mistaken click leaves no withdrawal period running. A date you saved yourself is never cleared this way — remove it with the empty field if it really was wrong.
+- Saving a delivery date adds a **Delivery recorded on …** entry to the order timeline; an automatic date adds its own entry that asks you to confirm it.
+- Withdrawal requests linked to the order get a **Withdrawal period** deadline of 14 days from that date. Until a delivery date exists, the deadline is estimated from the payment date.
+- Estimated deadlines — no delivery date yet, or only the automatic date from the status change — are marked **Estimated** and never mark a customer as **Late** or block a declaration as expired. Review those requests yourself; the 12-month long stop only runs from a confirmed delivery date.
+- The withdrawal confirmation email prints an estimated deadline with **(estimated)** next to the date.
 - Clear the field and save to remove a wrongly entered date.
 
 ### Save & Notify
