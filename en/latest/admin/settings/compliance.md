@@ -82,6 +82,10 @@ State how long the statutory liability for defects lasts in your jurisdiction an
 Keep it short and factual. A guarantee that promises more than the law requires becomes a contractual promise you have to honour.
 :::
 
+### Warranty per product
+
+The text above is the shop-wide statement printed at checkout. Product pages take their warranty from **E-Commerce → Product → Shop-wide warranty (months)**, a month count you type in (`0` hides the line, any duration up to 1200 months is allowed). The product editor's compliance section overrides it per product and each variation can override the product; the **Additional information** tab lists every distinct duration used by the product and its variations.
+
 ## Price transparency
 
 | Setting | What it does |
@@ -104,6 +108,7 @@ The compliance section of the product editor holds the information product-safet
 | **Product Documents** | Manuals and instructions, either from the media library or external URLs; each entry can carry its own name |
 | **Minimum age** | `16+` or `18+`, or no restriction |
 | **Batch number** | Optional lot identifier |
+| **Warranty** | Product warranty statement shown in the additional information tab; **Use global** inherits the E-Commerce default |
 
 Products sold by weight or volume also take a content amount and unit for the unit price.
 

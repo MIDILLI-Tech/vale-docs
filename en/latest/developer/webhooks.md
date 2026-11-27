@@ -76,6 +76,7 @@ hash_equals($expected, $_SERVER['HTTP_X_VL_SIGNATURE']); // true if valid
       "name": "LumiFind - AI-Powered Local Semantic File Search",
       "sku": "LUMI-TRIAL",
       "batch_number": "LOT-2026-04",
+      "warranty_months": 24,
       "price": 6.99,
       "qty": 1,
       "subtotal": 6.99,
@@ -90,6 +91,7 @@ Notes:
 - `sku` is the variation SKU when the item is a variation, otherwise the parent product SKU (empty if neither is set).
 - `variation_id` is present only for variation items; `variation_data` carries the merged variation attributes as a JSON string (absent when empty).
 - `batch_number` is the product's lot number snapshotted when the order was placed (absent for legacy orders and products without a lot number).
+- `warranty_months` is the warranty duration in months resolved when the order was placed — the variation overrides the product, which overrides the shop-wide default in **E-Commerce → Product → Warranty**. `0` means no warranty is shown; the value is `null` for orders placed before the field existed.
 - `age_confirmed_at` is the timestamp of the age-confirmation checkbox at checkout; it is `null` when the order contained no age-restricted product.
 - `order.status_changed` sends the same shape plus `"new_status": "<target status>"`.
 - To look up a product from an item, use `GET /api/v1/products/id/{product_id}`. To write results back to the order (e.g. an issued license key note), use `POST /api/v1/orders/{id}/notes` (`write:orders`). See the [REST API reference](./api#orders).
@@ -118,6 +120,8 @@ Placeholders like <code v-pre>{{tags}}</code> or <code v-pre>{{items}}</code> (a
   "product_stock": 34,
   "product_min_age": 18,
   "product_batch_number": "LOT-2026-04",
+  "product_warranty_months": 24,
+  "product_warranty_months_resolved": 24,
   "variations": [
     {
       "id": 11,
@@ -127,7 +131,8 @@ Placeholders like <code v-pre>{{tags}}</code> or <code v-pre>{{items}}</code> (a
       "sale_price": null,
       "stock_quantity": 12,
       "stock_status": "in_stock",
-      "batch_number": "LOT-VAR"
+      "batch_number": "LOT-VAR",
+      "warranty_months": null
     },
     {
       "id": 12,
@@ -143,6 +148,8 @@ Placeholders like <code v-pre>{{tags}}</code> or <code v-pre>{{items}}</code> (a
 ```
 
 There are deliberately no image or file fields in this payload: SKUs, attributes, prices and stock only.
+
+`product_warranty_months` is the value stored on the product (`null` means "inherit the shop default", `0` means no warranty line), `product_warranty_months_resolved` is the duration a customer would see after the shop-wide default is applied, and each variation carries its own `warranty_months`.
 
 **Body Template:** only top-level <code v-pre>{{key}}</code> placeholders are supported (regex `/\{\{(\w+)\}\}/`: no dot-notation, so <code v-pre>{{variation.sku}}</code> stays literal). Use <code v-pre>{{variations}}</code> to embed the whole array; like <code v-pre>{{items}}</code> / <code v-pre>{{tags}}</code>, array values are JSON-encoded so the rendered body stays valid JSON:
 

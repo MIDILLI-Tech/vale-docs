@@ -28,6 +28,18 @@ If a captcha type requiring API keys is selected but not configured, a warning i
 | **Refund Request Window (Days)** | The number of days from order placement during which customers can submit cancellation or refund requests (1 to 365, default 14). Shown only when refunds are enabled. |
 | **Auto-accept digital refunds if file has not been downloaded** | Automatically approves refund requests for digital orders if the customer has zero downloads. For external URL downloads, enable "Hide URL / Proxy" on the product so the real link is hidden and access can be tracked. |
 
+## Warranty
+
+**Shop-wide warranty (months)** sets the warranty duration shown on product pages. Enter the number of months in the field (up to 1200); it is a free number rather than a preset list, so country-specific terms such as 11 or 18 months are fine. **0** hides the warranty line — the statutory liability for defects applies regardless.
+
+The value appears in the **Additional information** tab of the product page. It is a default, not a lock:
+
+- The product editor's compliance section can override it per product (an empty field inherits the shop value, `0` hides the line for that product).
+- Each variation can override the product the same way.
+- When variations differ, the product page lists every distinct duration, so a customer never sees a warranty that does not apply to the variation they picked.
+
+Keep the statement factual: a guarantee that promises more than the law requires becomes a contractual promise you have to honour. The legal checklist under [Legal & Compliance](./../compliance) covers the shop-wide text shown at checkout.
+
 ## Sales & Inventory Display
 
 | Setting | Description |
