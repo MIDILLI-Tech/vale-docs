@@ -1,6 +1,6 @@
 # E-Commerce Settings
 
-Configure your online store's core operations, from payments to global shipping. The E-Commerce tab has eight sub-tabs: **Shop**, **Product**, **Currency**, **Shipping**, **Payment**, **Checkout**, **Legal & Compliance**, and **Import**.
+Configure your online store's core operations, from payments to global shipping. The E-Commerce tab has seven sub-tabs: **Shop**, **Product**, **Currency**, **Shipping**, **Payment**, **Checkout**, and **Import**. Legal pages and consumer-rights features live in their own top-level tab, **[Legal & Compliance](./compliance)**.
 
 ::: tip SHOP & SUBSCRIPTION TOGGLES
 The on/off switches for **Shop** and **Subscriptions** live in **[Settings](./) → [General](./general) → [Features](./general#features)**.
@@ -295,49 +295,7 @@ Controls how tax appears in checkout and order summary views:
 
 ## Legal & Compliance
 
-The sub-tab has two parts: a country profile that shows what is commonly expected where you operate, and the page pickers that connect your documents to the storefront.
-
-### Legal & Compliance Profile
-
-Pick the **country of operation**. Vale resolves it to a region profile and lists the documents and settings that region expects, each marked **Required** or **Recommended**:
-
-| Region | Banner model | Profile highlights |
-|--------|--------------|--------------------|
-| Germany / Austria | Opt-in | Imprint required |
-| European Union / EEA | Opt-in | Privacy policy and withdrawal required |
-| United Kingdom | Opt-in | Privacy policy and withdrawal required |
-| United States | Opt-out | Do Not Sell/Share control required |
-| Canada | Opt-in | Privacy policy required |
-| Australia / New Zealand | Opt-in | Privacy policy required |
-| No specific profile | Opt-in | Generic recommendations |
-
-Each row reports a status: **Configured**, **Partial** (for example only the simple cookie notice is on), **Missing**, **Not in Vale yet** (withdrawal), or **Handled outside Vale**.
-
-- **I handled this myself** records that you dealt with the document outside Vale and stores the date. The item then leaves the dashboard advisory; it does not mark the document as configured. Unticking the box removes the record.
-- **Use this banner model** applies the region's model: it turns the cookie consent banner on and sets the US opt-out control to match (on for opt-out regions, off otherwise).
-
-The checklist is advisory. It reports whether a page or setting is configured; it never states that the store is legally compliant.
-
-### Advisories
-
-Once a country is selected, the dashboard keeps listing what still needs attention, each with a link to the screen that fixes it: missing required documents, the consent banner switched off, third-party captcha loading before consent, advertising code or unclassified custom scripts loading before consent, and the US opt-out left off. Items marked **I handled this myself** are skipped.
-
-### Policy pages
-
-| Setting | Description |
-|---------|-------------|
-| **Return Policy Page** | Return/refund policy page |
-| **Privacy Policy Page** | Privacy policy page |
-| **Terms & Conditions Page** | Terms and conditions page |
-| **Imprint Page** | Legal notice with business name, address, contact and registration details |
-
-Privacy, terms and returns appear on the checkout page and in order confirmation emails. All four selected pages are linked from the site footer automatically unless the footer menu already points at the same page; unpublished drafts are skipped until you publish them.
-
-Click **Create a new page →** to open the page editor in a new tab.
-
-::: warning Legal Compliance
-Check your local regulations to comply with legal requirements for online stores. The profile suggests what is commonly expected in a region; it is not legal advice.
-:::
+The legal checklist, policy pages and consumer-rights features now have their own top-level tab: **[Legal & Compliance](./compliance)**. It covers the country profile, the online withdrawal function, unit prices, product safety, age restrictions, batch numbers and verified reviews.
 
 ## Import
 

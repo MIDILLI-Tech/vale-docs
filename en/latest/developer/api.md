@@ -95,6 +95,8 @@ Creating or updating content fires the `post.created`, `post.updated` and (when 
   "cross_sell_ids": [11],
   "weight": 0.4,
   "dimensions": "30 x 20 x 5",
+  "min_age": 18,
+  "batch_number": "LOT-2026-04",
   "shipping_class": "controller"
 }
 ```
@@ -104,6 +106,9 @@ Notes:
 - `dimensions` accepts a string or a `{length, width, height}` object (normalized to `"L x W x H"`).
 - `variations[]` entries accept `sku, attributes, price, sale_price, sale_price_start/end, stock_quantity, stock_status, image, download_files, ...` (same normalization applies).
 - The response echoes `upsell_ids`, `cross_sell_ids`, `sale_price_start/end` (ATOM) and a computed `on_sale` flag, per product and per variation.
+- `min_age` accepts `16`, `18` or `null` (anything else is stored as `null`); `batch_number` is a free-form lot identifier. Both are returned by every product endpoint, and `batch_number` is copied onto order items when an order is placed. When a variation carries its own `batch_number`, that value wins for the variation; an empty one inherits the product lot.
+- Variations accept the same `batch_number` inheritance plus `unit`, `base_amount` and `manual_documents` (entries with `type: "url"` need an `http(s)` URL; `type: "file"` needs an existing media ID). `unit` / `base_amount` left out mean the variation inherits the product values. They are echoed in every product response.
+- Compliance fields are read/write on both create and update: `unit` (one of `piece, g, kg, oz, lb, ml, l, fl_oz, gal, m, m2, ft, ft2`; unknown values are stored as `null`), `base_amount`, `manufacturer_name`, `manufacturer_address`, `eu_responsible_name`, `eu_responsible_address`, `country_of_origin` (ISO-3166 alpha-2, upper-cased), `safety_warnings`, `manual_url`, `manual_label` and `digital_waiver` (boolean). They are returned by every product endpoint.
 
 Product create/update/delete fire the `product.created`, `product.updated` and `product.deleted` webhook events (see [Webhooks](./webhooks#product-events)).
 

@@ -398,6 +398,10 @@ const vitepressConfig = defineConfig({
                       link: "/en/latest/admin/settings/ecommerce"
                     },
                     {
+                      text: "Legal & Compliance",
+                      link: "/en/latest/admin/settings/compliance"
+                    },
+                    {
                       text: "Registration",
                       link: "/en/latest/admin/settings/registration"
                     },

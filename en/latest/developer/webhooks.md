@@ -69,11 +69,13 @@ hash_equals($expected, $_SERVER['HTTP_X_VL_SIGNATURE']); // true if valid
   "currency": "EUR",
   "order_customer_email": "john.doe@example.com",
   "order_customer_name": "John Doe",
+  "age_confirmed_at": null,
   "items": [
     {
       "product_id": 21,
       "name": "LumiFind - AI-Powered Local Semantic File Search",
       "sku": "LUMI-TRIAL",
+      "batch_number": "LOT-2026-04",
       "price": 6.99,
       "qty": 1,
       "subtotal": 6.99,
@@ -87,6 +89,8 @@ hash_equals($expected, $_SERVER['HTTP_X_VL_SIGNATURE']); // true if valid
 Notes:
 - `sku` is the variation SKU when the item is a variation, otherwise the parent product SKU (empty if neither is set).
 - `variation_id` is present only for variation items; `variation_data` carries the merged variation attributes as a JSON string (absent when empty).
+- `batch_number` is the product's lot number snapshotted when the order was placed (absent for legacy orders and products without a lot number).
+- `age_confirmed_at` is the timestamp of the age-confirmation checkbox at checkout; it is `null` when the order contained no age-restricted product.
 - `order.status_changed` sends the same shape plus `"new_status": "<target status>"`.
 - To look up a product from an item, use `GET /api/v1/products/id/{product_id}`. To write results back to the order (e.g. an issued license key note), use `POST /api/v1/orders/{id}/notes` (`write:orders`). See the [REST API reference](./api#orders).
 
@@ -112,6 +116,8 @@ Placeholders like <code v-pre>{{tags}}</code> or <code v-pre>{{items}}</code> (a
   "product_price": 19.99,
   "product_sale_price": null,
   "product_stock": 34,
+  "product_min_age": 18,
+  "product_batch_number": "LOT-2026-04",
   "variations": [
     {
       "id": 11,
@@ -120,7 +126,8 @@ Placeholders like <code v-pre>{{tags}}</code> or <code v-pre>{{items}}</code> (a
       "price": 19.99,
       "sale_price": null,
       "stock_quantity": 12,
-      "stock_status": "in_stock"
+      "stock_status": "in_stock",
+      "batch_number": "LOT-VAR"
     },
     {
       "id": 12,

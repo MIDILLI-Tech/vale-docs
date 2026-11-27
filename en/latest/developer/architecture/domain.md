@@ -13,6 +13,23 @@ Vale is built with a strong focus on **Domain-Driven Design (DDD)**. The core bu
 - **Entities**: `Product`, `Variation`, `Order`, `Coupon`, `Customer`, `TaxRate`, `ShippingMethod`.
 - **Logic**: Manages inventory states, price calculations (Regular vs. Sale), and order status transitions.
 
+#### Product age restriction and batch numbers
+
+`Product` stores the fields behind the storefront age gate and lot traceability:
+
+| Getter | Column | Values |
+|---|---|---|
+| `getMinAge()` | `products.min_age` | `null`, `16` or `18` |
+| `getBatchNumber()` | `products.batch_number` | free text (optional lot identifier) |
+
+Both are hydrated by `Product::fromRow()` and persisted by `DbalProductRepository::save()`.
+
+**Age restriction.** `resources/views/shop/product.twig` renders a full-screen age gate when `min_age > 0`. Confirming writes `vl_age_ok_<age>` to `localStorage`, so later visits from the same browser skip the gate. The gate is a self-declaration, not an identity check.
+
+At checkout, `CheckoutController::requiredAgeForItems()` returns the highest `min_age` in the cart. The order is rejected when the `age_confirmed` POST field is missing, and `Order::setAgeConfirmedAt()` records the timestamp in `orders.age_confirmed_at`. `ShopController::cart()` passes the same maximum to the cart template for its warning block.
+
+**Batch snapshot.** When the order is written, the product's batch number is copied into `order_items.batch_number`. Past orders keep the lot that was actually sold even if the product is edited later; an empty batch number is stored as `NULL` and rendered nowhere.
+
 ### User & Auth
 - **Entities**: `User`, `Role`, `Permission`.
 - **Logic**: Granular RBAC (Role-Based Access Control) and authentication state management.

@@ -40,7 +40,8 @@ Explore the detailed documentation for each settings category:
 - **[General](./general)**: Site identity, homepage, communications, localization, feature toggles, and Progressive Web App settings.
 - **[Content](./content)**: Media, Blog, Multi-Language, and Advertisement, organized in sub-tabs.
 - **[Discussion](./discussion)**: Comments, comment system choice, and comment captcha.
-- **[E-Commerce](./ecommerce)**: Shop identity, payments, products, shipping, taxes, currencies, checkout, and legal.
+- **[E-Commerce](./ecommerce)**: Shop identity, payments, products, shipping, taxes, currencies, and checkout.
+- **[Legal & Compliance](./compliance)**: Country profile, policy pages, online withdrawal, unit price, product safety, age restrictions and verified reviews.
 - **[Registration](./registration)**: User registration methods, SSO, captcha, and two-factor authentication.
 - **[SEO](./seo)**: Search engine visibility, redirects, AI crawler control, and verification.
 - **[Mail](./mail)**: Mail setup, email templates, email notifications, and mail logs.
