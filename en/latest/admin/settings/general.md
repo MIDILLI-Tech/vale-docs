@@ -86,7 +86,7 @@ The individual settings for each feature can be found on their respective tabs (
 
 ::: tip SEE ALSO
 - Configure [SEO Defaults](./seo) for better search ranking.
-- Set up your [Shop Identity](./ecommerce) if you are running an online store.
+- Set up your [Shop Identity](./ecommerce/) if you are running an online store.
 :::
 
 ## Progressive Web App

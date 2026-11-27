@@ -1,12 +1,12 @@
 # Exchange Rates
 
-Exchange rate configuration is part of the **[E-Commerce → Currency](../settings/ecommerce#currency)** settings. This page provides a quick reference.
+Exchange rate configuration is part of the **[E-Commerce → Currency](../settings/ecommerce/currency#currency)** settings. This page provides a quick reference.
 
 Vale supports multi-currency displays and automatic price conversion using real-time exchange rates.
 
 ## Configuration
 
-Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Currency](../settings/ecommerce#currency)** to manage your currency settings.
+Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Currency](../settings/ecommerce/currency#currency)** to manage your currency settings.
 
 ### API Provider
 Choose a service to fetch live rates:
@@ -24,6 +24,6 @@ Click **Refresh Rates Now** to force an immediate sync without reloading the pag
 When cron is enabled (see [Maintenance → Scheduled Tasks](../settings/maintenance#scheduled-tasks-cron)), exchange rates are refreshed automatically according to the cache duration.
 
 ::: tip SEE ALSO
-- Full configuration details in [E-Commerce → Currency](../settings/ecommerce#currency).
+- Full configuration details in [E-Commerce → Currency](../settings/ecommerce/currency#currency).
 - [Maintenance settings](../settings/maintenance) for cron setup.
 :::

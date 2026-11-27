@@ -14,7 +14,11 @@ The standard checkout proceeds through these steps:
 
 ## Guest Checkout
 
-Guest checkout can be enabled or disabled in **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Guest Checkout](../settings/ecommerce#guest-checkout)**. When enabled, customers can complete a purchase using only their email address. A customer account is optionally created automatically after the first purchase.
+Guest checkout can be enabled or disabled in **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Guest Checkout](../settings/ecommerce/checkout#guest-checkout)**. When enabled, customers can complete a purchase using only their email address. A customer account is optionally created automatically after the first purchase.
+
+## Business Orders (B2B)
+
+Business customers can add a company name and VAT number at checkout. A valid EU VAT number from another member state removes VAT under the reverse-charge rule. Enable the business option under **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → Shop → [B2B Sales & Reverse Charge](../settings/ecommerce/shop#b2b-sales-reverse-charge)**, where the validation and invoicing behaviour are explained.
 
 ## Coupon Codes
 
@@ -26,7 +30,7 @@ Shipping options are displayed at the shipping step based on:
 - The customer's delivery address zone
 - The shipping methods configured for that zone (flat rate, free shipping, local pickup)
 
-Configure zones and methods in [Settings](../settings/) → [E-Commerce](../settings/ecommerce).
+Configure zones and methods in [Settings](../settings/) → [E-Commerce](../settings/ecommerce/).
 
 ## Payment
 
@@ -42,7 +46,7 @@ The default gateway is shown first. Customers can switch to an alternative if mu
 
 ## Additional Information (Custom Fields)
 
-You can collect extra information from customers at checkout using the Form Builder. Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Checkout](../settings/ecommerce#checkout)** and select a form under **Additional Form Fields**. The form's fields appear at the end of checkout under an "Additional Information" section.
+You can collect extra information from customers at checkout using the Form Builder. Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Checkout](../settings/ecommerce/checkout#checkout)** and select a form under **Additional Form Fields**. The form's fields appear at the end of checkout under an "Additional Information" section.
 
 This is useful for gathering gift messages, delivery preferences, business details, or any other custom data. No code required. See [Using Forms in Checkout](../forms#using-forms-in-checkout) for how to build and manage forms.
 
@@ -63,5 +67,5 @@ After a successful order, customers can submit a refund request from their **My 
 - [Forms](../forms): build custom fields for checkout and other pages.
 - [Orders](./orders): manage order statuses and fulfilment.
 - [Coupons](./coupons): discount codes and restrictions.
-- [Settings](../settings/) → [E-Commerce](../settings/ecommerce): payment gateways, shipping, and tax configuration.
+- [Settings](../settings/) → [E-Commerce](../settings/ecommerce/): payment gateways, shipping, and tax configuration.
 :::

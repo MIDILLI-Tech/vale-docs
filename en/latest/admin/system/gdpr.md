@@ -126,7 +126,7 @@ Sensitive fields such as payment tokens, transaction IDs, and internal identifie
 
 Link your legal pages so they appear on checkout and in order emails:
 
-Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Legal & Compliance](../settings/ecommerce#legal-compliance)** and set:
+Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Legal & Compliance](../settings/compliance)** and set:
 - **Privacy Policy** page
 - **Terms & Conditions** page
 - **Return Policy** page

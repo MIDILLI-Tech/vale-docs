@@ -119,7 +119,7 @@ A batch number is copied to each order item when the order is placed, so the lot
 **Settings → Privacy & Security → Cookie Consent → US Privacy Opt-Out** adds a **Do Not Sell or Share** action to the consent banner and honours Global Privacy Control signals. The country profile marks it as required for the United States and recommended for Canada. The full banner workflow is on [Cookie Consent](./consent).
 
 ::: tip SEE ALSO
-- [E-Commerce](./ecommerce) for refunds, the refund period and review settings.
+- [E-Commerce](./ecommerce/) for refunds, the refund period and review settings.
 - [Privacy & Security](./privacy) for IP handling, captcha and GDPR options.
 - [Cookie Consent](./consent) for categories, banner text and the consent log.
 - [Products](../ecommerce/products) for the full product editor.

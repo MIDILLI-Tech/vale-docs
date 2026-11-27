@@ -165,7 +165,7 @@ Forms can be attached to the shop checkout to collect additional information fro
 
 ### Setup
 
-1. Go to **[Settings](./settings/) → [E-commerce](./settings/ecommerce) → [Checkout](./settings/ecommerce#checkout)**
+1. Go to **[Settings](./settings/) → [E-commerce](./settings/ecommerce/) → [Checkout](./settings/ecommerce/checkout#checkout)**
 2. Under **Additional Form Fields**, select a form from the dropdown
 3. Save the settings
 

@@ -39,7 +39,7 @@ On the order detail page, the **Payment Link** panel helps you recover unpaid or
 
 - **Online gateways** (Stripe, PayPal, Mollie, 2Checkout, Checkout.com): click **Generate Payment Link** to create a one-click `/pay/…` link that sends the customer back to the payment step. Regenerating invalidates the previous link.
 - **Bank Transfer**: the panel becomes **Bank Transfer Instructions**. It shows your account details (bank, holder, IBAN, SWIFT, routing, branch) with copy buttons plus the transfer deadline calculated from the configured **max days**. Click **Generate Instruction Link** to create a link that opens an instructions page instead of an online payment.
-- If bank transfer details are not configured yet, the panel shows a warning pointing you to **[Settings](../settings/) → [Payment](../settings/ecommerce#payment) → Bank Transfer**.
+- If bank transfer details are not configured yet, the panel shows a warning pointing you to **[Settings](../settings/) → [Payment](../settings/ecommerce/payment#payment) → Bank Transfer**.
 
 ### Customer Instructions Page
 
@@ -63,7 +63,7 @@ On the order detail page, use the **Shipping & Tracking** panel to record the ca
 
 ### Adding Custom Carriers
 
-If you frequently use a carrier that is not in the default list, you can add your own in **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Shipping](../settings/ecommerce#shipping) → [Custom Tracking Carriers](../settings/ecommerce#custom-tracking-carriers)**. Each entry requires a name and a URL template containing `{tracking_number}` (for example, `https://acmecargo.com/track/{tracking_number}`). Once saved, custom carriers appear alongside built-in ones in the order tracking dropdown, sorted alphabetically.
+If you frequently use a carrier that is not in the default list, you can add your own in **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Shipping](../settings/ecommerce/shipping#shipping) → [Custom Tracking Carriers](../settings/ecommerce/shipping#custom-tracking-carriers)**. Each entry requires a name and a URL template containing `{tracking_number}` (for example, `https://acmecargo.com/track/{tracking_number}`). Once saved, custom carriers appear alongside built-in ones in the order tracking dropdown, sorted alphabetically.
 
 ### Copy Tracking URL
 

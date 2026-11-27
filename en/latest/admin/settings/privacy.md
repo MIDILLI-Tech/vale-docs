@@ -63,7 +63,7 @@ Each provider shows a green **Configured** badge when keys are saved, or a red w
 Export all known data associated with an email address (orders, newsletter subscriptions, profile) as JSON. Enter the email and click **Export JSON** to download.
 
 ::: tip SEE ALSO
-- Configure captcha per-section in [Registration](./registration), [Discussion](./discussion), and [E-Commerce](./ecommerce).
+- Configure captcha per-section in [Registration](./registration), [Discussion](./discussion), and [E-Commerce](./ecommerce/).
 - Set pageview retention in [Analytics → Data Retention](./analytics#data-retention).
 - [GDPR & Privacy](../system/gdpr) overview.
 :::

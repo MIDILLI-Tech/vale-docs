@@ -52,12 +52,12 @@ You can use the quick access link directly in the admin settings panel to retrie
 Select **Facebook** and enter your **Facebook App ID**. You can generate one from the provider's developer console using the quick access link in the settings panel. The Facebook Comments SDK loads and associates threads with the page URL.
 
 ::: tip NOTE
-Star ratings and product reviews are configured under **[E-Commerce](./ecommerce) → [Product](./ecommerce#product)**.
+Star ratings and product reviews are configured under **[E-Commerce](./ecommerce/) → [Product](./ecommerce/product#product)**.
 :::
 
 ::: tip SEE ALSO
 - Manage pending [Comments](../content/comments).
 - Set per-content comment rules in the [Page Editor](../content/pages).
 - Configure captcha API keys in [Privacy & Security settings](./privacy).
-- Configure product reviews and star ratings in [E-Commerce → Product](./ecommerce#product).
+- Configure product reviews and star ratings in [E-Commerce → Product](./ecommerce/product#product).
 :::

@@ -49,5 +49,5 @@ If you need to restrict access, add an IP whitelist at the web server level (Ngi
 
 ::: tip SEE ALSO
 - [Products](./products): configure GTIN, MPN, and brand fields.
-- [Settings](../settings/) → [E-Commerce](../settings/ecommerce): base currency and inventory settings.
+- [Settings](../settings/) → [E-Commerce](../settings/ecommerce/): base currency and inventory settings.
 :::

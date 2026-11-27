@@ -8,7 +8,7 @@ Subscriptions are supported via:
 - **Stripe**: card billing with automatic renewal, SCA-compliant
 - **PayPal**: PayPal Billing Agreements
 
-Configure both in [Settings](./) → [E-Commerce](./ecommerce) → [Payment Gateways](./ecommerce#payment).
+Configure both in [Settings](./) → [E-Commerce](./ecommerce/) → [Payment Gateways](./ecommerce/payment#payment).
 
 ## Creating a Plan
 
@@ -61,6 +61,6 @@ From the admin panel (**Memberships → Subscribers**) you can:
 A daily reconciliation runs that checks for expired trials and initiates the first charge, removes gating tags from cancelled or lapsed subscriptions, and syncs subscription status with the gateway. Ensure cron is running, see [CLI Commands](../system/cli).
 
 ::: tip SEE ALSO
-- [Settings](./) → [E-Commerce](./ecommerce), payment gateway configuration.
+- [Settings](./) → [E-Commerce](./ecommerce/), payment gateway configuration.
 - [Newsletter](../marketing/newsletter), tag-based subscriber segmentation.
 :::

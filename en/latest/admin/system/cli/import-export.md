@@ -151,7 +151,7 @@ php vale import:products --file=products.csv --import-media --update-existing
 | `--update-existing` | Update existing products matched by slug instead of skipping them |
 | `--dry-run` | Preview the import inside a transaction without writing to the database |
 
-Download the template from **[Settings](../../settings/) → [E-Commerce](../../settings/ecommerce) → [Import](../../settings/ecommerce#import)** tab, or export a single product from the product edit page for a starting point.
+Download the template from **[Settings](../../settings/) → [E-Commerce](../../settings/ecommerce/) → [Import](../../settings/ecommerce/import#import)** tab, or export a single product from the product edit page for a starting point.
 
 ### `export:products`
 

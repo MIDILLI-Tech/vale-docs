@@ -12,7 +12,7 @@ If a customer abandons a new cart after ordering, it starts a fresh reminder cyc
 
 ## Configuration
 
-Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Abandoned Cart](../settings/ecommerce#abandoned-cart-recovery)** to configure:
+Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Abandoned Cart](../settings/ecommerce/checkout#abandoned-cart-recovery)** to configure:
 
 | Setting | Description |
 |---|---|

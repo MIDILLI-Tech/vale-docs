@@ -21,7 +21,7 @@ Switch between types using the toggle buttons at the top of the product form.
 - **Sale Price**: If set, the product will show as "On Sale" with the regular price crossed out.
 - **Sale Schedule** (optional): Check this box to set a time window for the sale price. Define **Sale Starts** and **Sale Ends** dates. The sale price is only applied during this window. Leave both dates empty for an always-active sale. Use **Apply Sale Dates to All** to copy the schedule to all variations at once.
 - **VAT Mode**:
-  - **Use Global**: Inherit tax settings from **[Settings](../settings/) → [Tax](../settings/ecommerce#tax-regime)**.
+  - **Use Global**: Inherit tax settings from **[Settings](../settings/) → [Tax](../settings/ecommerce/shop#tax-regime)**.
   - **Custom**: Set a specific percentage for this product.
 - **VAT Rate**: Required when VAT mode is Custom.
 - **VAT Country Overrides**: Define different tax treatments for specific countries. For each country you can choose **Use Global**, **Custom rate**, or **No VAT**. This allows country-specific pricing, e.g., charging no VAT for non-EU customers while applying full VAT within the EU.
@@ -205,7 +205,7 @@ Vale can also import products from its own CSV format. This is useful when you h
 
 ### Getting Started
 
-Download the template from **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Import](../settings/ecommerce#import)** tab (or use the **Export CSV** link on any product as a starting point). The template includes two example rows: a simple product and a variable product with two variations.
+Download the template from **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Import](../settings/ecommerce/import#import)** tab (or use the **Export CSV** link on any product as a starting point). The template includes two example rows: a simple product and a variable product with two variations.
 
 ### CLI
 
@@ -228,7 +228,7 @@ php vale import:products --file=products.csv --import-media --update-existing
 
 ### Admin Panel
 
-Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce) → [Import](../settings/ecommerce#import)** tab and use the **Vale Products** card:
+Go to **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Import](../settings/ecommerce/import#import)** tab and use the **Vale Products** card:
 
 1. Download the template to see the required columns and example data.
 2. Fill in your products. Only the **name** column is required; all other columns are optional.
@@ -290,7 +290,7 @@ The `variations` column contains a JSON array where each object represents one v
 Instead of entering every product by hand, Vale can import your existing catalog from **Shopify**, **Etsy**, **eBay**, or **Amazon** using the command-line importer. Each marketplace importer reads the platform's own export file, creates the products including variations, resolves categories, and can download product images into the media library.
 
 ::: tip THE LINK IS IN THE PANEL
-Each platform card in [Settings → E-Commerce → Import](../settings/ecommerce#import) has a **Get Export File** link that opens that platform's own export screen. Export the file there, then run the command below.
+Each platform card in [Settings → E-Commerce → Import](../settings/ecommerce/import#import) has a **Get Export File** link that opens that platform's own export screen. Export the file there, then run the command below.
 :::
 
 ::: tip FOR SYSADMINS
@@ -405,5 +405,5 @@ Supports **English and German** column headers, and CSV, TSV, and Excel (`.xlsx`
 ::: tip SEE ALSO
 - Manage your [Orders](./orders).
 - Create [Coupons](./coupons) for your products.
-- Configure [Global Tax & Shipping](../settings/ecommerce).
+- Configure [Global Tax & Shipping](../settings/ecommerce/).
 :::

@@ -21,7 +21,7 @@ Located at **[Settings](./settings/) → [Content](./settings/content)**, organi
 
 ## E-Commerce Settings
 
-Located at **[Settings](./settings/) → [E-Commerce](./settings/ecommerce)**, you can manage shop identity, payments, products, shipping, taxes, currencies, checkout, and legal. This tab is only visible when **Enable shop** is turned on in **[Settings](./settings/) → [General](./settings/general) → [Features](./settings/general#features)**.
+Located at **[Settings](./settings/) → [E-Commerce](./settings/ecommerce/)**, you can manage shop identity, payments, products, shipping, taxes, currencies, checkout, and legal. This tab is only visible when **Enable shop** is turned on in **[Settings](./settings/) → [General](./settings/general) → [Features](./settings/general#features)**.
 
 ## Registration Settings
 

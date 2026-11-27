@@ -395,11 +395,16 @@ const vitepressConfig = defineConfig({
                     },
                     {
                       text: "E-Commerce",
-                      link: "/en/latest/admin/settings/ecommerce"
-                    },
-                    {
-                      text: "Legal & Compliance",
-                      link: "/en/latest/admin/settings/compliance"
+                      link: "/en/latest/admin/settings/ecommerce/",
+                      items: [
+                        { text: "Shop", link: "/en/latest/admin/settings/ecommerce/shop" },
+                        { text: "Product", link: "/en/latest/admin/settings/ecommerce/product" },
+                        { text: "Currency", link: "/en/latest/admin/settings/ecommerce/currency" },
+                        { text: "Shipping", link: "/en/latest/admin/settings/ecommerce/shipping" },
+                        { text: "Payment", link: "/en/latest/admin/settings/ecommerce/payment" },
+                        { text: "Checkout", link: "/en/latest/admin/settings/ecommerce/checkout" },
+                        { text: "Import", link: "/en/latest/admin/settings/ecommerce/import" }
+                      ]
                     },
                     {
                       text: "Registration",
@@ -416,6 +421,10 @@ const vitepressConfig = defineConfig({
                     {
                       text: "Privacy & Security",
                       link: "/en/latest/admin/settings/privacy"
+                    },
+                    {
+                      text: "Legal & Compliance",
+                      link: "/en/latest/admin/settings/compliance"
                     },
                     {
                       text: "Cookie Consent",
