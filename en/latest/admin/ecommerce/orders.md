@@ -96,6 +96,7 @@ After entering a tracking number, the **Tracking URL (auto-generated)** field ap
 
 The **Delivery Date** field in the **Shipping & Tracking** panel records when the customer received the order. It is the starting point of the statutory withdrawal period, so fill it in on delivery rather than at shipment:
 
+- Marking the order **Completed** fills the field with today's date when it is still empty, so the withdrawal period starts without an extra step. Change it afterwards if the handover happened earlier.
 - Saving a delivery date adds a **Delivery recorded on …** entry to the order timeline.
 - Withdrawal requests linked to the order get a **Withdrawal period** deadline of 14 days from that date. Until a delivery date exists, the deadline is estimated from the payment date and marked as an estimate.
 - On the withdrawal request screens the deadline is shown next to the request; requests submitted after it are marked **Late**.
