@@ -106,7 +106,7 @@ The compliance section of the product editor holds the information product-safet
 | **Country of Origin** | Two-letter country code |
 | **Safety Warnings** | Warnings shown with the product |
 | **Product Documents** | Manuals and instructions, either from the media library or external URLs; each entry can carry its own name |
-| **Minimum age** | `16+` or `18+`, or no restriction |
+| **Minimum age** | any age in years, e.g. `16+`, `18+`, `21+`, or no restriction |
 | **Batch number** | Optional lot identifier |
 | **Warranty** | Product warranty statement shown in the additional information tab; **Use global** inherits the E-Commerce default |
 

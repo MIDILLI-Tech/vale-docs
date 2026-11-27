@@ -34,7 +34,7 @@ Besides the items and totals, an invoice carries the fields a compliant commerci
 
 ### Language of Invoices and Emails
 
-The invoice screen and the PDF you download from the admin panel follow your panel language. Customer emails — including the invoice email and its PDF attachment — are rendered in the order's language, so a customer who checked out in German receives a German email and invoice.
+Invoices are legal documents, so they are always printed in the store's default frontend language (**Settings → General → Site → Default Site Language**), never in the admin panel language or the language the customer used at checkout. The invoice screen, the PDF download and the attached PDF therefore show the same document to every recipient, including the tax office. Customer emails — the email body and subject — stay in the order's language, so a customer who checked out in German receives a German email with the store-language invoice attached.
 
 ### GoBD Notes (Germany)
 
