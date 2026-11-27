@@ -12,6 +12,12 @@ The standard checkout proceeds through these steps:
 4. **Payment**: Choose a payment gateway and complete the transaction.
 5. **Confirmation**: Order summary page with order ID. Confirmation email sent automatically.
 
+### Consent Record
+
+The order form requires the customer to accept the Terms & Conditions, the Privacy Policy and the Return Policy before the order can be placed. The server rejects a submission without that consent, so the check cannot be skipped by disabling JavaScript.
+
+Each accepted checkout writes a **consent** entry to the order's Activity Log with the version of the accepted policies (a short hash of their last update), the timestamp, the visitor's IP address and a hashed user-agent. The IP is masked when IP anonymization is enabled under **[Settings](../settings/) → Privacy**. The entry is the evidence of consent for that order and cannot be edited.
+
 ## Guest Checkout
 
 Guest checkout can be enabled or disabled in **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → [Guest Checkout](../settings/ecommerce/checkout#guest-checkout)**. When enabled, customers can complete a purchase using only their email address. A customer account is optionally created automatically after the first purchase.

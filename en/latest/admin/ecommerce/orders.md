@@ -23,6 +23,15 @@ Click **Issue Invoice** on the order detail page to freeze the current items, to
 
 The invoice sheet shows your site logo in the top-right corner when one is set under **[Settings](../settings/) → General → Site**, scaled down to a small mark so it never competes with the totals. The screen, the PDF download and the attached PDF use the same layout.
 
+### Invoice Fields
+
+Besides the items and totals, an invoice carries the fields a compliant commercial invoice needs:
+
+- **Order Number** — the order's reference, printed next to the invoice number.
+- **Delivery Date** — the date the goods were handed over. When no delivery date is recorded yet, the invoice falls back to the payment date (or the order date) and marks the value as estimated.
+- **Tax Number** — your own tax number from **[Settings](../settings/) → [E-Commerce](../settings/ecommerce/) → Shop → Shop Tax Number**. Leave it empty and the line is omitted.
+- **VAT Breakdown** — when an order mixes VAT rates, the totals block lists net, VAT and gross per rate (including the VAT share of shipping). Single-rate orders keep the usual one-line summary.
+
 ### Language of Invoices and Emails
 
 The invoice screen and the PDF you download from the admin panel follow your panel language. Customer emails — including the invoice email and its PDF attachment — are rendered in the order's language, so a customer who checked out in German receives a German email and invoice.
@@ -82,6 +91,15 @@ If you frequently use a carrier that is not in the default list, you can add you
 ### Copy Tracking URL
 
 After entering a tracking number, the **Tracking URL (auto-generated)** field appears below. Click **Copy** to copy the link to your clipboard, then paste it into any messaging app or email.
+
+### Delivery Date & Withdrawal Deadline
+
+The **Delivery Date** field in the **Shipping & Tracking** panel records when the customer received the order. It is the starting point of the statutory withdrawal period, so fill it in on delivery rather than at shipment:
+
+- Saving a delivery date adds a **Delivery recorded on …** entry to the order timeline.
+- Withdrawal requests linked to the order get a **Withdrawal period** deadline of 14 days from that date. Until a delivery date exists, the deadline is estimated from the payment date and marked as an estimate.
+- On the withdrawal request screens the deadline is shown next to the request; requests submitted after it are marked **Late**.
+- Clear the field and save to remove a wrongly entered date.
 
 ### Save & Notify
 
