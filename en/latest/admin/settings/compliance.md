@@ -34,7 +34,7 @@ Each row shows a status:
 
 **Use this banner model** turns the cookie consent banner on and sets the US opt-out control to match the suggested region — on for opt-out regions, off otherwise.
 
-When E-Commerce is disabled, the shop-related rows (return policy, withdrawal, digital withdrawal waiver, lowest price, verified reviews) are hidden and are not reported as open items. They come back automatically when the shop is enabled.
+When E-Commerce is disabled, the shop-related rows (return policy, withdrawal, digital withdrawal waiver, lowest price, verified reviews, warranty) are hidden and are not reported as open items. They come back automatically when the shop is enabled.
 
 ## Open items
 
@@ -71,6 +71,16 @@ Enable **Online withdrawal function** to publish a withdrawal page for customers
 ### Digital withdrawal waiver
 
 When **Digital withdrawal waiver** is on, a **Digital withdrawal waiver** switch appears in the product editor for digital content. At checkout, an order containing such a product requires the customer to agree that the download starts immediately and that the withdrawal right ends with it. The period shown comes from **E-Commerce → Product → Cancellation & Refund Settings**.
+
+## Warranty and guarantee
+
+**Warranty & guarantee** is a free-text field in the same panel. Its content is printed at the checkout, in the **Additional Information** block under the billing fields, and the checklist row turns **Configured** as soon as the field has text.
+
+State how long the statutory liability for defects lasts in your jurisdiction and what a voluntary guarantee covers, including who provides it and for how long. Consumer law in the EU and the UK expects the customer to see this before ordering, which is why the row is marked **Recommended** in every region rather than required: the statutory warranty exists whether or not the store describes it.
+
+::: tip
+Keep it short and factual. A guarantee that promises more than the law requires becomes a contractual promise you have to honour.
+:::
 
 ## Price transparency
 
